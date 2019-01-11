@@ -14,7 +14,7 @@
 	
 	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css"/> -->
 	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css"/> -->
-	<link rel="stylesheet" href="/css/jquery.pagepiling.min.css">
+	<!-- <link rel="stylesheet" href="/css/jquery.pagepiling.min.css"> -->
 	<link rel="stylesheet" href="/css/all.css">
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -24,8 +24,9 @@
 	<!-- <script src="/js/easings.min.js"></script> -->
 	<!-- <script src="/js/scrolloverflow.min.js"></script> -->
 
-	<script src="/js/jquery.pagepiling.min.js"></script>
-	<script src="/js/fullpage.min.js"></script>
+	<!-- <script src="/js/jquery.pagepiling.min.js"></script> -->
+	<!-- <script src="/js/fullpage.min.js"></script> -->
+	<script src="/js/jquery.scrollify.js"></script>
 	<script src="/js/common.js"></script>
 
 	<!-- Удалить debuger.js -->
@@ -61,7 +62,7 @@
 
   <div class="home">
 
-    <section class="section">
+    <section class="section scroll-point">
       <div class="h-collection">
         <div class="h-collection__box">
           <span class="h-collection__txt">Нова колекцiя</span><br>
@@ -71,7 +72,7 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section scroll-point">
       <div class="h-sale">
         
 <!-- <div class="h-sale__first"></div>
@@ -103,17 +104,31 @@
             </div>
           </div>
         </div>
+        <div class="h-sale__bottom">
+          <div class="h-sale__left">
+            <div class="h-sale__left-box">
+              <span class="h-sale__txt">Нові</span><br>
+              <span class="h-sale__txt">аксесуари</span>
+            </div>
+          </div>
+          <div class="h-sale__right">
+            <div class="h-sale__right-box">
+              <span class="h-sale__txt">Елегантна</span><br>
+              <span class="h-sale__txt">колекція</span>
+            </div>
+          </div>
+        </div>
         
       </div>
     </section>
 
-    <section class="section">
+    <section class="section scroll-point">
       <div class="h-video">
-        <iframe class="h-video__iframe" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
+        <!-- <iframe class="h-video__iframe" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe> -->
       </div>
     </section>
 
-    <section class="section">
+    <section class="section scroll-point">
       <div class="h-contacts">
         <div class="h-contacts__box">
           <h2 class="h-contacts__title"></h2>
@@ -129,13 +144,14 @@
 
 
 
-    <section class="section" style="background:#bada55">
+    <section class="section scroll-point" style="background:#bada55">
       <div class="h-about">
-        5
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Proin sed arcu nec mi blandit congue. Donec semper leo id fermentum suscipit.
       </div>
     </section>
 
-    <section class="section" style="background:lime">
+    <section class="section scroll-point" style="background:lime">
       <div class="h-instagram">
         123456790
       </div>
@@ -154,13 +170,13 @@
       //   });
       // };
 
-      if (window.innerWidth > 768) jQuery('.home').pagepiling();
+      // if (window.innerWidth > 768) jQuery('.home').pagepiling();
       
-      // $(function() {
-      //   $.scrollify({
-      //     section : ".section",
-      //   });
-      // });
+      $(function() {
+        $.scrollify({
+          section : ".scroll-point",
+        });
+      });
       
 
     });

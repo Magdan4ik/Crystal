@@ -3,21 +3,22 @@
 +window-size
 
 .home
-    height: 100vh
-.section
     // height: 100vh
+
+.section
+    height: 100vh
     padding-top: 112px
-    // border-bottom: 3px solid lime
     display: flex
     flex-direction: column
-    align-items: flex-end
-    
-    &:not(:first-of-type)
-        +sm-block()
-            padding: 0
+    // border-bottom: 3px solid lime
+    // align-items: flex-end
+
+    // &:not(:first-of-type)
+    //     +sm-block()
+    //         padding: 0
 
 .h-collection,
-.h-sale,
+// .h-sale,
 .h-video,
 .h-contacts,
 .h-about,
@@ -26,6 +27,14 @@
     height: calc(100vh - 112px)
     // height: 200px
     margin-top: auto
+
+// .h-collection,
+// .h-video,
+// .h-contacts,
+// .h-about,
+// .h-instagram
+//     height: 100vh
+
 
 .h-collection
     position: relative
@@ -76,8 +85,8 @@
     // overflow-y: auto
 
     &__top
-        // height: 760px
-        height: 55%
+        height: 760px
+        // height: 55%
         // height: 42vh
         // img
         //     width: 100%
@@ -87,8 +96,8 @@
         background-image: url('/img/h-sale-1.jpg')
     &__bottom
         // height: 45vh
-        // height: 600px
-        height: 45%
+        height: 600px
+        // height: 45%
         display: grid
         grid-column-gap: 20px
         grid-template-columns: 1fr 1fr
