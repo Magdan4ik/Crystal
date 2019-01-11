@@ -5,7 +5,7 @@ $_sm: 768px
 $_xs: 600px
 
 \:root
-  --main-color: black
+  --main-color: #121212
   --main-font: 'Open Sans', sans-serif
   --border-color-grey: #C2C2C2
 
@@ -44,18 +44,27 @@ html, body
   // height: 100%
 
 body
-  font-size: 16px
   min-width: 320px
   max-width: 1920px
   margin: 0 auto
   position: relative
   color: var(--main-color)
   font-family: var(--main-font)
+  font-size: 18px
+  font-weight: 300
   overflow-x: hidden
   line-height: 1.65
 
+h2
+  font-family: 'Playfair Display'
+  font-weight: 700
+  font-size: 96px
+h3
+
+h4
+
 main 
-  min-height: calc(100vh - 300px)
+  // min-height: calc(100vh - 300px)
 
 a,
 button
@@ -70,7 +79,8 @@ img
   display: block
   max-width: 100%
   height: auto
-ul, ol
+ul,
+ol
   list-style: none
 
 strong, b
@@ -187,6 +197,9 @@ input
 .hidden
   overflow: hidden
 
+.fp-enabled body,
+html.fp-enabled
+  margin: 0 auto
 
 /*==============================================================
             BUTTONS START
@@ -219,3 +232,5 @@ input
     &:hover
       background-color: var(--main-color)
       color: #fff
+  &--light
+    font-weight: 300

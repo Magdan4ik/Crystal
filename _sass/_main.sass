@@ -2,3 +2,235 @@
 // +_media
 +window-size
 
+.home
+    height: 100vh
+.section
+    // height: 100vh
+    padding-top: 112px
+    // border-bottom: 3px solid lime
+    display: flex
+    flex-direction: column
+    align-items: flex-end
+    
+    &:not(:first-of-type)
+        +sm-block()
+            padding: 0
+
+.h-collection,
+.h-sale,
+.h-video,
+.h-contacts,
+.h-about,
+.h-instagram
+    background-repeat: no-repeat
+    height: calc(100vh - 112px)
+    // height: 200px
+    margin-top: auto
+
+.h-collection
+    position: relative
+    background-image: url('/img/h-collection.jpg')
+    background-color: #fff
+    background-position: right center
+    +sm-block()
+        background-size: cover
+        background-position: 50px center
+        height: 700px
+        width: 100%
+    &__box
+        position: absolute
+        bottom: 166px
+        line-height: 1
+        left: 190px
+        +sm(left, 22px)
+    &__txt
+        display: inline-block
+        font-size: 48px
+        font-weight: 900
+        font-family: 'Playfair Display'
+        background-color: #fff
+        padding: 0 30px 10px 0
+
+        &:first-of-type
+            padding-top: 10px
+            padding-bottom: 0
+        &:last-of-type
+            padding-top: 10px
+            padding-bottom: 25px
+            margin-bottom: 28px
+    &__btn
+        display: block
+
+.h-contacts
+    background-image: url('/img/h-contacts-2.jpg')
+    // background-position: right center
+    &__box
+        background-color: #fff
+        max-width: 424px
+
+
+.h-sale
+    background-color: green
+    // display: grid
+    // height: 100%
+    // overflow-y: auto
+
+    &__top
+        // height: 760px
+        height: 55%
+        // height: 42vh
+        // img
+        //     width: 100%
+        //     height: 100%
+        //     object-fit: contain
+        //     object-fit: cover
+        background-image: url('/img/h-sale-1.jpg')
+    &__bottom
+        // height: 45vh
+        // height: 600px
+        height: 45%
+        display: grid
+        grid-column-gap: 20px
+        grid-template-columns: 1fr 1fr
+    &__left
+        position: relative
+        background-image: url('/img/h-sale-2.jpg')
+    &__right
+        position: relative
+        background-image: url('/img/h-sale-3.jpg')
+    &__left-box,
+    &__right-box
+        position: absolute
+        top: 20px
+        left: 20px
+        line-height: 1
+    &__txt
+        display: inline-block
+        font-size: 48px
+        font-weight: 900
+        font-family: 'Playfair Display'
+        background-color: #fff
+        padding: 0 14px 12px
+        &:first-of-type
+            padding-top: 4px
+        &:last-of-type
+            // padding-bottom: 10px
+        
+    &__top,
+    &__left,
+    &__right
+        background-repeat: no-repeat
+        background-position: center
+
+.h-video
+    background-color: yellow
+    &__iframe
+        width: 100%
+        height: 100%
+        border: none
+    // &__iframe
+    //     width: 100%
+    //     height: 100%
+    //     border: none
+.h-contacts
+    background-color: orange
+.h-about
+    background-color: red
+.h-instagram
+    background-color: navy
+
+
+.catalog
+    &__btn
+        margin: 58px 0 72px
+    &__list
+        display: grid
+        grid-gap: 25px
+        grid-template-columns: repeat(auto-fill, minmax(490px, 1fr))
+        // grid-auto-rows: 750px
+        // min-height: 750px
+    &__item
+        min-height: 750px
+.tile
+    display: flex
+    flex-direction: column
+    padding: 25px 25px 18px
+    box-shadow: 0px 3px 17px rgba(0, 0, 0, 0.13)
+    height: 100%
+    transition: 0.3s box-shadow
+    position: relative
+    &:hover
+        box-shadow: 0px 3px 17px rgba(0, 0, 0, 0.25)
+    &__img-box
+        margin: 0 auto 18px
+        height: 648px
+    &__image
+        width: 100%
+        height: 100%
+        object-fit: contain
+    &__details
+        display: flex
+        align-items: center
+        justify-content: space-between
+        margin: auto 0
+    &__name
+        flex-basis: 55%
+        font-size: 26px
+        line-height: 1.2
+    &__price
+        font-size: 36px
+        font-weight: 700
+        white-space: nowrap
+    &__sale
+        display: flex
+        flex-direction: column
+        align-items: center
+        justify-content: center
+        position: absolute
+        width: 104px
+        height: 104px
+        border-radius: 50%
+        background-color: #eaeaea
+
+
+.collection
+    &__btn
+        margin: 58px 0 96px
+    &__list
+    &__item
+        margin-bottom: 100px
+        &:last-of-type
+            // margin: 0
+  
+    &__link
+        font-family: 'Playfair Display', sans-serif
+        font-size: 96px
+        font-weight: 700
+        &--arrow
+            position: relative
+            --arrow: 355px
+            padding-right: calc(var(--arrow) + 50px)
+        &::before
+            content: ''
+            position: absolute
+            right: 2px
+            top: calc(50% - 13px)
+            transform: rotate(-45deg)
+            border-style: solid
+            border-color: #270705
+            color: inherit
+            border-width: 0 2px 2px 0
+            display: inline-block
+            padding: 11px
+        &::after
+            content: ""
+            position: absolute
+            right: 0
+            top: calc(50% - 2px)
+            background: #270705
+            width: var(--arrow)
+            height: 2px
+                        
+
+
+

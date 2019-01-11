@@ -1,4 +1,5 @@
 footer
+	margin: 210px 0 18px
 .footer
 	&__top
 		display: flex
@@ -8,9 +9,9 @@ footer
 		border-bottom: 1px solid var(--border-color-grey)
 	&__bottom
 		text-align: center
-		margin-bottom: 18px
 	&__list
 		display: flex
+		+sm(display, none)
 	&__item
 		display: flex
 		margin: 0 30px

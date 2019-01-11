@@ -10,19 +10,26 @@
 	<meta name="apple-mobile-web-app-status-bar-style" content="#000">
 	<link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon">
 
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500&amp;subset=cyrillic">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500|Playfair+Display:400,700&amp;subset=cyrillic">
 	
 	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css"/> -->
 	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css"/> -->
-	<link rel="stylesheet" href="css/all.css">
+	<link rel="stylesheet" href="/css/jquery.pagepiling.min.css">
+	<link rel="stylesheet" href="/css/all.css">
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<!-- <script src="<https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script> -->
 	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script> -->
-	<script src="js/common.js"></script>
+	
+	<!-- <script src="/js/easings.min.js"></script> -->
+	<!-- <script src="/js/scrolloverflow.min.js"></script> -->
+
+	<script src="/js/jquery.pagepiling.min.js"></script>
+	<script src="/js/fullpage.min.js"></script>
+	<script src="/js/common.js"></script>
 
 	<!-- Удалить debuger.js -->
-	<script src="js/debuger.js"></script>
+	<script src="/js/debuger.js"></script>
 
 </head>
 
@@ -31,9 +38,11 @@
 
 	<header class="header">
 		<div class="header__inner">
-			<a class="header__logo" href="/" ><img src="/img/logo.png" alt="Crystal"></a>
+			<a class="header__logo" href="/" >
+				<figure><img src="/img/logo.png" alt="Crystal"></figure>
+			</a>
 			<nav class="header__nav">
-				<ul>
+				<ul class="header__nav-list">
 					<li><a href="#">Весільні сукні</a></li>
 					<li><a href="#">Вечірні сукні</a></li>
 					<li><a href="#">Crystal Atelier</a></li>
@@ -42,6 +51,8 @@
 					<li><a href="#">Блог</a></li>
 				</ul>
 			</nav>
-			<button class="btn btn--black header__city" type="button">Вибір міста</button>
+			<div class="header__lang">
+				<a href="#ua" class="lang__link lang__link--ua">Укр</a>/<a href="#ru" class="lang__link lang__link--ru">Рус</a>
+			</div>
 		</div>
 	</header>
