@@ -2,6 +2,10 @@
 // +_media
 +window-size
 
+iframe
+    overflow: hidden
+.bx-controls
+    display: none
 .home
     // height: 100vh
 
@@ -23,6 +27,7 @@
 .h-contacts,
 .h-about,
 .h-instagram
+    position: relative
     background-repeat: no-repeat
     height: calc(100vh - 112px)
     // height: 200px
@@ -38,7 +43,7 @@
 
 .h-collection
     position: relative
-    background-image: url('/img/h-collection.jpg')
+    // background-image: url('/img/h-collection.jpg')
     background-color: #fff
     background-position: right center
     +sm-block()
@@ -46,7 +51,18 @@
         background-position: 50px center
         height: 700px
         width: 100%
+    &__img-box
+        height: 100%
+        width: 100%
+        background-image: url('/img/h-collection.jpg')
+        background-repeat: no-repeat
+        // border: 1px solid red
+        background-position: center
+        background-size: cover
+        width: 1428px
+        float: right
     &__box
+        visibility: hidden
         position: absolute
         bottom: 166px
         line-height: 1
@@ -69,13 +85,6 @@
             margin-bottom: 28px
     &__btn
         display: block
-
-.h-contacts
-    background-image: url('/img/h-contacts-2.jpg')
-    // background-position: right center
-    &__box
-        background-color: #fff
-        max-width: 424px
 
 
 .h-sale
@@ -142,9 +151,61 @@
     //     height: 100%
     //     border: none
 .h-contacts
-    background-color: orange
+    // background-image: url('/img/h-contacts-2.jpg')
+    // background-position: right center
+    &__left-box
+        float: left
+        width: 724px
+        height: 100%
+        background-image: url('/img/h-contacts-1.png')
+        background-position: left center
+        background-repeat: no-repeat
+    &__right-box
+        float: right
+        width: 1064px
+        height: 100%
+        background-image: url('/img/h-contacts-2.jpg')
+        background-position: center top
+    &__content
+        background-color: #fff
+        max-width: 424px
+
+        position: absolute
+        left: 10%
+        top: 25%
+        padding: 25px 80px 60px
+        max-width: 925px
+
 .h-about
-    background-color: red
+    // background-color: red
+    // background-image: url('/img/h-about-desktop.jpg')
+    // background-size: cover
+    // background-position: center top
+    &__left-box
+        float: left
+        width: 1310px
+        height: 100%
+        background-image: url('/img/h-about-1.jpg')
+        background-position: left top
+        background-repeat: no-repeat
+    &__right-box
+        float: right
+        width: 450px
+        height: 100%
+        background-image: url('/img/h-about-2.png')
+        background-position: center bottom
+        background-repeat: no-repeat
+    &__content
+        background-color: #fff
+        max-width: 424px
+
+        position: absolute
+        right: 5%
+        top: 22%
+        padding: 25px 80px 60px
+        max-width: 925px
+
+
 .h-instagram
     background-color: navy
 

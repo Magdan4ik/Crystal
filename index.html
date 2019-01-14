@@ -12,25 +12,28 @@
 
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500|Playfair+Display:400,700&amp;subset=cyrillic">
 	
-	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css"/> -->
-	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css"/> -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css"/>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css"/>
 	<!-- <link rel="stylesheet" href="/css/jquery.pagepiling.min.css"> -->
+	<link rel="stylesheet" href="/css/animate.css">
 	<link rel="stylesheet" href="/css/all.css">
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<!-- <script src="<https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script> -->
 	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script> -->
-	
+	<script src="/js/jquery.bxslider.js"></script>
+	<script src="/js/jquery.mousewheel.js"></script>	
 	<!-- <script src="/js/easings.min.js"></script> -->
 	<!-- <script src="/js/scrolloverflow.min.js"></script> -->
 
 	<!-- <script src="/js/jquery.pagepiling.min.js"></script> -->
 	<!-- <script src="/js/fullpage.min.js"></script> -->
-	<script src="/js/jquery.scrollify.js"></script>
+	<!-- <script src="/js/jquery.scrollify.js"></script> -->
+	<script src="/js/wow.min.js"></script>
 	<script src="/js/common.js"></script>
 
 	<!-- Удалить debuger.js -->
-	<script src="/js/debuger.js"></script>
+	<!-- <script src="/js/debuger.js"></script> -->
 
 </head>
 
@@ -64,7 +67,8 @@
 
     <section class="section scroll-point">
       <div class="h-collection">
-        <div class="h-collection__box">
+        <div class="h-collection__img-box wow fadeInLeft" data-wow-duration="3s"></div>
+        <div class="h-collection__box wow fadeInLeft" data-wow-duration="3s" data-wow-delay="1s">
           <span class="h-collection__txt">Нова колекцiя</span><br>
           <span class="h-collection__txt">Весільних суконь</span>
           <button class="btn btn--black btn--light h-collection__btn">Переглянути</button>
@@ -89,29 +93,29 @@
   </div>
 </div> -->
 
-        <div class="h-sale__top"></div>
+        <div class="h-sale__top wow fadeInLeft" data-wow-duration="3s"></div>
         <div class="h-sale__bottom">
-          <div class="h-sale__left">
+          <div class="h-sale__left wow fadeInLeft">
             <div class="h-sale__left-box">
               <span class="h-sale__txt">Нові</span><br>
               <span class="h-sale__txt">аксесуари</span>
             </div>
           </div>
-          <div class="h-sale__right">
+          <div class="h-sale__right wow fadeInLeft">
             <div class="h-sale__right-box">
               <span class="h-sale__txt">Елегантна</span><br>
               <span class="h-sale__txt">колекція</span>
             </div>
           </div>
         </div>
-        <div class="h-sale__bottom">
+        <div class="h-sale__bottom wow fadeInLeft">
           <div class="h-sale__left">
             <div class="h-sale__left-box">
               <span class="h-sale__txt">Нові</span><br>
               <span class="h-sale__txt">аксесуари</span>
             </div>
           </div>
-          <div class="h-sale__right">
+          <div class="h-sale__right wow fadeInLeft">
             <div class="h-sale__right-box">
               <span class="h-sale__txt">Елегантна</span><br>
               <span class="h-sale__txt">колекція</span>
@@ -124,14 +128,16 @@
 
     <section class="section scroll-point">
       <div class="h-video">
-        <!-- <iframe class="h-video__iframe" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe> -->
+        <!-- <iframe scrolling="no" class="h-video__iframe" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe> -->
       </div>
     </section>
 
     <section class="section scroll-point">
       <div class="h-contacts">
-        <div class="h-contacts__box">
-          <h2 class="h-contacts__title"></h2>
+        <div class="h-contacts__left-box wow zoomInLeft" data-wow-duration="3s"></div>
+        <div class="h-contacts__right-box wow zoomInRight" data-wow-duration="3s"></div>
+        <div class="h-contacts__content wow zoomInLeft" data-wow-duration="3s">
+          <h2 class="h-contacts__title">Crystal</h2>
           <p class="h-contacts__desc">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam odio ante, porta sed condimentum euismod, ullamcorper
             non lectus. In posuere in nisi vel bibendum. Praesent et pharetra metus, non semper lectus. Cras nec lacinia nisi.
@@ -142,12 +148,19 @@
       </div>
     </section>
 
-
-
-    <section class="section scroll-point" style="background:#bada55">
+    <section class="section scroll-point">
       <div class="h-about">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        Proin sed arcu nec mi blandit congue. Donec semper leo id fermentum suscipit.
+        <div class="h-about__left-box wow bounceInLeft" data-wow-duration="3s"></div>
+        <div class="h-about__right-box wow bounceInRight" data-wow-duration="3s"></div>
+        <div class="h-about__content">
+          <h2 class="h-about__title">Про нас</h2>
+          <p class="h-about__desc">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam odio ante, porta sed condimentum euismod, ullamcorper
+            non lectus. In posuere in nisi vel bibendum. Praesent et pharetra metus, non semper lectus. Cras nec lacinia nisi.
+            Proin sed arcu nec mi blandit congue. Donec semper leo id fermentum suscipit. Nam id libero gravida, aliquet turpis et,
+            dapibus enim. Quisque est ligula, tincidunt in maximus a, rutrum a nulla. In hac habitasse platea dictumst.
+          </p>
+        </div>
       </div>
     </section>
 
@@ -172,11 +185,7 @@
 
       // if (window.innerWidth > 768) jQuery('.home').pagepiling();
       
-      $(function() {
-        $.scrollify({
-          section : ".scroll-point",
-        });
-      });
+
       
 
     });
