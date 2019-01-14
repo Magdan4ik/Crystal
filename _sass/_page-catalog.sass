@@ -1,0 +1,51 @@
+.catalog
+    &__btn
+        margin: 58px 0 72px
+    &__list
+        display: grid
+        grid-gap: 25px
+        grid-template-columns: repeat(auto-fill, minmax(490px, 1fr))
+        // grid-auto-rows: 750px
+        // min-height: 750px
+    &__item
+        min-height: 750px
+.tile
+    display: flex
+    flex-direction: column
+    padding: 25px 25px 18px
+    box-shadow: 0px 3px 17px rgba(0, 0, 0, 0.13)
+    height: 100%
+    transition: 0.3s box-shadow
+    position: relative
+    &:hover
+        box-shadow: 0px 3px 17px rgba(0, 0, 0, 0.25)
+    &__img-box
+        margin: 0 auto 18px
+        height: 648px
+    &__image
+        width: 100%
+        height: 100%
+        object-fit: contain
+    &__details
+        display: flex
+        align-items: center
+        justify-content: space-between
+        margin: auto 0
+    &__name
+        flex-basis: 55%
+        font-size: 26px
+        line-height: 1.2
+    &__price
+        font-size: 36px
+        font-weight: 700
+        white-space: nowrap
+    &__sale
+        display: flex
+        flex-direction: column
+        align-items: center
+        justify-content: center
+        position: absolute
+        width: 104px
+        height: 104px
+        border-radius: 50%
+        background-color: #eaeaea

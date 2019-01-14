@@ -1,0 +1,38 @@
+.collection
+    &__btn
+        margin: 58px 0 96px
+    &__list
+    &__item
+        margin-bottom: 100px
+        &:last-of-type
+            // margin: 0
+  
+    &__link
+        font-family: 'Playfair Display', sans-serif
+        font-size: 96px
+        font-weight: 700
+        &--arrow
+            position: relative
+            --arrow: 355px
+            padding-right: calc(var(--arrow) + 50px)
+        &::before
+            content: ''
+            position: absolute
+            right: 2px
+            top: calc(50% - 13px)
+            transform: rotate(-45deg)
+            border-style: solid
+            border-color: #270705
+            color: inherit
+            border-width: 0 2px 2px 0
+            display: inline-block
+            padding: 11px
+        &::after
+            content: ""
+            position: absolute
+            right: 0
+            top: calc(50% - 2px)
+            background: #270705
+            width: var(--arrow)
+            height: 2px
+                        

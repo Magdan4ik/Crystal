@@ -13,7 +13,7 @@ window.addEventListener('load', function () {
         //   });
         // });
 
-  new WOW().init();
+  // new WOW().init();
 
   // const slider = jQuery('.home');
   // slider.slick();
