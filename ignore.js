@@ -32,4 +32,17 @@ fetch('https://api.instagram.com/v1/users/self/media/recent/?access_token=182067
     })
     .catch(err => console.log('ошибочка'));
 
-// CLOSED till 15/01 9.15
+
+    
+// блын як цю хрень зразу тут в консоль вивести
+// code runner install in
+// https://marketplace.visualstudio.com/items?itemName=formulahendry.code-runner - не можу найти де цы настройки выдкрити
+// https://i.stack.imgur.com/mDTrL.png - вот ці
+//  VC
+
+//  да тільки треба настройки виставити правильно
+
+
+
+// i have new task from vovya
+// 

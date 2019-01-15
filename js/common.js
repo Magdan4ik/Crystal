@@ -5,6 +5,61 @@ window.addEventListener('DOMContentLoaded', function () {
 
 window.addEventListener('load', function () {
 
+
+
+    // var ctrl = new ScrollMagic.Controller({
+    //   globalSceneOptions: {
+    //     triggerHook: 'onLeave'
+    //   }
+    // });
+
+    // // Create scene
+    // $("section").each(function () {
+
+    //   var name = $(this).attr('id');
+
+    //   new ScrollMagic.Scene({
+    //       triggerElement: this,
+    //       // duration: 10000
+    //       // triggerHook: 0    // 0.7 // 1
+    //     })
+    //     .setPin(this)
+    //     .setClassToggle(this, "myclass")
+    //     .addIndicators({
+    //       colorStart: "rgba(255,255,255,0.5)",
+    //       colorEnd: "rgba(255,255,255,0.5)",
+    //       colorTrigger: "rgba(255,255,255,1)",
+    //       name: name
+    //     })
+
+    //     .loglevel(3)
+    //     .addTo(ctrl);
+
+    // });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   // $("input[type='tel']").mask("+38 (099) 999 99 99");
 
         // $(function () {
@@ -43,6 +98,8 @@ window.addEventListener('load', function () {
   // $(document).mousewheel( (event, delta) => {
   //   delta < 0 ? $pageslider.goToNextSlide() : $pageslider.goToPrevSlide();
   // });
+
+
   
 
 
