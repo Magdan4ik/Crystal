@@ -1,14 +1,32 @@
+
+
+
+.testing
+    color: red
+
+@keyframes fadeIn {
+    0% {opacity: 0}
+    100% {opacity: 1}
+}
+html, body
+  height: 100% // это убереш, и скролл похеритцо,
+
 .myclass
-//   color: #bada55
   position: fixed
   z-index: 1000
-    
-.home
-    // height: 100vh
+//   animation: fadeIn 1s
+
+section
+    width: 100vw
+    height: 100vh
+    background-color: #fff
+    position: relative
+ 
+
 
 .section
     // height: 100vh
-    // padding-top: 112px
+    padding-top: 112px
     display: flex
     flex-direction: column
     // border-bottom: 3px solid lime
@@ -24,8 +42,10 @@
     background-repeat: no-repeat
     // height: calc(100vh - 112px)
     // height: 200px
-    margin-top: auto
+    // margin-top: auto
     height: 100vh
+
+
 
 
 .h-collection
@@ -101,10 +121,6 @@
         width: 100%
         height: 100%
         border: none
-    // &__iframe
-    //     width: 100%
-    //     height: 100%
-    //     border: none
 .h-contacts
     // background-image: url('/img/h-contacts-2.jpg')
     // background-position: right center
