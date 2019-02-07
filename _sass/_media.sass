@@ -1,50 +1,58 @@
-/*==========  Desctop First  ==========*/
 
-/* Large Devices, Desktops */
-@media only screen and (max-width : 1200px)
-	/**/
-	
-/* Medium Devices, Desktops */
-@media only screen and (max-width : 992px)
-	/**/
+@media only screen and (max-height: 1000px) and (orientation: landscape)
+	.h-insta
+		&__instafeed
+			grid-template-columns: repeat(3, 240px)
+			grid-auto-rows: 240px
+@media only screen and (max-height: 900px) and (orientation: landscape)
+	.h-insta
+		&__instafeed
+			grid-template-columns: repeat(3, 200px)
+			grid-auto-rows: 200px
+	.h-brands
+		margin-bottom: 70px
+		padding-top: 40px
+		&__slider .glide__slide img
+			max-height: 100px
+@media only screen and (max-height: 800px) and (orientation: landscape)
+	.h-insta
+		&__instafeed
+			grid-template-columns: repeat(3, 170px)
+			grid-auto-rows: 170px
+@media only screen and (max-height: 700px) and (orientation: landscape)
+	//
+@media only screen and (max-height: 600px) and (orientation: landscape)
+	//
+@media only screen and (max-height: 500px) and (orientation: landscape)
+	//
+@media only screen and (orientation: portrait)
+	//
 
-/* Small Devices, Tablets */
-@media only screen and (max-width : 768px)
-	/**/
-
-@media only screen and (max-width : 600px)
-	/**/
-
-/* Extra Small Devices, Phones */
-@media only screen and (max-width : 480px)
-	/**/
-
-/* Custom, iPhone Retina */
-@media only screen and (max-width : 320px)
-	/**/
 
 
-/*==========  Mobile First  ==========*/
+/* HORIZONTAL */
+@media only screen and (max-width: 1400px)
+	.h-collection
+		padding-right: 5vw
+	.h-section__title
+		font-size: 60px
+	.h-sale__link
+		font-size: 200px
+	.h-about__title,
+	.h-more__title
+		font-size: 80px
 
-/* Custom, iPhone Retina */
-@media only screen and (min-width : 320px)
-	/**/
-
-/* Extra Small Devices, Phones */
-@media only screen and (min-width : 480px)
-	/**/
-
-/* Small Devices, Tablets */
-@media only screen and (min-width : 768px)
-	/**/
-
-/* Medium Devices, Desktops */
-@media only screen and (min-width : 992px)
-	/**/
-
-/* Large Devices, Wide Screens */
-@media only screen and (min-width : 1200px)
-	/**/
-
-@media only screen and (min-width : 1921px)
-	/**/
+@media only screen and (max-width: 1300px)
+	//
+@media only screen and (max-width: 1200px)
+	.header
+		&__burg
+			display: block
+		&__nav
+			display: none
+			position: fixed
+			background: #fff
+			left: 0
+			right: 0
+			top: 0
+			bottom: 0

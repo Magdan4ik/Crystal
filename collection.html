@@ -1,68 +1,66 @@
-<!DOCTYPE html>
-<html lang="ua">
-
-<head>
-    <meta charset="utf-8">
-    <title>Title</title>
-
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="theme-color" content="#000">
-    <meta name="msapplication-navbutton-color" content="#000">
-    <meta name="apple-mobile-web-app-status-bar-style" content="#000">
-    <link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon">
-
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500|Playfair+Display:400,700&amp;subset=cyrillic">
-
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css"/> -->
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css"/> -->
-    <!-- <link rel="stylesheet" href="/css/jquery.pagepiling.min.css"> -->
-    <!-- <link rel="stylesheet" href="/css/animate.css"> -->
-    <link rel="stylesheet" href="/css/all.css">
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- <script src="<https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script> -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script> -->
-    <!-- <script src="/js/jquery.bxslider.js"></script> -->
-    <!-- <script src="/js/jquery.mousewheel.js"></script>	 -->
-    <!-- <script src="/js/easings.min.js"></script> -->
-    <!-- <script src="/js/scrolloverflow.min.js"></script> -->
-
-    <!-- <script src="/js/jquery.pagepiling.min.js"></script> -->
-    <!-- <script src="/js/fullpage.min.js"></script> -->
-    <!-- <script src="/js/jquery.scrollify.js"></script> -->
-    <!-- <script src="/js/wow.min.js"></script> -->
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.3/ScrollMagic.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.3/plugins/debug.addIndicators.min.js"></script>
-    gpodogdi
-    <!-- dava -->
-    
-    <script src="/js/common.js"></script>
-
- 
-<body>
-	<header class="header">
-		<div class="header__inner">
-			<a class="header__logo" href="/" >
+<header class="header">
+	<div class="header__inner">
+		<button class="header__burg" type="button">
+			<span class="header__burg-in"><i></i></span>
+		</button>
+		<div class="header__logo">
+			<a href="/">
 				<figure><img src="/img/logo.png" alt="Crystal"></figure>
 			</a>
-			<nav class="header__nav">
-				<ul class="header__nav-list">
-					<li><a href="#">Весільні сукні</a></li>
-					<li><a href="#">Вечірні сукні</a></li>
-					<li><a href="#">Crystal Atelier</a></li>
-					<li><a href="#">Аксесуари</a></li>
-					<li><a href="#">Контакти</a></li>
-					<li><a href="#">Блог</a></li>
-				</ul>
-			</nav>
-			<div class="header__lang">
-				<a href="#ua" class="lang__link lang__link--ua">Укр</a>/<a href="#ru" class="lang__link lang__link--ru">Рус</a>
-			</div>
 		</div>
-	</header>
-<main>
+		<nav class="header__nav">
+			<ul class="header__navlist">
+				<li><a href="#"><span>Головна</span></a></li>  <!-- current -->
+				<li><a href="#">
+					<span>Сукні</span></a>
+					<ul class="header__navlist-dropdown">
+						<li>
+							<a href="#">Весільні сукні</a>
+							<ul class="header__navlist-dropdown">
+								<li><a href="#">The Icon 2019 by CD</a></li>
+								<li><a href="#">Paris 2019 by CD</a></li>
+								<li><a href="#">Timeless Beauty by CD</a></li>
+								<li><a href="#">Bohemian Flowers by Eva Lendel </a></li>
+								<li><a href="#">Less is more by Eva Lendel</a></li>
+								<li><a href="#">Sunrise by Eva Lendel</a></li>
+								<li><a href="#">Бестселлери</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="#">Вечірні сукні</a>
+							<ul class="header__navlist-dropdown">
+								<li><a href="#">Glam Vibes</a></li>
+								<li><a href="#">Rebel collection</a></li>
+								<li><a href="#">Tarik Ediz</a></li>
+								<li><a href="#">Sherri Hill </a></li>
+								<li><a href="#">Бестселлери</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="#">Crystal Atelier</a>
+							<ul class="header__navlist-dropdown">
+								<li><a href="#">Весільні сукні на знижці</a></li>
+								<li><a href="#">Вечірні сукні на знижці</a></li>
+								<li><a href="#">Rebel collection</a></li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li><a href="#"><span>Аксесуари</span></a></li>
+				<li><a href="#"><span>Контакти</span></a></li>
+				<li><a href="#"><span>Чому ми?</span></a></li>
+				<li><a href="#"><span>Блог</span></a></li>
+			</ul>
+		</nav>
+		<div class="header__booking">
+			<a class="btn btn--trans header__booking-btn" href="#">Записатись на примірку</a>
+		</div>
+		<div class="header__lang">
+			<a href="#ua" class="lang__link lang__link--ua">Укр</a>/
+			<a href="#ru" class="lang__link lang__link--ru">Рус</a>
+		</div>
+	</div>
+</header>
 
     <div class="container">
         <div class="collection">
@@ -80,38 +78,58 @@
         </div>
     </div>
 
-	</main>
-	<footer>
-	    <div class="container">
-	    	<div class="footer">
-				<div class="footer__top">
+<footer class="footer">
+	<div class="container">
+		<div class="footer__inner">
+			<div class="footer__topside">
+				<div class="footer__lside">
 					<a href="/" class="footer__logo">
 						<img src="/img/logo.png" alt="Crystal">
 					</a>
-					<ul class="footer__list">
-						<li class="footer__item">
-							<a href="#">Весільні сукні</a>
-						</li>
-						<li class="footer__item">
-							<a href="#">Вечірні сукні</a>
-						</li>
-						<li class="footer__item">
-							<a href="#">Crystal Atelier</a>
-						</li>
-						<li class="footer__item">
-							<a href="#">Аксесуари</a>
-						</li>
-						<li class="footer__item">
-							<a href="#">Контакти</a>
-						</li>
-						<li class="footer__item">
-							<a href="#">Блог</a>
-						</li>
-					</ul>
+					<div class="footer__social">
+						<ul class="social">
+							<li class="social__item"><a href="#"><img src="/img/icons/ico__pinterest.svg" alt=""></a></li>
+							<li class="social__item"><a href="#"><img src="/img/icons/ico__instagram.svg" alt=""></a></li>
+							<li class="social__item"><a href="#"><img src="/img/icons/ico__facebook.svg" alt=""></a></li>
+							<li class="social__item"><a href="#"><img src="/img/icons/ico__youtube.svg" alt=""></a></li>
+						</ul>
+					</div>
 				</div>
-				<div class="footer__bottom">&copy; Crystal Salon 2019</div>
+				<nav class="footer__nav">
+					<ul class="footer__navlist">
+						<li class="footer__navtitle"><a href="#">Весільні сукні</a></li>
+						<li class="footer__navitem"><a href="#">The Icon 2019 by CD</a></li>
+						<li class="footer__navitem"><a href="#">Paris 2019 by CD</a></li>
+						<li class="footer__navitem"><a href="#">Timeless Beauty by CD</a></li>
+						<li class="footer__navitem"><a href="#">Less is more by Eva Landel</a></li>
+						<li class="footer__navitem"><a href="#">Sunrise by Eva Landel</a></li>
+					</ul>
+					<ul class="footer__navlist">
+						<li class="footer__navtitle"><a href="#">Вечірні сукні</a></li>
+						<li class="footer__navitem"><a href="#">Tarik Ediz</a></li>
+						<li class="footer__navitem"><a href="#">Бестселлери</a></li>
+						<li class="footer__navitem"><a href="#">Rebel collection</a></li>
+						<li class="footer__navitem"><a href="#">Sherri Hill</a></li>
+					</ul>
+					<ul class="footer__navlist">
+						<li class="footer__navtitle"><a href="#">Crystal Atelier</a></li>
+						<li class="footer__navitem"><a href="#">Весільні сукні на знижці</a></li>
+						<li class="footer__navitem"><a href="#">Вечірні сукні на знижці</a></li>
+						<li class="footer__navitem"><a href="#">Reble collection</a></li>
+					</ul>
+					<ul class="footer__navlist">
+						<li class="footer__navtitle"><a href="#">Аксесуари</a></li>
+						<li class="footer__navitem"><a href="#">Фати</a></li>
+						<li class="footer__navitem"><a href="#">Будуарна колекція</a></li>
+						<li class="footer__navitem"><a href="#">Взуття</a></li>
+					</ul>
+					<ul class="footer__navlist">
+						<li class="footer__navtitle"><a href="#">Контакти</a></li>
+						<li class="footer__navitem"><a href="#">Блог</a></li>
+					</ul>
+				</nav>
 			</div>
-	    </div>
-	</footer>
-</body>
-</html>
+			<div class="footer__copyright">&copy; Crystal Salon 2019</div>
+		</div>
+	</div>
+</footer>

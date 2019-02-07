@@ -1,41 +1,135 @@
-header
+.header
 	position: fixed
 	top: 0
 	left: 0
 	right: 0
-	background-color: #fff
-	z-index: 100000
-.header
+	background-color: var(--primary-color)
+	z-index: 10
 	&__inner
-		height: 112px
+		height: 90px
+		max-width: 1920px
+		margin: 0 auto
 		padding: 0 15px
 		display: flex
 		align-items: center
+		justify-content: space-between
 	&__logo
-		display: block
-		flex-grow: 2
-		flex-shrink: 0
-		figure
-			width: 240px
-			height: 75px
-			display: block
-			img
-				width: 100%
-				height: 100%
-				object-fit: contain
+		flex-grow: 1
+		a
+			display: inline-block
+			figure
+				display: block
+				width: 178px
+				height: 55px
+				img
+					width: 100%
+					height: 100%
+					object-fit: contain
 	&__nav
-		flex-grow: 5
-		+sm(display, none)
-		&-list
-			display: flex
-			list-style: none
-			li
-				margin-right: 25px
+		flex-grow: 4
+	&__navlist
+		display: flex
+		align-items: center
+		> li
+			position: relative
+			&:hover
+				> .header__navlist-dropdown
+					display: block
+			> a
+				display: block
+				padding: 35px 25px
+				font-size: 16px
+				font-weight: 700
+				color: #121212
+				text-transform: uppercase
+				white-space: nowrap
+				span
+					position: relative
+					&::after
+						content: ''
+						position: absolute
+						top: calc(100% + 5px)
+						left: 0
+						width: 100%
+						height: 2px
+						background: #000
+						transition: 0.3s transform
+						transform: scaleX(0)
+			&.current,
+			&:hover
 				a
-					font-size: 18px
-	&__lang
-		flex-shrink: 0
+					span
+						&::after
+							transform: scaleX(1)
+		&-dropdown
+			display: none
+			background: var(--primary-color)
+			position: absolute
+			left: 0
+			width: 100%
+			max-width: 500px
+			min-width: 210px
+			padding: 20px 0
+			animation: dropdown 0.5s both
+			> li
+				&:hover
+					> ul
+						display: block
+					> a
+						font-weight: 900
+				> a
+					display: block
+					padding: 7px 40px
+					font-size: 14px
+					font-weight: 700
+					text-transform: uppercase
+					color: #000
+			ul
+				background: #FFEEEE
+				left: 100%
+				top: 0
+				min-width: 350px
+				li a
+					font-weight: 500
 
+	&__booking
+		flex-grow: 2
+		&-btn
+
+	&__burg
+		display: none
+		flex-shrink: 0
+		position: relative
+		width: 20px
+		height: 14px
+		background-color: transparent
+		border: 0
+		cursor: pointer
+		font-size: 0
+		transition: 0.2s linear
+		&-in
+			display: block
+			width: inherit
+			height: 2px
+			transition: 0.2s transform
+			&::after,
+			&::before,
+			i
+				content: ""
+				position: absolute
+				left: 0
+				width: inherit
+				height: inherit
+				background-color: #000
+				transition: transform ease 0.15s
+			&:before
+				top: 0
+			&:after
+				bottom: 0
+				width: 90%
+			i
+				top: calc(50% - 1px)
+				width: 60%
 
 //LANGUAGE SWITCHER
 .lang
@@ -43,4 +137,5 @@ header
 		text-transform: uppercase
 html:lang(ua) .lang__link--ua,
 html:lang(ru) .lang__link--ru
-	font-weight: 700
+	font-weight: 900
+	font-size: 19px

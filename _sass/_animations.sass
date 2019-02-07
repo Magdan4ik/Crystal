@@ -1,0 +1,69 @@
+.h-section
+    visibility: hidden
+    opacity: 0
+    position: relative
+    width: 100%
+    height: 100%
+    overflow: hidden
+    transition: 1s
+    &.active
+        visibility: visible
+        opacity: 1
+        .h-collection
+            animation-delay: 0.3s !important
+            animation: fadeInLeft 1s both
+            &__txt
+                animation: fadeInLeft 1s both
+                animation-delay: 0.8s
+        .h-second
+            animation: fadeIn 2s both
+            animation-delay: 0.5s
+            &__txt
+                animation: fadeInRight 1s both
+                animation-delay: 1.2s
+        .h-sale__img
+            &--lside
+                animation: fadeInTop 1.5s both
+                animation-delay: 0.5s
+            &--rside
+                animation: fadeInDown 1.5s both
+                animation-delay: 0.5s
+        .h-video
+            animation: slideInUp 1s both
+        .h-more
+            &__lside
+                animation: zoomInLeft 2s both
+            &__rside
+                animation: zoomInRight 2s both
+        .h-about
+            animation: fadeIn 1s both
+            animation-delay: 0.3s
+            &__box
+                animation: fadeInLeft 1.5s both
+                animation-delay: 0.5s
+        .h-brands
+            animation: fadeIn 1s both
+            animation-delay: 1.5s
+        .h-insta
+            &__lside
+                animation: fadeIn 1s both
+                animation-delay: 1.5s
+            &__rside
+                animation: insta 3s both
+
+/* Animation loop reverse action*/
+.viewing-page
+    &-2 .ops-section[data-index='1']
+        animation: zoomOut 1s both
+    &-3 .ops-section[data-index='2']
+        animation: zoomOut 1s both
+    &-4 .ops-section[data-index='3']
+        animation: zoomOut 1s both
+    &-5 .ops-section[data-index='4']
+        animation: zoomOut 1s both
+    &-6 .ops-section[data-index='5']
+        animation: zoomOut 1s both
+    &-7 .ops-section[data-index='6']
+        animation: zoomOut 1s both
+    &-8 .ops-section[data-index='7']
+        animation: zoomOut 1s both
