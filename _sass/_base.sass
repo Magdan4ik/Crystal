@@ -56,17 +56,18 @@ body
   font-weight: 500
   overflow-x: hidden
   line-height: normal
-  // &:not([class^="viewing-page"])
-  //   overflow: initial
+  &[class^="viewing-page"]
+    min-height: calc(100vh + 1px)
+    main
+      height: 100%
 
 h2
   font-weight: 700
   font-size: 96px
 
 main
-  height: 100%
   padding-top: 90px
-
+  min-height: calc(100vh - 480px)
 
 a,
 button
@@ -130,8 +131,8 @@ input
     transform: translateX(9px)
     opacity: 0
 
-  &[type='checkbox'],
-  &[type='radio']
+  &[type='checkbox'].new--input,
+  &[type='radio'].new--input
     background: #fff
     position: relative
     width: 16px
@@ -144,7 +145,7 @@ input
     border: 2px solid #000
     transition: 0.2s
 
-  &[type='checkbox']
+  &[type='checkbox'].new--input
     border-radius: 2px
     &::before
       content: ""
@@ -164,7 +165,7 @@ input
       &::before
         transform: rotate(45deg) scale(1)
 
-  &[type='radio']
+  &[type='radio'].new--input
     border-radius: 50%
     &::before
       content: ""
@@ -217,12 +218,12 @@ input
   transition: 0.2s
 
   &--black
-    background-color: var(--primary-color)
+    background-color: #000
     color: #fff
     &:hover
       background-color: #fff
-      color: var(--primary-color)
-      border-color: var(--primary-color)
+      color: #000
+      border-color: #000
   &--white
     background-color: #fff
     color: var(--primary-color)
@@ -275,3 +276,23 @@ input
       &:hover
         img
           transform: scale(1.1)
+
+/*==============================================================
+            BREADCRUMBS START
+/*============================================================= */
+.breadcrumbs
+  margin: 15px 0
+  &__list
+    display: flex
+    flex-flow: row wrap
+    li
+      &:not(:last-child) a::after
+        content: ">"
+        padding: 0 5px
+      span
+        font-size: 16px
+        color: #000
+        display: inline-block
+        border-bottom: 1px solid #000
+      > span
+        border-bottom: none

@@ -1,0 +1,17 @@
+@@include('./chunks/head.html')
+@@include('./chunks/header.html')
+<body>
+  <main class="main">
+
+    <section class="command">
+      <div class="command__inner container">
+          <ul class="command__list">
+            @@loop("./chunks/loop/command.html", "./chunks/loop/command.json")
+        </ul>
+      </div>
+    </section>
+
+  </main>
+  @@include('./chunks/footer.html')
+</body>
+</html>

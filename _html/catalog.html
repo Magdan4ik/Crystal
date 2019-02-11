@@ -1,85 +1,29 @@
+@@include('./chunks/head.html')
 @@include('./chunks/header.html')
-
-<main>
-    <div class="container">
-        <div class="catalog">
-            <button class="btn btn--white catalog__btn">Підбір сукні</button>
-            <ul class="catalog__list">
-                <li class="catalog__item">
-                    <a class="tile" href="#">
-                        <div class="tile__img-box">
-                            <img class="tile__image" src="/img/catalog_item1.jpg" alt="catalog_item1">
-                        </div>
-                        <div class="tile__details">
-                            <div class="tile__name">Tarik Ediz 50310</div>
-                            <div class="tile__price">11 500 грн</div>
-                        </div>
-                    </a>
-                </li>
-                <li class="catalog__item">
-                    <a class="tile" href="#">
-                        <div class="tile__img-box">
-                            <img class="tile__image" src="/img/catalog_item2.jpg" alt="catalog_item2">
-                        </div>
-                        <div class="tile__details">
-                            <div class="tile__name">Tarik Ediz Night</div>
-                            <div class="tile__price">11 500 грн</div>
-                        </div>
-                    </a>
-                </li>
-                <li class="catalog__item">
-                    <a class="tile" href="#">
-                        <div class="tile__img-box">
-                            <img class="tile__image" src="/img/catalog_item3.jpg" alt="catalog_item3">
-                        </div>
-                        <div class="tile__details">
-                            <div class="tile__name">Tarik Ediz Night</div>
-                            <div class="tile__price">11 500 грн</div>
-                        </div>
-                    </a>
-                </li>
-                <li class="catalog__item">
-                    <a class="tile" href="#">
-                        <div class="tile__img-box">
-                            <img class="tile__image" src="/img/catalog_item4.jpg" alt="catalog_item4">
-                        </div>
-                        <div class="tile__details">
-                            <div class="tile__name">Tarik Ediz Night</div>
-                            <div class="tile__price">11 500 грн</div>
-                        </div>
-                    </a>
-                </li>
-                <li class="catalog__item">
-                    <a class="tile" href="#">
-                        <div class="tile__img-box">
-                            <img class="tile__image" src="/img/catalog_item5.jpg" alt="catalog_item5">
-                        </div>
-                        <div class="tile__details">
-                        <div class="tile__name">Tarik Ediz Night Collection</div>
-                            <div class="tile__price">11 500 грн</div>
-                        </div>
-                    </a>
-                </li>
-                <li class="catalog__item">
-                    <a class="tile" href="#">
-                        <div class="tile__sale">
-                            <span>%</span>
-                            <span>Акция</span>
-                        </div>
-                        <div class="tile__img-box">
-                            <img class="tile__image" src="/img/catalog_item6.jpg" alt="catalog_item6">
-                        </div>
-                        <div class="tile__details">
-                            <div class="tile__name">Tarik Ediz Night</div>
-                            <div class="tile__price">11 500 грн</div>
-                        </div>
-                    </a>
-                </li>
-            </ul>
+<body>
+  <main class="main">
+    <section class="catalog">
+        <div class="catalog__inner container">
+            <section class="catalog__filter">
+                <button type="button" class="btn btn--trans filter__toggle" data-dot="false">Підбір сукні</button>
+                @@include('./chunks/filter.html')
+            </section>
+            <section class="catalog__breadcrumbs">
+                <div class="breadcrumbs">
+                    <ul class="breadcrumbs__list">
+                        <li><a href="/"><span>Головна</span></a></li>
+                        <li><a href="catalog.html"><span>Сукні</span></a></li>
+                        <li><a href="catalog-category.html"><span>Вечірні сукні</span></a></li>
+                        <li><span>Tarik Ediz</a></li>
+                    </ul>
+                </div>
+            </section>
+            <section class="catalog__products">
+                @@loop("./chunks/loop/product.html", "./chunks/loop/product.json")
+            </section>
         </div>
-    </div>
-</main>
-
-
-
-@@include('./chunks/footer.html')
+    </section>
+  </main>
+  @@include('./chunks/footer.html')
+</body>
+</html>

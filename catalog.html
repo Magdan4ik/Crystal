@@ -1,3 +1,22 @@
+<!DOCTYPE html>
+<html lang="ua">
+    <head>
+        <meta charset="utf-8">
+        <title>Crystal</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta name="theme-color" content="#000">
+        <meta name="msapplication-navbutton-color" content="#000">
+        <meta name="apple-mobile-web-app-status-bar-style" content="#000">
+        <link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400&amp;subset=cyrillic" rel="stylesheet">
+        <link rel="stylesheet" href="/css/animation.css">
+        <link rel="stylesheet" href="/css/glide.css">
+        <link rel="stylesheet" href="/css/all.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.2.4/glide.min.js" defer></script>
+        <script src="/js/onepagescroll.min.js" defer></script>
+        <script src="/js/common.js" defer></script>
+    </head>
+
 <header class="header">
 	<div class="header__inner">
 		<button class="header__burg" type="button">
@@ -10,8 +29,8 @@
 		</div>
 		<nav class="header__nav">
 			<ul class="header__navlist">
-				<li><a href="#"><span>Головна</span></a></li>  <!-- current -->
-				<li><a href="#">
+				<li><a href="/"><span>Головна</span></a></li>  <!-- li.current -->
+				<li><a href="catalog.html">
 					<span>Сукні</span></a>
 					<ul class="header__navlist-dropdown">
 						<li>
@@ -48,12 +67,12 @@
 				</li>
 				<li><a href="#"><span>Аксесуари</span></a></li>
 				<li><a href="#"><span>Контакти</span></a></li>
-				<li><a href="#"><span>Чому ми?</span></a></li>
-				<li><a href="#"><span>Блог</span></a></li>
+				<li><a href="whyus.html"><span>Чому ми?</span></a></li>
+				<li><a href="blog.html"><span>Блог</span></a></li>
 			</ul>
 		</nav>
 		<div class="header__booking">
-			<a class="btn btn--trans header__booking-btn" href="#">Записатись на примірку</a>
+			<a class="btn btn--trans header__booking-btn" href="#">Записатись на примірку <i>3</i></a>
 		</div>
 		<div class="header__lang">
 			<a href="#ua" class="lang__link lang__link--ua">Укр</a>/
@@ -61,90 +80,226 @@
 		</div>
 	</div>
 </header>
+<body>
+  <main class="main">
+    <section class="catalog">
+        <div class="catalog__inner container">
+            <section class="catalog__filter">
+                <button type="button" class="btn btn--trans filter__toggle" data-dot="false">Підбір сукні</button>
+                <div class="filter">
+    <form action="#filter" class="filter__form" id="filterForm">
+        <div class="filter__filters">
+            <fieldset class="filter__model">
+                <legend>Фасон</legend>
+                <ul class="filter__list filter__list--model">
+                    <li><input type="checkbox" name="" class="filter__model-ball"><span>Бальне</span></li>
+                    <li><input type="checkbox" name="" class="filter__model-grace"><span>Грецьке</span></li>
+                    <li><input type="checkbox" name="" class="filter__model-straight"><span>Пряме</span></li>
+                    <li><input type="checkbox" name="" class="filter__model-mermaid"><span>Русалка</span></li>
+                    <li><input type="checkbox" name="" class="filter__model-asiluet"><span>А-силует</span></li>
+                </ul>
+            </fieldset>
 
-<main>
-    <div class="container">
-        <div class="catalog">
-            <button class="btn btn--white catalog__btn">Підбір сукні</button>
-            <ul class="catalog__list">
-                <li class="catalog__item">
-                    <a class="tile" href="#">
-                        <div class="tile__img-box">
-                            <img class="tile__image" src="/img/catalog_item1.jpg" alt="catalog_item1">
-                        </div>
-                        <div class="tile__details">
-                            <div class="tile__name">Tarik Ediz 50310</div>
-                            <div class="tile__price">11 500 грн</div>
-                        </div>
-                    </a>
-                </li>
-                <li class="catalog__item">
-                    <a class="tile" href="#">
-                        <div class="tile__img-box">
-                            <img class="tile__image" src="/img/catalog_item2.jpg" alt="catalog_item2">
-                        </div>
-                        <div class="tile__details">
-                            <div class="tile__name">Tarik Ediz Night</div>
-                            <div class="tile__price">11 500 грн</div>
-                        </div>
-                    </a>
-                </li>
-                <li class="catalog__item">
-                    <a class="tile" href="#">
-                        <div class="tile__img-box">
-                            <img class="tile__image" src="/img/catalog_item3.jpg" alt="catalog_item3">
-                        </div>
-                        <div class="tile__details">
-                            <div class="tile__name">Tarik Ediz Night</div>
-                            <div class="tile__price">11 500 грн</div>
-                        </div>
-                    </a>
-                </li>
-                <li class="catalog__item">
-                    <a class="tile" href="#">
-                        <div class="tile__img-box">
-                            <img class="tile__image" src="/img/catalog_item4.jpg" alt="catalog_item4">
-                        </div>
-                        <div class="tile__details">
-                            <div class="tile__name">Tarik Ediz Night</div>
-                            <div class="tile__price">11 500 грн</div>
-                        </div>
-                    </a>
-                </li>
-                <li class="catalog__item">
-                    <a class="tile" href="#">
-                        <div class="tile__img-box">
-                            <img class="tile__image" src="/img/catalog_item5.jpg" alt="catalog_item5">
-                        </div>
-                        <div class="tile__details">
-                        <div class="tile__name">Tarik Ediz Night Collection</div>
-                            <div class="tile__price">11 500 грн</div>
-                        </div>
-                    </a>
-                </li>
-                <li class="catalog__item">
-                    <a class="tile" href="#">
-                        <div class="tile__sale">
-                            <span>%</span>
-                            <span>Акция</span>
-                        </div>
-                        <div class="tile__img-box">
-                            <img class="tile__image" src="/img/catalog_item6.jpg" alt="catalog_item6">
-                        </div>
-                        <div class="tile__details">
-                            <div class="tile__name">Tarik Ediz Night</div>
-                            <div class="tile__price">11 500 грн</div>
-                        </div>
-                    </a>
-                </li>
+            <fieldset class="filter__brand">
+                <legend>Бренд</legend>
+                <ul class="filter__list filter__list--brand">
+                    <li>
+                        <input type="checkbox" name="111" class="filter__brand-input" id="brand1">
+                        <label for="brand1">Eva Lendel</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" name="" class="filter__brand-input" id="brand2">
+                        <label for="brand2">Tarik Ediz</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" name="" class="filter__brand-input" id="brand3">
+                        <label for="brand3">Crystal Atelier</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" name="" class="filter__brand-input" id="brand4">
+                        <label for="brand4">Sherri Hill</label>
+                    </li>
+                </ul>
+            </fieldset>
+            <fieldset class="filter__color">
+                <legend>Колір</legend>
+                <ul class="filter__list filter__list--color">
+                    <li><input type="checkbox" class="filter__color-input" style="background-color: #88000C"></li>
+                    <li><input type="checkbox" class="filter__color-input" style="background-color: #121212"></li>
+                    <li><input type="checkbox" class="filter__color-input" style="background-color: #F6C6C4"></li>
+                    <li><input type="checkbox" class="filter__color-input" style="background-color: #54644E"></li>
+                    <li><input type="checkbox" class="filter__color-input" style="background-color: #AA2243"></li>
+                    <li><input type="checkbox" class="filter__color-input" style="background-color: #131949"></li>
+                    <li><input type="checkbox" class="filter__color-input" style="background-color: #D9D9D9"></li>
+                    <li><input type="checkbox" class="filter__color-input" style="background-color: #E7D7E0"></li>
+                </ul>
+            </fieldset>
+        </div>
+        <div class="filter__control">
+            <button type="reset" class="btn filter__reset">Очистити</button>
+            <button type="submit" class="btn btn--black filter__submit">Застосувати</button>
+        </div>
+    </form>
+</div>
+            </section>
+            <section class="catalog__breadcrumbs">
+                <div class="breadcrumbs">
+                    <ul class="breadcrumbs__list">
+                        <li><a href="/"><span>Головна</span></a></li>
+                        <li><a href="catalog.html"><span>Сукні</span></a></li>
+                        <li><a href="catalog-category.html"><span>Вечірні сукні</span></a></li>
+                        <li><span>Tarik Ediz</a></li>
+                    </ul>
+                </div>
+            </section>
+            <section class="catalog__products">
+                <article class="product">
+    <a href="#" class="product__link">
+        <figure class="product__figure">
+            <img src="/img/catalog/product1.jpg" alt="Tarik Ediz 50310">
+        </figure>
+        <div class="product__info">
+            <h3 class="product__title">Tarik Ediz 50310</h3>
+            <b class="product__price">11500<i>грн</i></b>
+        </div>
+        
+        
+    </a>
+    <div class="product__action">
+        <div class="product__color">
+            <p>Колір:</p>
+            <ul class="product__colorlist">
+                <li><i style="background-color: #171516"></i></li>
+                <li><i style="background-color: #AA2243"></i></li>
             </ul>
         </div>
+        <button class="btn btn--black product__btn">В примірку</button>
     </div>
-</main>
-
-
-
-<footer class="footer">
+</article><article class="product">
+    <a href="#" class="product__link">
+        <figure class="product__figure">
+            <img src="/img/catalog/product2.jpg" alt="Tarik Ediz 50310">
+        </figure>
+        <div class="product__info">
+            <h3 class="product__title">Tarik Ediz 50310</h3>
+            <b class="product__price">11500<i>грн</i></b>
+        </div>
+        
+            <div class="product__label product__label--sale">
+                <b>%</b>
+                <p>Акція</p>
+            </div>
+        
+        
+    </a>
+    <div class="product__action">
+        <div class="product__color">
+            <p>Колір:</p>
+            <ul class="product__colorlist">
+                <li><i style="background-color: #171516"></i></li>
+                <li><i style="background-color: #AA2243"></i></li>
+            </ul>
+        </div>
+        <button class="btn btn--black product__btn">В примірку</button>
+    </div>
+</article><article class="product">
+    <a href="#" class="product__link">
+        <figure class="product__figure">
+            <img src="/img/catalog/product3.jpg" alt="Crystal Design Sunshine">
+        </figure>
+        <div class="product__info">
+            <h3 class="product__title">Crystal Design Sunshine</h3>
+            <b class="product__price">11500<i>грн</i></b>
+        </div>
+        
+        
+    </a>
+    <div class="product__action">
+        <div class="product__color">
+            <p>Колір:</p>
+            <ul class="product__colorlist">
+                <li><i style="background-color: #171516"></i></li>
+                <li><i style="background-color: #AA2243"></i></li>
+            </ul>
+        </div>
+        <button class="btn btn--black product__btn">В примірку</button>
+    </div>
+</article><article class="product">
+    <a href="#" class="product__link">
+        <figure class="product__figure">
+            <img src="/img/catalog/product4.jpg" alt="Crystal Design Medelin">
+        </figure>
+        <div class="product__info">
+            <h3 class="product__title">Crystal Design Medelin</h3>
+            <b class="product__price">11500<i>грн</i></b>
+        </div>
+        
+        
+    </a>
+    <div class="product__action">
+        <div class="product__color">
+            <p>Колір:</p>
+            <ul class="product__colorlist">
+                <li><i style="background-color: #171516"></i></li>
+                <li><i style="background-color: #AA2243"></i></li>
+            </ul>
+        </div>
+        <button class="btn btn--black product__btn">В примірку</button>
+    </div>
+</article><article class="product">
+    <a href="#" class="product__link">
+        <figure class="product__figure">
+            <img src="/img/catalog/product5.jpg" alt="Sherri Hill 52050">
+        </figure>
+        <div class="product__info">
+            <h3 class="product__title">Sherri Hill 52050</h3>
+            <b class="product__price">11500<i>грн</i></b>
+        </div>
+        
+        
+            <div class="product__label product__label--stock_out">
+                <p>Не в наявності</p>
+            </div>
+        
+    </a>
+    <div class="product__action">
+        <div class="product__color">
+            <p>Колір:</p>
+            <ul class="product__colorlist">
+                <li><i style="background-color: #171516"></i></li>
+                <li><i style="background-color: #AA2243"></i></li>
+            </ul>
+        </div>
+        <button class="btn btn--black product__btn">В примірку</button>
+    </div>
+</article><article class="product">
+    <a href="#" class="product__link">
+        <figure class="product__figure">
+            <img src="/img/catalog/product6.jpg" alt="Tarik Ediz 50310">
+        </figure>
+        <div class="product__info">
+            <h3 class="product__title">Tarik Ediz 50310</h3>
+            <b class="product__price">11500<i>грн</i></b>
+        </div>
+        
+        
+    </a>
+    <div class="product__action">
+        <div class="product__color">
+            <p>Колір:</p>
+            <ul class="product__colorlist">
+                <li><i style="background-color: #171516"></i></li>
+                <li><i style="background-color: #AA2243"></i></li>
+            </ul>
+        </div>
+        <button class="btn btn--black product__btn">В примірку</button>
+    </div>
+</article>
+            </section>
+        </div>
+    </section>
+  </main>
+  <footer class="footer">
 	<div class="container">
 		<div class="footer__inner">
 			<div class="footer__topside">
@@ -190,8 +345,11 @@
 						<li class="footer__navitem"><a href="#">Взуття</a></li>
 					</ul>
 					<ul class="footer__navlist">
-						<li class="footer__navtitle"><a href="#">Контакти</a></li>
-						<li class="footer__navitem"><a href="#">Блог</a></li>
+						<li class="footer__navtitle">Інформація</li>
+						<li class="footer__navitem"><a href="contact.html">Контакти</a></li>
+						<li class="footer__navitem"><a href="whyus.html">Чому ми?</a></li>
+						<li class="footer__navitem"><a href="command.html">Наша команда</a></li>
+						<li class="footer__navitem"><a href="blog.html">Блог</a></li>
 					</ul>
 				</nav>
 			</div>
@@ -199,3 +357,5 @@
 		</div>
 	</div>
 </footer>
+</body>
+</html>

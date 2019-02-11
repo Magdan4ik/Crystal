@@ -1,0 +1,5 @@
+[
+    { "name": "Оксана Стадній", "position": "Головний менеджер", "photo": "/img/command/persone1.jpg", "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi quos quas tenetur sit ad deleniti itaque at et sapiente nam."},
+    { "name": "Євгенія Бондаренко", "position": "Консультант", "photo": "/img/command/persone2.jpg", "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi quos quas tenetur sit ad deleniti itaque at et sapiente nam."},
+    { "name": "Оксана Стадній", "position": "Стиліст", "photo": "/img/command/persone3.jpg", "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi quos quas tenetur sit ad deleniti itaque at et sapiente nam."}
+  ]
