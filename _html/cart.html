@@ -1,0 +1,19 @@
+@@include('./chunks/head.html')
+@@include('./chunks/header.html')
+<body>
+  <main class="main">
+
+    <section class="cart">
+      <div class="cart__inner container">
+          <div class="cart__title">Львів</div>
+          <ul class="cart__items">
+            @@loop("./chunks/loop/cart.html", "./chunks/loop/cart.json")
+          </ul>
+          <div class="cart__next"><a href="#" class="btn btn--drose cart__next-btn">Далі</a></div>
+      </div>
+    </section>
+
+  </main>
+  @@include('./chunks/footer.html')
+</body>
+</html>
