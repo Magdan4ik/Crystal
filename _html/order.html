@@ -1,0 +1,76 @@
+@@include('./chunks/head.html')
+@@include('./chunks/header.html')
+<body>
+  <main class="main">
+
+    <section class="order">
+      <div class="order__inner container">
+        <div class="order__date">
+            <div class="order__calendar">
+                <div class="cal">
+                    <div class="cal__header">
+                        <button class="cal__btn cal__btn--prev" data-calendar-toggle="previous">prev</button>
+                        <div class="cal__header__label" data-calendar-label="month"></div>
+                        <button class="cal__btn cal__btn--next" data-calendar-toggle="next">next</button>
+                    </div>
+                    <div class="cal__week">
+                        <span>Пн</span> <span>Вт</span><span>Ср</span> <span>Чт</span> <span>Пт</span> <span>Сб</span> <span>Нд</span>
+                    </div>
+                    <div class="cal__body" data-calendar-area="month"></div>
+                </div>
+            </div>
+            <div class="order__time">
+                <ul class="order__timelist">
+                    <li><span>9:00-10:00</span></li>
+                    <li><span>12:00-13:00</span></li>
+                    <li class="order__time--selected"><span>13:00-14:00</span></li>
+                    <li><span>15:00-16:00</span></li>
+                    <li><span>17:00-18:00</span></li>
+                    <li><span>19:00-20:00</span></li>
+                </ul>
+                <span class="order__time-label"></span>
+            </div>
+        </div>
+        <div class="order__form">
+            <form action="#">
+                <input type="hidden" name="date">
+                <input type="hidden" name="time">
+                <label>
+                    <span>Ім`я</span>
+                    <input type="text" name="name">
+                </label>
+                <label>
+                    <span>Прізвище</span>
+                    <input type="text" name="sname">
+                </label>
+                <label>
+                    <span>Номер телефону</span>
+                    <input type="tel" name="tel" id="tell">
+                </label>
+                <label>
+                    <span>E-mail</span>
+                    <input type="email" name="email">
+                </label>
+                <label>
+                    <span>Дата весілля</span>
+                    <input type="text" name="wedding">
+                </label>
+                <label>
+                    <span>Додаткова інформація</span>
+                    <textarea name="info" placeholder="Ваш коментар..."></textarea>
+                </label>
+                <div class="order__form-controls">
+                    <label>Нагадати про примірку
+                        <input type="checkbox" class="new--input">
+                    </label>
+                    <button type="submit" class="btn btn--drose order__form-btn" onclick="location.href='order-complete.html'; return false;">Записатись</button> <!--  onclick - удалить на продакшене -->
+                </div>
+            </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  @@include('./chunks/footer.html')
+</body>
+</html>

@@ -14,7 +14,6 @@ window.addEventListener('load', () => {
     const d = document;
     const w = window;
 
-
      /* OnePage Scroll */
     (function(){
       const video = d.getElementById('h-video');
@@ -69,13 +68,13 @@ window.addEventListener('load', () => {
 
     /* Catalog filter toggle */
     (function(){
-      const btn = d.querySelector('.filter__toggle');
       const filter = d.querySelector('.filter');
-      const form  = d.getElementById('filterForm');
-      const input = form.querySelectorAll('input[type="checkbox"]');
-      const reset = form.querySelector('.filter__reset');
-
       if(filter) {
+        const btn = d.querySelector('.filter__toggle');
+        const form  = d.getElementById('filterForm');
+        const input = form.querySelectorAll('input[type="checkbox"]');
+        const reset = form.querySelector('.filter__reset');
+
         form.addEventListener('change', activeFilter);
         reset.addEventListener('click', () => setInterval(activeFilter, 50));
         btn.addEventListener('click', toggleFilter);
@@ -94,4 +93,93 @@ window.addEventListener('load', () => {
       };
 
     }());
+
+    /* Order form */
+    (function(){
+      const order = d.querySelector('.order');
+      if(order) {
+        vanillacalendar.init(); /*init calendar */
+
+        const form   = d.querySelector('.order__form form');
+        const time   = d.querySelectorAll('.order__timelist li');
+        const timeL  = d.querySelector('.order__time-label');
+        const timeS  = d.querySelector('.order__time--selected');
+        const mBtn   = d.querySelectorAll('.cal__btn');
+        let   date   = d.querySelectorAll('.cal__date--active');
+
+        const inputs = {
+          time:  form.querySelector('input[name="time"]'),
+          date:  form.querySelector('input[name="date"]'),
+          tel:   form.querySelector('input[name="tel"]'),
+          wdate: form.querySelector('input[name="wedding"]')
+        }
+        const defDate = {
+          date: d.querySelector('.cal__date--today').dataset.calendarDate,
+          time: d.querySelector('.order__time--selected').textContent
+        }
+
+        mBtn.forEach(el=> {
+          el.addEventListener('click', () => {
+              date = d.querySelectorAll('.cal__date--active');
+              liveDate();
+          });
+        });
+
+        time.forEach(el => {
+          el.addEventListener('click', e => {
+            e.preventDefault();
+            time.forEach(el => el.classList.remove('order__time--selected'));
+            el.classList.add('order__time--selected');
+            timeL.style.top = el.offsetTop + "px";
+            saveDate(null, el.textContent);
+          });
+        });
+        timeL.style.top = timeS.offsetTop + "px"; //Default
+
+        function liveDate() {
+          date.forEach(el => {
+            el.addEventListener('click', () => {
+              saveDate(el.dataset.calendarDate, null);
+            });
+          });
+        }
+        liveDate();
+
+
+        function saveDate(date, time) {
+          if(time) inputs.time.value = time;
+          if(date) inputs.date.value = date;
+        }
+        saveDate(defDate.date, defDate.time); //Default
+
+        /* Inputs mask */
+        const telOptions = {
+          mask: '+{38}(000)000-00-00'
+        };
+        const wdateOptions = {
+          mask: Date,
+          min: new Date(2019, 0, 0),
+          lazy: false
+        };
+
+        const telMask   = new IMask(inputs.tel, telOptions);
+        const wdateMask = new IMask(inputs.wdate, wdateOptions);
+
+        let isCompleteForm = {
+          tel: false,
+          wday: false
+        }
+
+        telMask
+          .on('accept', () =>  isCompleteForm.tel = false)
+          .on('complete', () => isCompleteForm.tel = true);
+
+        wdateMask
+          .on('accept', () =>  isCompleteForm.wday = false)
+          .on('complete', () => isCompleteForm.wday = true);
+      };
+    }());
+
+
+
 });
