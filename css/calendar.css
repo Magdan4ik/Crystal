@@ -29,11 +29,20 @@
   .cal {
     background: #FFE5E4;
     width: 100%;
+    min-height: 320px;
     max-width: 42rem;
     margin: 0 auto;
     overflow: hidden;
     box-shadow: 0 4px 22px 0 rgba(0, 0, 0, 0.05);
     border: solid 1px #e7e9ed;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s;
+  }
+
+  .call--init {
+    visibility: visible;
+    opacity: 1;
   }
 
   .cal__header {

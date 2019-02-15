@@ -3,6 +3,7 @@ var vanillacalendar = {
 	next: document.querySelectorAll('[data-calendar-toggle="next"]')[0],
 	previous: document.querySelectorAll('[data-calendar-toggle="previous"]')[0],
 	label: document.querySelectorAll('[data-calendar-label="month"]')[0],
+	cal: document.querySelector('.cal'),
 	activeDates: null,
 	date: new Date(),
 	todaysDate: new Date(),

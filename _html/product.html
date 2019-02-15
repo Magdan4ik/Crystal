@@ -1,7 +1,96 @@
+@@include('./chunks/head.html')
 @@include('./chunks/header.html')
+<body>
+  <main class="main">
 
-<div class="product">
-    qwewrt
-</div>
+    <section class="prodcard">
+        <div class="prodcard__inner container">
+            <section class="prodcard__breadcrumbs">
+                <div class="breadcrumbs">
+                    <ul class="breadcrumbs__list">
+                        <li><a href="/"><span>Головна</span></a></li>
+                        <li><a href="catalog.html"><span>Сукні</span></a></li>
+                        <li><a href="catalog.html"><span>Вечірні сукні</span></a></li>
+                        <li><a href="catalog.html"><span>Tarik Ediz</span></a></li>
+                        <li><span>Tarik Ediz 50294</a></li>
+                    </ul>
+                </div>
+            </section>
+            <section class="prodcard__main">
+                <div class="prodcard__lside">
+                    <div class="prodslider">
+                        <ul class="prodslider__nav">
+                            <li><img src="/img/catalog/product6.jpg"></li>
+                            <li><img src="/img/catalog/product5.jpg"></li>
+                        </ul>
+                        <ul class="prodslider__slider">
+                            <li class="prodslider__slide"><img src="/img/catalog/product6.jpg" alt=""></li>
+                            <li class="prodslider__slide"><img src="/img/catalog/product5.jpg" alt=""></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="prodcard__rside">
 
-@@include('./chunks/footer.html')
+                    <div class="prodcard___info">
+                        <h1 class="prodcard__name">Tarik Ediz 50294</h1>
+                        <p class="prodcard__price">11 520 <i>грн</i></p>
+                        <p class="prodcard__desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae ex dignissim orci molestie porttitor. Donec et facilisis est. Duis ante erat, porta nec tristique lobortis, pharetra id magna. Donec a ultrices mauris. Proin eget lobortis augue</p>
+                    </div>
+
+                    <ul class="prodcard__properties">
+                        <li class="prodcard__propitem">
+                            <p>Колір:</p>
+                            <ul class="prodcard__colors">
+                                <li>
+                                    <input type="radio" name="p-color" style="background-color: #88000C">
+                                </li>
+                                <li>
+                                    <input type="radio" name="p-color" style="background-color:#121212">
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="prodcard__propitem">
+                            <p>Розмір:</p>
+                            <ul class="prodcard__sizes">
+                                <li>
+                                    <label>
+                                        <input type="radio" name="p-size"><i>36</i>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <input type="radio" name="p-size"><i>38</i>
+                                    </label>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="prodcard__propitem">
+                            <p>Наявність:</p>
+                            <ul class="prodcard__stock">
+                                <li><i>Київ</i></li>
+                                <li><i>Львів</i></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="prodcard__actions">
+                        <button type="button" class="btn btn--drose">В примірку</button>
+                    </div>
+                    <div class="prodcard__social">
+                        <p>Поділись:</p>
+                        <ul class="social">
+                            <li class="social__item"><a href="#"><img src="/img/icons/ico__pinterest.svg" alt=""></a></li>
+                            <li class="social__item"><a href="#"><img src="/img/icons/ico__instagram.svg" alt=""></a></li>
+                            <li class="social__item"><a href="#"><img src="/img/icons/ico__facebook.svg" alt=""></a></li>
+                            <li class="social__item"><a href="#"><img src="/img/icons/ico__youtube.svg" alt=""></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  @@include('./chunks/footer.html')
+</body>
+</html>

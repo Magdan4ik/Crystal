@@ -33,20 +33,23 @@ window.addEventListener('load', () => {
 
     /* Brands init slider */
     (function(){
-      const brandsSlider = d.querySelector('.h-brands__slider');
+      const brandsSlider = d.querySelector('#brands-slider');
       if(brandsSlider)
-        new Glide('.glide', {
-          type: 'carousel',
-          focusAt: 'center',
-          perView: 3
-        }).mount()
+        $(brandsSlider).slick({
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          centerMode: true,
+          arrows: true
+        });
     }());
 
     /*Insta */
     (function(){
       const instafeed = d.getElementById('instafeed');
       if(instafeed) {
-        fetch('https://api.instagram.com/v1/users/self/media/recent/?access_token=1820676164.1677ed0.87c8ed8be5fc4beab54d7a7b7d27633d&count=6')
+        const proxyUrl  = 'https://cors-anywhere.herokuapp.com/',
+              targetUrl = 'https://api.instagram.com/v1/users/self/media/recent/?access_token=1820676164.1677ed0.87c8ed8be5fc4beab54d7a7b7d27633d&count=6'
+        fetch(proxyUrl + targetUrl)
         .then(res => res.json())
         .then(res => {
               res.data.forEach(el => {
@@ -70,7 +73,7 @@ window.addEventListener('load', () => {
     (function(){
       const filter = d.querySelector('.filter');
       if(filter) {
-        const btn = d.querySelector('.filter__toggle');
+        const btn   = d.querySelector('.filter__toggle');
         const form  = d.getElementById('filterForm');
         const input = form.querySelectorAll('input[type="checkbox"]');
         const reset = form.querySelector('.filter__reset');
@@ -88,7 +91,8 @@ window.addEventListener('load', () => {
         activeFilter();
 
         function toggleFilter() {
-          filter.classList.toggle('filter--visible');
+          $(filter).slideToggle();
+          // filter.classList.toggle('filter--visible');
         }
       };
 
@@ -99,7 +103,7 @@ window.addEventListener('load', () => {
       const order = d.querySelector('.order');
       if(order) {
         vanillacalendar.init(); /*init calendar */
-
+        vanillacalendar.cal.classList.add('call--init');
         const form   = d.querySelector('.order__form form');
         const time   = d.querySelectorAll('.order__timelist li');
         const timeL  = d.querySelector('.order__time-label');
@@ -178,6 +182,29 @@ window.addEventListener('load', () => {
           .on('accept', () =>  isCompleteForm.wday = false)
           .on('complete', () => isCompleteForm.wday = true);
       };
+    }());
+
+    /* Product card */
+    (function() {
+      const pcard = d.querySelector('.prodcard');
+      if(pcard) {
+        $('.prodslider__slider').slick({
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: false,
+          speed: 0,
+          fade: false,
+          swipe: false,
+          asNavFor: '.prodslider__nav'
+        });
+        $('.prodslider__nav').slick({
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          asNavFor: '.prodslider__slider',
+          vertical: true,
+          focusOnSelect: true
+        });
+      }
     }());
 
 

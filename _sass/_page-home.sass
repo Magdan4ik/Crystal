@@ -201,22 +201,24 @@
     &__slider
         position: relative
         padding: 0 5%
-        .glide
-            position: static
-        .glide__slide img
-            display: block
-            margin: 0 auto
-        .glide__arrow
+        #brands-slider
+            display: flex
+            align-items: center
+        .slick-arrow
+            flex-shrink: 0
             background: no-repeat center/20px
             border: none
             font-size: 0
             box-shadow: none
             width: 100px
-            height: 100%
-            &--left
+            height: 100px
+            &.slick-prev
                 background-image: url('/img/slider-arrow--l.svg')
-            &--right
+            &.slick-next
                 background-image: url('/img/slider-arrow--r.svg')
+        .slick-slide
+            img
+                margin: 0 auto
 .h-insta
     height: 100%
     display: flex
