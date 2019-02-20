@@ -67,7 +67,7 @@
         left: 50%
         top: 50%
         z-index: 2
-        font-size: 288px
+        font-size: 235px
         font-weight: 900
         text-transform: uppercase
         letter-spacing: 26px
@@ -193,31 +193,39 @@
     margin-bottom: 100px
     padding-top: 50px
     &__title
-        font-size: 42px
+        background: linear-gradient(to right, #fff, #FFE5E4, #fff)
+        font-size: 33px
         font-weight: 300
+        line-height: 1.5
         text-transform: uppercase
-        color: #D58481
+        color: #000
         text-align: center
     &__slider
-        position: relative
-        padding: 0 5%
         #brands-slider
-            display: flex
-            align-items: center
+            position: relative
+            padding: 10px 100px
         .slick-arrow
-            flex-shrink: 0
+            position: absolute
+            top: 50%
+            transform: translateY(-50%)
             background: no-repeat center/20px
             border: none
             font-size: 0
             box-shadow: none
             width: 100px
             height: 100px
+
             &.slick-prev
+                left: 0
                 background-image: url('/img/slider-arrow--l.svg')
             &.slick-next
+                right: 0
                 background-image: url('/img/slider-arrow--r.svg')
         .slick-slide
+            li
+                height: 100px
             img
+                height: 100%
                 margin: 0 auto
 .h-insta
     height: 100%

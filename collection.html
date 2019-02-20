@@ -1,3 +1,26 @@
+<!DOCTYPE html>
+<html lang="ua">
+    <head>
+        <meta charset="utf-8">
+        <title>Crystal</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta name="theme-color" content="#000">
+        <meta name="msapplication-navbutton-color" content="#000">
+        <meta name="apple-mobile-web-app-status-bar-style" content="#000">
+        <link rel="shortcut icon" href="/img/favicon/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400&amp;subset=cyrillic">
+        <link rel="stylesheet" href="/css/animation.css">
+        <link rel="stylesheet" href="/css/calendar.css">
+        <link rel="stylesheet" href="/css/all.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/imask/4.1.5/imask.min.js" defer></script>
+        <script src="/js/onepagescroll.min.js" defer></script>
+        <script src="/js/calendar.js" defer></script>
+        <script src="/js/common.js" defer></script>
+    </head>
+
 <header class="header">
 	<div class="header__inner">
 		<button class="header__burg" type="button">
@@ -11,13 +34,13 @@
 		<nav class="header__nav">
 			<ul class="header__navlist">
 				<li><a href="/"><span>Головна</span></a></li>  <!-- li.current -->
-				<li><a href="catalog.html">
+				<li><a href="collection.html">
 					<span>Сукні</span></a>
 					<ul class="header__navlist-dropdown">
 						<li>
 							<a href="#">Весільні сукні</a>
 							<ul class="header__navlist-dropdown">
-								<li><a href="#">The Icon 2019 by CD</a></li>
+								<li><a href="collection.html">The Icon 2019 by CD</a></li>
 								<li><a href="#">Paris 2019 by CD</a></li>
 								<li><a href="#">Timeless Beauty by CD</a></li>
 								<li><a href="#">Bohemian Flowers by Eva Lendel </a></li>
@@ -31,7 +54,7 @@
 							<ul class="header__navlist-dropdown">
 								<li><a href="#">Glam Vibes</a></li>
 								<li><a href="#">Rebel collection</a></li>
-								<li><a href="#">Tarik Ediz</a></li>
+								<li><a href="catalog.html">Tarik Ediz</a></li>
 								<li><a href="#">Sherri Hill </a></li>
 								<li><a href="#">Бестселлери</a></li>
 							</ul>
@@ -61,24 +84,26 @@
 		</div>
 	</div>
 </header>
+<body>
+  <main class="main">
 
-    <div class="container">
-        <div class="collection">
-            <button class="btn btn--white collection__btn">Підбір сукні</button>
-            <div class="collection__list">
-                <div class="collection__item">
-                    <img src="/img/collection_tarik.jpg" alt="collection_tarik">
-                    <a href="#" class="collection__link collection__link--arrow">Tarik Ediz</a>
-                </div>
-                <div class="collection__item">
-                    <img src="/img/collection_cinema-night.jpg" alt="collection_cinema-night">
-                    <a href="#" class="collection__link collection__link--arrow">Cinema Night Collection</a>
-                </div>
-            </div>
+    <section class="collection">
+        <div class="collection__inner container">
+            <h1 class="collection__title">Вечірні сукні</h1>
+            <ul class="collection__list">
+                <li class="collection__item">
+    <a href="catalog.html" class="collection__link--img"><img src="/img/collections/collection_tarik.jpg" class="collection__img" alt="Tarik Ediz"></a>
+    <a href="catalog.html" class="collection__link">Tarik Ediz<span class="arrow--r"></span></a>
+</li><li class="collection__item">
+    <a href="@@link" class="collection__link--img"><img src="/img/collections/collection_cinema-night.jpg" class="collection__img" alt="Cinema Night Collection"></a>
+    <a href="@@link" class="collection__link">Cinema Night Collection<span class="arrow--r"></span></a>
+</li>
+            </ul>
         </div>
-    </div>
+    </section>
 
-<footer class="footer">
+  </main>
+  <footer class="footer">
 	<div class="container">
 		<div class="footer__inner">
 			<div class="footer__topside">
@@ -136,3 +161,5 @@
 		</div>
 	</div>
 </footer>
+</body>
+</html>

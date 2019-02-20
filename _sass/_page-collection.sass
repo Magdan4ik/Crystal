@@ -1,38 +1,34 @@
+/*==============================================================
+            COLLECTIONS START
+/*============================================================= */
 .collection
-    &__btn
-        margin: 58px 0 96px
+    &__inner
+        padding-top: 80px
+    &__title
+        color: #121212
+        text-align: center
+        margin-bottom: 60px
     &__list
     &__item
         margin-bottom: 100px
-        &:last-of-type
-            // margin: 0
-  
+    &__img
+        width: 100%
+        height: auto
     &__link
-        font-family: 'Playfair Display', sans-serif
-        font-size: 96px
-        font-weight: 700
-        &--arrow
-            position: relative
-            --arrow: 355px
-            padding-right: calc(var(--arrow) + 50px)
-        &::before
-            content: ''
-            position: absolute
-            right: 2px
-            top: calc(50% - 13px)
-            transform: rotate(-45deg)
-            border-style: solid
-            border-color: #270705
-            color: inherit
-            border-width: 0 2px 2px 0
-            display: inline-block
-            padding: 11px
-        &::after
-            content: ""
-            position: absolute
-            right: 0
-            top: calc(50% - 2px)
-            background: #270705
-            width: var(--arrow)
-            height: 2px
-                        
+        font-size: 72px
+        font-weight: 300
+        line-height: 1
+        text-transform: uppercase
+        color: #121212
+        display: flex
+        align-items: center
+        margin-top: 35px
+        transition: 0.3s color
+        &:hover
+            color: #D58481
+            .arrow--r
+                transform: translateX(15px)
+        .arrow--r
+            flex: 1 1 35%
+            max-width: 250px
+            margin: 0 auto 0 25px

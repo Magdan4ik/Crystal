@@ -36,9 +36,10 @@ window.addEventListener('load', () => {
       const brandsSlider = d.querySelector('#brands-slider');
       if(brandsSlider)
         $(brandsSlider).slick({
-          slidesToShow: 3,
+          slidesToShow: 4,
           slidesToScroll: 1,
           centerMode: true,
+          centerPadding: '0px',
           arrows: true
         });
     }());
