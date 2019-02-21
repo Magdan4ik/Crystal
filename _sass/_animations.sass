@@ -52,18 +52,7 @@
                 animation: insta 3s both
 
 /* Animation loop reverse action*/
-.viewing-page
-    &-2 .ops-section[data-index='1']
-        animation: zoomOut 1s both
-    &-3 .ops-section[data-index='2']
-        animation: zoomOut 1s both
-    &-4 .ops-section[data-index='3']
-        animation: zoomOut 1s both
-    &-5 .ops-section[data-index='4']
-        animation: zoomOut 1s both
-    &-6 .ops-section[data-index='5']
-        animation: zoomOut 1s both
-    &-7 .ops-section[data-index='6']
-        animation: zoomOut 1s both
-    &-8 .ops-section[data-index='7']
-        animation: zoomOut 1s both
+$class-slug: viewing-page
+@for $i from 1 through 8
+  .#{$class-slug}-#{$i + 1} .ops-section[data-index='#{$i}']
+    animation: zoomOut 1s both

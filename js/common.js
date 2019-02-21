@@ -208,6 +208,33 @@ window.addEventListener('load', () => {
       }
     }());
 
-
-
 });
+
+function initMap() {
+  const iconUrl  = '/img/icons/map__marker--red.png';
+  let coordLviv  = {lat: 49.8311398, lng: 24.033193900000015};
+  let coordKiev  = {lat: 50.4370785, lng: 30.517750699999965};
+  let coordLvivA = {lat: 49.82873699999999, lng: 23.991688000000067};
+  let mapKiev    = new google.maps.Map(document.getElementById('mapKiev'), {zoom: 17, center: coordKiev});
+  let mapLviv    = new google.maps.Map(document.getElementById('mapLviv'), {zoom: 17, center: coordLviv});
+  let mapLvivA   = new google.maps.Map(document.getElementById('mapLvivA'),{zoom: 17, center: coordLvivA});
+
+  const markerKiev     = new google.maps.Marker({
+      position: coordKiev,
+      map: mapKiev,
+      animation: google.maps.Animation.BOUNCE,
+      icon: { url: iconUrl}
+  });
+  const markerLviv = new google.maps.Marker({
+      position: coordLviv,
+      map: mapLviv,
+      animation: google.maps.Animation.BOUNCE,
+      icon: { url: iconUrl}
+  });
+  const markerLvivA  = new google.maps.Marker({
+      position: coordLvivA,
+      map: mapLvivA,
+      animation: google.maps.Animation.BOUNCE,
+      icon: { url: iconUrl}
+  });
+}

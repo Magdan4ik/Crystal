@@ -1,0 +1,6 @@
+[
+    { "title": "Tarik Ediz 50310", "price": "11500", "image": "/img/catalog/product1.jpg"},
+    { "title": "Tarik Ediz 50310", "price": "11500", "image": "/img/catalog/product2.jpg", "sale": true},
+    { "title": "Crystal Design Sunshine", "price": "11500", "image": "/img/catalog/product3.jpg" },
+    { "title": "Crystal Design Medelin", "price": "11500", "image": "/img/catalog/product4.jpg", "stock_out": true }
+  ]
