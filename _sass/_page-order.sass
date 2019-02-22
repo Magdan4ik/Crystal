@@ -5,9 +5,11 @@
     &__inner
         padding-top: 80px
         max-width: 500px
+        +sm(padding-top, 40px)
     &__date
         display: flex
         justify-content: space-between
+        +xs(flex-direction, column)
     &__calendar
         flex-basis: 65%
     &__time
@@ -21,14 +23,35 @@
             width: 100%
             height: 34px
             transition: 0.3s all
+            +xs(display, none)
+        &--readonly
+            +xs-block()
+                display: block !important
+                margin-top: 20px
+                background: no-repeat 95% 50%/15px
+                &[data-timelist="false"]
+                    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iNTBweCIgaGVpZ2h0PSI1MHB4IiB2aWV3Qm94PSIwIDAgNDUxLjg0NyA0NTEuODQ3IiAgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHBhdGggZD0iTTIyNS45MjMsMzU0LjcwNmMtOC4wOTgsMC0xNi4xOTUtMy4wOTItMjIuMzY5LTkuMjYzTDkuMjcsMTUxLjE1N2MtMTIuMzU5LTEyLjM1OS0xMi4zNTktMzIuMzk3LDAtNDQuNzUxICAgYzEyLjM1NC0xMi4zNTQsMzIuMzg4LTEyLjM1NCw0NC43NDgsMGwxNzEuOTA1LDE3MS45MTVsMTcxLjkwNi0xNzEuOTA5YzEyLjM1OS0xMi4zNTQsMzIuMzkxLTEyLjM1NCw0NC43NDQsMCAgIGMxMi4zNjUsMTIuMzU0LDEyLjM2NSwzMi4zOTIsMCw0NC43NTFMMjQ4LjI5MiwzNDUuNDQ5QzI0Mi4xMTUsMzUxLjYyMSwyMzQuMDE4LDM1NC43MDYsMjI1LjkyMywzNTQuNzA2eiIvPjwvc3ZnPg==)
+                &[data-timelist="true"]
+                    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iNTBweCIgaGVpZ2h0PSI1MHB4IiB2aWV3Qm94PSIwIDAgNDUxLjg0NyA0NTEuODQ3IiB4bWw6c3BhY2U9InByZXNlcnZlIiBzdHlsZT0idHJhbnNmb3JtOiByb3RhdGUoMTgwZGVnKSI+PHBhdGggZD0iTTIyNS45MjMsMzU0LjcwNmMtOC4wOTgsMC0xNi4xOTUtMy4wOTItMjIuMzY5LTkuMjYzTDkuMjcsMTUxLjE1N2MtMTIuMzU5LTEyLjM1OS0xMi4zNTktMzIuMzk3LDAtNDQuNzUxICAgYzEyLjM1NC0xMi4zNTQsMzIuMzg4LTEyLjM1NCw0NC43NDgsMGwxNzEuOTA1LDE3MS45MTVsMTcxLjkwNi0xNzEuOTA5YzEyLjM1OS0xMi4zNTQsMzIuMzkxLTEyLjM1NCw0NC43NDQsMCAgIGMxMi4zNjUsMTIuMzU0LDEyLjM2NSwzMi4zOTIsMCw0NC43NTFMMjQ4LjI5MiwzNDUuNDQ5QzI0Mi4xMTUsMzUxLjYyMSwyMzQuMDE4LDM1NC43MDYsMjI1LjkyMywzNTQuNzA2eiIvPjwvc3ZnPg==)
+                &[data-timelist="false"] ~ .order__timelist
+                    display: none
     &__timelist
         overflow: hidden
+        +xs-block()
+            position: absolute
+            left: 0
+            right: 0
+            background: #fff
+            border: solid 2px #D58481
+            border-top: none
+            animation: fadeIn 0.5s both
         li
             margin: 15px 0
             display: block
             text-align: center
             cursor: pointer
             user-select: none
+            +sm(margin, 10px 0)
             span
                 position: relative
                 font-size: 18px
@@ -63,5 +86,7 @@
                 align-items: center
                 cursor: pointer
                 user-select: none
+                +sm(max-width, 140px)
                 input
                     margin-left: 10px
+                    flex-shrink: 0

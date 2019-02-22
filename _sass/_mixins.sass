@@ -1,3 +1,11 @@
+=xl($name, $value)
+  @media screen and (max-width: $_xl)
+    #{$name}: $value
+
+=xl-block()
+  @media screen and (max-width: $_xl)
+    @content
+
 =lg($name, $value)
   @media screen and (max-width: $_lg)
     #{$name}: $value

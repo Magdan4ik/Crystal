@@ -82,7 +82,7 @@ var vanillacalendar = {
 		}
 	},
 	weekAsString: function(weekIndex) {
-		return ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Нд', 'Август'][weekIndex]
+		return ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Нд'][weekIndex]
 	},
 	clearCalendar: function() {
 		vanillacalendar.month.innerHTML = ''

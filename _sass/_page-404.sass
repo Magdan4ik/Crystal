@@ -5,29 +5,49 @@
     height: 100vh
     &__inner
         height: 100%
+        display: flex
+        flex-direction: column
+        justify-content: space-between
     &__inside
+        margin-top: 30vh
         display: flex
         justify-content: space-between
         align-items: center
+        +md(flex-direction, column)
+        +sm(margin-top, 100px)
     &__lside
         max-width: 570px
+        text-align: center
     &__rside
+        flex-basis: 45%
         line-height: 57px
         font-size: 60px
+        text-align: center
+        +md(margin-top, 20px)
+        +sm(font-size, 18px)
     &__title
         color: #000
         font-weight: 300
         line-height: 1
         font-size: 71px
         text-transform: uppercase
+        +sm(font-size, 36px)
     &__subtitle
         font-weight: 300
         line-height: 1
         font-size: 48px
+        +sm-block()
+            margin-top: 30px
+            font-size: 18px
     &__return
         font-weight: 300
         a
             display: inline-block
             line-height: 0.8
             border-bottom: 2px solid #000
-
+            +sm(font-size, 30px)
+    &__img
+        img
+            +sm-block()
+                height: 300px
+                object-fit: cover

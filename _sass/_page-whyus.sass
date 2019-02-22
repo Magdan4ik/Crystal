@@ -1,18 +1,26 @@
 .whyus
     background: url('../img/bg-dress.svg') no-repeat 0 30%
+    +lg-block()
+        background-position: 50% 10px
+        background-size: 50%
     &__inner
         padding-top: 150px
+        +lg(padding-top, 80px)
+        +sm(padding-top, 40px)
     &__info
         display: flex
         justify-content: space-between
         font-size: 16px
         color: #646464
+        +lg(flex-direction, column)
     &__lside
         flex-basis: 50%
         p
             margin-bottom: 30px
+            +sm(margin-bottom, 15px)
     &__rside
         flex-basis: 45%
+        +lg(margin, 0 auto)
     &__title
         margin-bottom: 50px
         font-size: 72px
@@ -20,3 +28,19 @@
         font-weight: 300
         text-transform: uppercase
         color: #D58481
+        +sm-block()
+            margin-bottom: 30px
+
+    &__command
+        margin-top: 100px
+        max-width: 1300px
+        +sm(margin-top, 0)
+        &-btn
+            background: url('../img/grain-bg--red.jpg') repeat 0 0
+            color: #D58481
+            min-height: 205px
+            padding: 0 7%
+            +sm-block()
+                min-height: 100px
+                padding: 0 15px
+

@@ -4,13 +4,19 @@
 .collection
     &__inner
         padding-top: 80px
+        +sm(padding, 40px 0 0)
     &__title
         color: #121212
         text-align: center
         margin-bottom: 60px
+        +sm(margin-bottom, 20px)
     &__list
     &__item
         margin-bottom: 100px
+        +sm(margin-bottom, 50px)
+        +sm-block()
+            .btn--right
+                padding: 0 15px
     &__img
         width: 100%
         height: auto
