@@ -59,7 +59,7 @@ body
   line-height: normal
   transition: 0.3s opacity
   &[class^="viewing-page"]
-    min-height: calc(100vh + 1px)
+    overflow: hidden
     main
       height: 100%
 h1
@@ -316,6 +316,25 @@ input
       &:hover
         img
           transform: scale(1.1)
+
+/* Slick btns*/
+.slick-dots
+  display: flex
+  flex-flow: row wrap
+  justify-content: center
+  margin: 15px 0
+  li
+    width: 10px
+    height: 10px
+    border-radius: 50%
+    margin: 5px
+    background: var(--primary-color)
+    cursor: pointer
+    &.slick-active
+      background: #D58481
+    button
+      display: none
+
 
 /*==============================================================
             BREADCRUMBS START

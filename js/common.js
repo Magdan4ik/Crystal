@@ -1,13 +1,4 @@
 "use strict";
-window.addEventListener('DOMContentLoaded',
-  function () {
-    // stare bzdo.. nechipaite
-  }
-);
-
-
-
-
 
 window.addEventListener('load', () => {
 
@@ -21,9 +12,10 @@ window.addEventListener('load', () => {
     const order     = d.querySelector('.order');
     const pcard     = d.querySelector('.prodcard');
     const mobile    = w.matchMedia('(max-width: 768px)').matches;
+    const xl        = w.matchMedia('(max-width: 1200px)').matches;
 
      /* OnePage Scroll */
-    if(home) {
+    if(home && !xl) {
       onePageScroll(".home", {
         pagination: false,
         animationTime: 1500,
@@ -49,7 +41,17 @@ window.addEventListener('load', () => {
         speed: 0,
         fade: false,
         swipe: false,
-        asNavFor: '.prodslider__nav'
+        asNavFor: '.prodslider__nav',
+        responsive: [
+          {
+            breakpoint: 769,
+            settings: {
+              dots: true,
+              swipe: true,
+              speed: 500
+            }
+          }
+        ]
       },
       prodNav: {
         slidesToShow: 3,
@@ -57,6 +59,21 @@ window.addEventListener('load', () => {
         asNavFor: '.prodslider__slider',
         vertical: true,
         focusOnSelect: true
+      },
+      prodMore: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        centerMode: true,
+        arrows: false,
+        centerPadding: '0px',
+        responsive: [
+          {
+            breakpoint: 501,
+            settings: {
+              slidesToShow: 1
+            }
+          }
+        ]
       }
     };
 
@@ -216,6 +233,7 @@ window.addEventListener('load', () => {
     if(pcard) {
       $('.prodslider__slider').slick(slickObj.prodS);
       $('.prodslider__nav').slick(slickObj.prodNav);
+      if(mobile) $('.prodmore__list').slick(slickObj.prodMore);
     };
 
 

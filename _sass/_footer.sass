@@ -5,13 +5,20 @@
 	&__topside
 		display: flex
 		border-bottom: 1px solid var(--border-color-grey)
+		+sm(flex-direction, column)
 	&__lside
 		margin-right: 60px
+		+sm-block()
+			margin: 0
+
 	&__logo
 		display: block
 		flex-shrink: 0
+		img
+			margin: 0 auto
 	&__social
 		margin-top: 20px
+		+sm(margin, 10px 0)
 		.social__item
 			margin: 7px
 	&__nav
@@ -25,6 +32,8 @@
 		line-height: normal
 		font-size: 16px
 		color: #646464
+		+xs(width, 100%)
+		+xs(margin-right, 0)
 		&:last-of-type
 			margin-right: 0
 
