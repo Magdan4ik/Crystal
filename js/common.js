@@ -1,5 +1,7 @@
 "use strict";
 
+
+// window.addEventListener("resize", reloadPage);
 window.addEventListener('load', () => {
 
     const d = document;
@@ -327,4 +329,10 @@ function initMap() {
       animation: google.maps.Animation.BOUNCE,
       icon: { url: iconUrl}
   });
+}
+
+
+
+function reloadPage() {
+  setTimeout(() => window.location.reload(), 1500);
 }
