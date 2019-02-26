@@ -11,11 +11,16 @@ window.addEventListener('load', () => {
     const filter    = d.querySelector('.filter');
     const order     = d.querySelector('.order');
     const pcard     = d.querySelector('.prodcard');
-    const mobile    = w.matchMedia('(max-width: 768px)').matches;
-    const xl        = w.matchMedia('(max-width: 1200px)').matches;
+    const hbook     = d.querySelector('.header__booking');
+    const hlang     = d.querySelector('.header__lang');
+    const menu      = d.querySelector('.header__nav');
+    let   device    =  {
+      '768'   : w.matchMedia('(max-width: 768px)').matches,
+      '1200'  : w.matchMedia('(max-width: 1200px)').matches
+    }
 
      /* OnePage Scroll */
-    if(home && !xl) {
+    if(home && !device[1200]) {
       onePageScroll(".home", {
         pagination: false,
         animationTime: 1500,
@@ -25,6 +30,13 @@ window.addEventListener('load', () => {
       });
     };
 
+    if (home && device[1200]) video.controls = true;
+
+    if(device[768]) {
+      menu.appendChild(hbook);
+      menu.appendChild(hlang);
+    }
+
     /* Slick common obj */
     const slickObj = {
       brandS: {
@@ -32,7 +44,27 @@ window.addEventListener('load', () => {
         slidesToScroll: 1,
         centerMode: true,
         centerPadding: '0px',
-        arrows: true
+        arrows: true,
+        responsive: [
+          {
+            breakpoint: 993,
+            settings: {
+              slidesToShow: 3
+            }
+          },
+          {
+            breakpoint: 769,
+            settings: {
+              slidesToShow: 2
+            }
+          },
+          {
+            breakpoint: 500,
+            settings: {
+              slidesToShow: 1
+            }
+          }
+        ]
       },
       prodS: {
         slidesToShow: 1,
@@ -85,7 +117,7 @@ window.addEventListener('load', () => {
     /*Insta */
     if(instafeed) {
       const proxyUrl  = 'https://cors-anywhere.herokuapp.com/',
-            targetUrl = 'https://api.instagram.com/v1/users/self/media/recent/?access_token=1820676164.1677ed0.87c8ed8be5fc4beab54d7a7b7d27633d&count=6'
+            targetUrl = 'https://api.instagram.com/v1/users/self/media/recent/?access_token=308771480.1677ed0.0c498cb30a344f6c88f2620d4f9f8079&count=6'
       fetch(proxyUrl + targetUrl)
       .then(res => res.json())
       .then(res => {
@@ -104,6 +136,24 @@ window.addEventListener('load', () => {
       })
       .catch(err => console.error('Insta Error:', err));
     };
+
+
+  /* Burger Menu*/
+    (function() {
+      let burger  = d.querySelector('.header__burg'),
+          nav     = d.querySelector('.header__nav'),
+          overlay = d.createElement('div');
+          overlay.className = 'overlay';
+
+        function toggleMobmenu() {
+          burger.classList.toggle('active');
+          nav.classList.toggle('active');
+          d.body.classList.toggle('hidden');
+          (nav.classList.contains('active')) ? d.body.insertBefore(overlay, d.body.firstChild) : overlay.remove()
+        };
+
+        [overlay, burger].forEach(el => el.addEventListener('click', toggleMobmenu));
+    }());
 
 
     /* Catalog filter toggle */
@@ -128,7 +178,7 @@ window.addEventListener('load', () => {
       activeFilter();
 
       function toggleFilter() {
-        if(!mobile) $(filter).slideToggle();
+        if(!device[768]) $(filter).slideToggle();
         filter.classList.toggle('filter--visible');
       }
     };
@@ -233,17 +283,15 @@ window.addEventListener('load', () => {
     if(pcard) {
       $('.prodslider__slider').slick(slickObj.prodS);
       $('.prodslider__nav').slick(slickObj.prodNav);
-      if(mobile) $('.prodmore__list').slick(slickObj.prodMore);
+      if(device[768]) $('.prodmore__list').slick(slickObj.prodMore);
     };
 
 
     function toggleVideo(s) {
       if(s.querySelector('#h-video')) {
         video.play();
-        video.preload = 'auto';
       } else {
         video.pause();
-        video.preload = 'none';
       }
     };
 

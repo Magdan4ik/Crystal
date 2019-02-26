@@ -13,29 +13,66 @@
 		display: flex
 		align-items: center
 		justify-content: space-between
+		+sm(height, 55px)
 	&__logo
 		flex-grow: 1
+		+sm(text-align, center)
 		a
 			display: inline-block
 			figure
 				display: block
 				width: 200px
 				height: 65px
+				+sm(height, 45px)
 				img
 					width: 100%
 					height: 100%
 					object-fit: contain
 	&__nav
 		flex-grow: 4
+		+lg-block()
+			opacity: 0
+			position: fixed
+			background: var(--primary-color)
+			left: 0
+			right: 0
+			top: 0
+			bottom: 0
+			z-index: 2
+			max-width: 300px
+			height: 100%
+			padding: 50px 30px
+			overflow-y: auto
+			box-shadow: 3px 0 3px rgba(213, 132, 129, 0.1)
+			transform: translateX(-100%)
+			transition: 0.4s opacity, 0.5s transform
+			&.active
+				visibility: visible
+				opacity: 1
+				transform: translateX(0)
+			.header__booking
+				display: block
+				margin-bottom: 20px
+			.header__lang
+				display: block
+		+sm-block()
+			max-width: 100%
+			box-shadow: none
 	&__navlist
 		display: flex
 		align-items: center
+		+lg-block()
+			flex-direction: column
+			margin-bottom: 20px
 		> li
 			position: relative
+			+lg(width, 100%)
+
 			&:hover
 				> .header__navlist-dropdown
 					display: block
 					animation: dropdown 0.5s both
+					+lg(display, none)
 			> a
 				display: block
 				padding: 35px 25px
@@ -44,6 +81,8 @@
 				color: #121212
 				text-transform: uppercase
 				white-space: nowrap
+				+xl(padding, 35px 15px)
+				+lg(padding, 15px 0)
 				span
 					position: relative
 					&::after
@@ -62,6 +101,8 @@
 					span
 						&::after
 							transform: scaleX(1)
+							+lg(display, none)
+
 		&-dropdown
 			display: none
 			background: var(--primary-color)
@@ -69,7 +110,7 @@
 			left: 0
 			width: 100%
 			max-width: 500px
-			min-width: 210px
+			min-width: 230px
 			padding: 20px 0
 			> li
 				&:hover
@@ -89,6 +130,7 @@
 				left: 100%
 				top: 0
 				min-width: 350px
+				min-height: 100%
 				animation: fadeInLeftList 0.5s both
 				li a
 					font-weight: 500
@@ -114,7 +156,6 @@
 				font-style: normal
 				border-radius: 50%
 
-
 	&__burg
 		display: none
 		flex-shrink: 0
@@ -126,6 +167,23 @@
 		cursor: pointer
 		font-size: 0
 		transition: 0.2s linear
+		margin-right: 25px
+		z-index: 3
+		+sm-block()
+			position: absolute
+		+lg(display, block)
+		&.active
+			.header__burg-in:before
+				transform: rotate(-45deg)
+				width: 60%
+				top: 2px
+			.header__burg-in i
+				width: 100%
+				left: 2px
+			.header__burg-in:after
+				transform: rotate(45deg)
+				width: 60%
+				bottom: 2px
 		&-in
 			display: block
 			width: inherit
@@ -140,7 +198,7 @@
 				width: inherit
 				height: inherit
 				background-color: #000
-				transition: transform ease 0.15s
+				transition: all ease 0.15s
 			&:before
 				top: 0
 			&:after
@@ -151,6 +209,7 @@
 				width: 60%
 	&__lang
 		+sm(display, none)
+
 
 //LANGUAGE SWITCHER
 .lang

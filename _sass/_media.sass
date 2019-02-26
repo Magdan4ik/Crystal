@@ -1,3 +1,4 @@
+/* VERTICAL MQ */
 @media only screen and (max-height: 1000px) and (orientation: landscape)
 	.h-insta
 		&__instafeed
@@ -21,33 +22,13 @@
 @media only screen and (max-height: 700px) and (orientation: landscape)
 	.h-brands
 		margin-bottom: 0
-		&__slider .slick-slide li
-			height: 10vh
+		&__slider 
+			.slick-slide li
+				height: 10vh
+			.slick-arrow
+				background-size: 10px
 
 
-/* HORIZONTAL */
-@media only screen and (max-width: 1400px)
-	.h-collection
-		padding-right: 5vw
-	.h-section__title
-		font-size: 60px
-	.h-sale__link
-		font-size: 200px
-	.h-about__title,
-	.h-more__title
-		font-size: 80px
+/* HORIZONTAL MQ */
 
-@media only screen and (max-width: 1300px)
-	//
-@media only screen and (max-width: 1200px)
-	.header
-		&__burg
-			display: block
-		&__nav
-			display: none
-			position: fixed
-			background: #fff
-			left: 0
-			right: 0
-			top: 0
-			bottom: 0
+

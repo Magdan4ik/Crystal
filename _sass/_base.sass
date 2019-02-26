@@ -74,6 +74,7 @@ h1
 main
   padding-top: 90px
   min-height: calc(100vh - 480px)
+  +sm(padding-top, 55px)
 
 a,
 button
@@ -207,6 +208,15 @@ input
 
 .hidden
   overflow: hidden
+
+.overlay
+  position: fixed
+  left: 0
+  right: 0
+  top: 0
+  bottom: 0
+  z-index: 10
+  background: rgba(0, 0, 0, 0.5)
 
 /*==============================================================
             BUTTONS START

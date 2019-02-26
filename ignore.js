@@ -50,9 +50,16 @@ sendData('/index.php?route=common/language/language', this.dataset.lang);
 
 sendLang('/index.php?route=common/language/language', 'uk-ua')
 
+
+function getScrollbarWidth(element) {
+    return element.offsetWidth - element.clientWidth;
+}
+
 //  headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 
+
 /*
+
 
 
 */
