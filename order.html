@@ -76,7 +76,7 @@
 			</ul>
 		</nav>
 		<div class="header__booking">
-			<a class="btn btn--trans header__booking-btn" href="cart.html">Записатись на примірку <i>2</i></a>
+			<a class="btn btn--trans header__booking-btn" href="cart-order.html">Записатись на примірку <i>2</i></a>
 		</div>
 		<div class="header__lang">
 			<a href="#ua" class="lang__link lang__link--ua">Укр</a>/
@@ -117,28 +117,28 @@
             </div>
         </div>
         <div class="order__form">
-            <form action="#">
+            <form action="http://elit.oscorp.pro/ajax/cart-order.php" method="POST" id="cart-order-form">
                 <input type="hidden" name="date">
                 <input type="hidden" name="time">
                 <label>
-                    <span>Ім`я</span>
-                    <input type="text" name="name">
+                    <span>Ім`я <sup>*</sup></span>
+                    <input type="text" name="name" required>
                 </label>
                 <label>
-                    <span>Прізвище</span>
-                    <input type="text" name="sname">
+                    <span>Прізвище <sup>*</sup></span>
+                    <input type="text" name="sname" required>
                 </label>
                 <label>
-                    <span>Номер телефону</span>
-                    <input type="tel" name="tel" id="tell">
+                    <span>Номер телефону <sup>*</sup></span>
+                    <input type="tel" name="tel" id="tell" required>
                 </label>
                 <label>
-                    <span>E-mail</span>
-                    <input type="email" name="email">
+                    <span>E-mail <sup>*</sup></span>
+                    <input type="email" name="email" required>
                 </label>
                 <label>
-                    <span>Дата події</span>
-                    <input type="text" name="wedding">
+                    <span>Дата події <sup>*</sup></span>
+                    <input type="text" name="event" required>
                 </label>
                 <label>
                     <span>Додаткова інформація</span>
@@ -146,7 +146,7 @@
                 </label>
                 <div class="order__form-controls">
                     <label>Нагадати про примірку
-                        <input type="checkbox" class="new--input">
+                        <input type="checkbox" class="new--input" name="remind">
                     </label>
                     <button type="submit" class="btn btn--drose order__form-btn" onclick="location.href='order-complete.html'; return false;">Записатись</button> <!--  onclick - удалить на продакшене -->
                 </div>

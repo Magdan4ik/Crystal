@@ -42,10 +42,10 @@
                             <p>Колір:</p>
                             <ul class="prodcard__colors">
                                 <li>
-                                    <input type="radio" name="p-color" style="background-color: #88000C">
+                                    <input type="radio" name="p-color" style="background-color: #88000C" value="#88000C">
                                 </li>
                                 <li>
-                                    <input type="radio" name="p-color" style="background-color:#121212">
+                                    <input type="radio" name="p-color" style="background-color:#121212" value="#121212">
                                 </li>
                             </ul>
                         </li>
@@ -54,12 +54,12 @@
                             <ul class="prodcard__sizes">
                                 <li>
                                     <label>
-                                        <input type="radio" name="p-size"><i>36</i>
+                                        <input type="radio" name="p-size" value="36"><i>36</i>
                                     </label>
                                 </li>
                                 <li>
                                     <label>
-                                        <input type="radio" name="p-size"><i>38</i>
+                                        <input type="radio" name="p-size" value="38"><i>38</i>
                                     </label>
                                 </li>
                             </ul>
@@ -73,7 +73,7 @@
                         </li>
                     </ul>
                     <div class="prodcard__actions">
-                        <button type="button" class="btn btn--drose">В примірку</button>
+                        <button type="button" class="btn btn--drose" onclick="addToCart(1)">В примірку</button>
                     </div>
                     <div class="prodcard__social">
                         <p>Поділись:</p>

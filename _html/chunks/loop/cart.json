@@ -1,4 +1,4 @@
 [
-    { "title": "Tarik Ediz 50310", "price": "11500", "image": "/img/catalog/product1.jpg", "collection": "Tarik Ediz"},
-    { "title": "Tarik Ediz 50310", "price": "11500", "image": "/img/catalog/product2.jpg", "collection": "Tarik Ediz"}
+    { "title": "Tarik Ediz 50310", "price": "11500", "image": "/img/catalog/product1.jpg", "collection": "Tarik Ediz", "id": "1"},
+    { "title": "Tarik Ediz 50310", "price": "11500", "image": "/img/catalog/product2.jpg", "collection": "Tarik Ediz", "id": "2"}
   ]

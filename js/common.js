@@ -1,21 +1,25 @@
 "use strict";
 
+let cart = [];
+if (localStorage.cart) cart = JSON.parse(localStorage.cart);
 
-// window.addEventListener("resize", reloadPage);
 window.addEventListener('load', () => {
 
     const d = document;
     const w = window;
+    const lang      = d.documentElement.lang;
     const video     = d.getElementById('h-video');
+    const instafeed = d.getElementById('instafeed');
     const home      = d.querySelector('.home');
     const bSlider   = d.querySelector('#brands-slider');
-    const instafeed = d.getElementById('instafeed');
     const filter    = d.querySelector('.filter');
     const order     = d.querySelector('.order');
     const pcard     = d.querySelector('.prodcard');
     const hbook     = d.querySelector('.header__booking');
     const hlang     = d.querySelector('.header__lang');
     const menu      = d.querySelector('.header__nav');
+    const steps     = d.querySelector('.cart-order__steps');
+    const complete  = d.querySelector('.order-complete');
     let   device    =  {
       '768'   : w.matchMedia('(max-width: 768px)').matches,
       '1200'  : w.matchMedia('(max-width: 1200px)').matches
@@ -28,7 +32,9 @@ window.addEventListener('load', () => {
         animationTime: 1500,
         footer: "footer",
         delay: 500,
-        afterMove: (index, section) => toggleVideo(section)
+        afterMove: (index, section) => {
+          section.querySelector('#h-video')? video.play() : video.pause()
+        }
       });
     };
 
@@ -116,6 +122,7 @@ window.addEventListener('load', () => {
       $(bSlider).slick(slickObj.brandS);
     };
 
+
     /*Insta */
     if(instafeed) {
       const proxyUrl  = 'https://cors-anywhere.herokuapp.com/',
@@ -140,6 +147,7 @@ window.addEventListener('load', () => {
     };
 
 
+
   /* Burger Menu*/
     (function() {
       let burger  = d.querySelector('.header__burg'),
@@ -156,6 +164,8 @@ window.addEventListener('load', () => {
 
         [overlay, burger].forEach(el => el.addEventListener('click', toggleMobmenu));
     }());
+
+
 
 
     /* Catalog filter toggle */
@@ -186,115 +196,186 @@ window.addEventListener('load', () => {
     };
 
 
+
+
     /* Order form */
     if(order) {
-        vanillacalendar.init(); /*init calendar */
-        vanillacalendar.cal.classList.add('call--init');
-        const form   = d.querySelector('.order__form form');
-        const time   = d.querySelectorAll('.order__timelist li');
-        const timeSp = d.querySelectorAll('.order__timelist li span');
-        const timeL  = d.querySelector('.order__time-label');
-        const timeS  = d.querySelector('.order__time--selected');
-        const timeM  = d.querySelector('.order__time--readonly');
-        const mBtn   = d.querySelectorAll('.cal__btn');
-        let   date   = d.querySelectorAll('.cal__date--active');
+      vanillacalendar.init(); /*init calendar */
+      vanillacalendar.cal.classList.add('call--init');
+      const form   = d.querySelector('#cart-order-form');
+      const time   = d.querySelectorAll('.order__timelist li');
+      const timeSp = d.querySelectorAll('.order__timelist li span');
+      const timeL  = d.querySelector('.order__time-label');
+      const timeS  = d.querySelector('.order__time--selected');
+      const timeM  = d.querySelector('.order__time--readonly');
+      const mBtn   = d.querySelectorAll('.cal__btn');
+      let   date   = d.querySelectorAll('.cal__date--active');
 
-        const inputs = {
-          time:  form.querySelector('input[name="time"]'),
-          date:  form.querySelector('input[name="date"]'),
-          tel:   form.querySelector('input[name="tel"]'),
-          wdate: form.querySelector('input[name="wedding"]')
-        }
-        const defDate = {
-          date: d.querySelector('.cal__date--today').dataset.calendarDate,
-          time: d.querySelector('.order__time--selected').textContent
-        }
+      const inputs = {
+        time:  form.querySelector('input[name="time"]'),
+        date:  form.querySelector('input[name="date"]'),
+        tel:   form.querySelector('input[name="tel"]'),
+        event: form.querySelector('input[name="event"]')
+      }
+      const defDate = {
+        date: d.querySelector('.cal__date--today').dataset.calendarDate,
+        time: d.querySelector('.order__time--selected').textContent
+      }
 
-        mBtn.forEach(el=> {
+      mBtn.forEach(el=> {
+        el.addEventListener('click', () => {
+            date = d.querySelectorAll('.cal__date--active');
+            liveDate();
+        });
+      });
+
+      time.forEach(el => {
+        el.addEventListener('click', e => {
+          e.preventDefault();
+          time.forEach(el => el.classList.remove('order__time--selected'));
+          el.classList.add('order__time--selected');
+          timeL.style.top = el.offsetTop + "px";
+          saveDate(null, el.textContent);
+          if(w.getComputedStyle(timeM).display !== "none") {
+            timeM.dataset.timelist = false;
+          }
+        });
+      });
+      timeL.style.top = timeS.offsetTop + "px"; //Default
+
+      timeM.addEventListener('click', e => {
+        e.preventDefault();
+        (timeM.dataset.timelist == 'true') ? timeM.dataset.timelist = false : timeM.dataset.timelist = true;
+      });
+
+      function liveDate() {
+        date.forEach(el => {
           el.addEventListener('click', () => {
-              date = d.querySelectorAll('.cal__date--active');
-              liveDate();
+            saveDate(el.dataset.calendarDate, null);
           });
         });
+      }
+      liveDate();
 
-        time.forEach(el => {
+      function saveDate(date, time) {
+        if(time) inputs.time.value = time;
+        if(date) inputs.date.value = date;
+        if(time) timeM.value = time;
+      }
+
+      saveDate(defDate.date, defDate.time); //Default
+      timeM.value = defDate.time; //Default
+
+      /* Inputs mask */
+      const telOptions = {
+        mask: '+{38}(000)000-00-00'
+      };
+      const eventOptions = {
+        mask: Date,
+        min: new Date(2019, 0, 0),
+        lazy: false
+      };
+
+      const telMask   = new IMask(inputs.tel, telOptions);
+      const eventMask = new IMask(inputs.event, eventOptions);
+
+      let isCompleteForm = {
+        tel: false,
+        wday: false
+      }
+
+      telMask
+        .on('accept', () =>  isCompleteForm.tel = false)
+        .on('complete', () => isCompleteForm.tel = true);
+
+      eventMask
+        .on('accept', () =>  isCompleteForm.wday = false)
+        .on('complete', () => isCompleteForm.wday = true);
+
+
+      /* Cart-order steps */
+      const step = [...steps.querySelectorAll('.cart-order__step')];
+      const clss = ['cart-order__step--prev', 'cart-order__step--active', 'cart-order__step--next'];
+      const next = steps.querySelector('.cart__next-btn');
+
+      next.addEventListener('click', e => {
+        e.preventDefault();
+        step.forEach(st => {
+          step.forEach(s => s.classList.remove(...clss));
+          st.classList.add(clss[1]);
+          const { nextElementSibling: next, previousElementSibling: prev } = st;
+          prev && prev.classList.add(clss[0]);
+          next && next.classList.add(clss[2]);
+        });
+      });
+
+      const maxH = step.reduce((a, b) => Math.max(a.offsetHeight, b.offsetHeight));
+      steps.style.minHeight = maxH + 'px';
+
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        const isValid = Object.values(isCompleteForm).every(item => item);
+        if (isValid) {
+          const fd = new FormData(e.target);
+          fetch(e.target.action, {
+            method: 'POST',
+            body: fd
+          })
+          .then(() => {
+            localStorage.removeItem('cart');
+            w.location.href = `order-complete.html?date=${fd.get('date')}&time=${fd.get('time')}`;
+          })
+          .catch(() => alert('Ошибка отправки'));
+        } else {
+          alert('Заполните необходимые поля');
+        }
+      });
+
+      /* Cart-order actions */
+      const del        = [...d.querySelectorAll('.cartitem__delete')];
+      const items      = [...d.querySelectorAll('.cartitem')];
+      const quantity   = d.querySelector('.header__booking-btn i');
+      const cartInner  = d.querySelector('.cart__inner');
+      let  itemsLength = items.length;
+
+      del.forEach(el => {
           el.addEventListener('click', e => {
             e.preventDefault();
-            time.forEach(el => el.classList.remove('order__time--selected'));
-            el.classList.add('order__time--selected');
-            timeL.style.top = el.offsetTop + "px";
-            saveDate(null, el.textContent);
-            if(w.getComputedStyle(timeM).display !== "none") {
-              timeM.dataset.timelist = false;
-            }
-          });
+            delItem(el, 500)
+              .then(cartQuantity);
         });
-        timeL.style.top = timeS.offsetTop + "px"; //Default
+      });
 
-        timeM.addEventListener('click', e => {
-          e.preventDefault();
-          (timeM.dataset.timelist == 'true') ? timeM.dataset.timelist = false : timeM.dataset.timelist = true;
+
+      function delItem(el, deltime) {
+        return new Promise((resolve, reject) =>  {
+          el.closest('.cartitem').style.animation = `zoomOut ${deltime}ms both`;
+          setTimeout(() => {
+            el.closest('.cartitem').remove();
+            resolve();
+          }, deltime);
         });
+      };
 
-        function liveDate() {
-          date.forEach(el => {
-            el.addEventListener('click', () => {
-              saveDate(el.dataset.calendarDate, null);
-            });
-          });
-        }
-        liveDate();
+      const cartQuantity = () => {
+        if(cart.length == 0) cartInner.innerHTML = '<h1 class="cart__title--empty">Ваша корзина пуста</h1>'
+      }
 
-        function saveDate(date, time) {
-          if(time) inputs.time.value = time;
-          if(date) inputs.date.value = date;
-          if(time) timeM.value = time;
-        }
-
-        saveDate(defDate.date, defDate.time); //Default
-        timeM.value = defDate.time; //Default
-
-        /* Inputs mask */
-        const telOptions = {
-          mask: '+{38}(000)000-00-00'
-        };
-        const wdateOptions = {
-          mask: Date,
-          min: new Date(2019, 0, 0),
-          lazy: false
-        };
-
-        const telMask   = new IMask(inputs.tel, telOptions);
-        const wdateMask = new IMask(inputs.wdate, wdateOptions);
-
-        let isCompleteForm = {
-          tel: false,
-          wday: false
-        }
-
-        telMask
-          .on('accept', () =>  isCompleteForm.tel = false)
-          .on('complete', () => isCompleteForm.tel = true);
-
-        wdateMask
-          .on('accept', () =>  isCompleteForm.wday = false)
-          .on('complete', () => isCompleteForm.wday = true);
     };
+
+    /* Order complete page */
+    if(complete) {
+      let date = complete.querySelector('.order-complete__date');
+      let url = (new URL(document.location)).searchParams;
+      date.textContent = url.get('date') +' ('+ url.get('time') +')';
+    }
+
 
     /* Product card */
     if(pcard) {
       $('.prodslider__slider').slick(slickObj.prodS);
       $('.prodslider__nav').slick(slickObj.prodNav);
       if(device[768]) $('.prodmore__list').slick(slickObj.prodMore);
-    };
-
-
-    function toggleVideo(s) {
-      if(s.querySelector('#h-video')) {
-        video.play();
-      } else {
-        video.pause();
-      }
     };
 
 });
@@ -331,8 +412,58 @@ function initMap() {
   });
 }
 
+/* Global Cart scripts */
+function addToCart(id) {
+  let color = [...document.querySelectorAll('[name=p-color]')].filter(el => el.checked)[0];
+  let size  = [...document.querySelectorAll('[name=p-size]')].filter(el => el.checked)[0];
+
+  for (let i in cart) {
+      if(cart[i].id == id) {
+          cart[i].prop = {
+            color : (color) ? color.value : null,
+            size  : (size)  ?  size.value : null
+          }
+          saveCart();
+          return;
+      }
+  }
+
+  let item  = {
+    id: id,
+    prop: {
+      color : (color) ? color.value : null,
+      size  : (size)  ?  size.value : null
+    }
+  };
+
+  cart.push(item);
+  saveCart();
+  updCartQuantity();
+}
+
+function saveCart() {
+  if (window.localStorage) localStorage.cart = JSON.stringify(cart);
+}
+
+function deleteCartItem(id) {
+  cart = cart.filter(item => item.id !== id);
+  saveCart();
+  updCartQuantity();
+}
+
+function updCartQuantity() {
+  let indicator = document.querySelector('.header__booking-btn i');
+  indicator.textContent = cart.length;
+}
+
+updCartQuantity();
 
 
-function reloadPage() {
-  setTimeout(() => window.location.reload(), 1500);
+function applyCatalogFilter(form) {
+  event.preventDefault();
+  const filter  = [];
+  const checked = [...document.querySelectorAll('.filter__filters input')].filter(el => el.checked);
+  const action = form.action;
+  checked.forEach(el => filter.push(el.value));
+  window.location.href = `${action}&filter=${filter.join(',')}`;
 }

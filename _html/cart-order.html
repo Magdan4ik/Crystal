@@ -1,0 +1,91 @@
+@@include('./chunks/head.html')
+@@include('./chunks/header.html')
+<body>
+  <main class="main">
+
+    <section class="cart-order__steps">
+
+        <section class="cart cart-order__step cart-order__step--active">
+            <div class="cart__inner container">
+                <h1 class="cart__title">Львів</h1>
+                <ul class="cart__items">
+                    @@loop("./chunks/loop/cart.html", "./chunks/loop/cart.json")
+                </ul>
+                <div class="cart__next"><a href="order.html" class="btn btn--drose cart__next-btn">Далі</a></div>
+            </div>
+        </section>
+
+        <section class="order cart-order__step">
+            <div class="order__inner container">
+                <div class="order__date">
+                    <div class="order__calendar">
+                        <div class="cal">
+                            <div class="cal__header">
+                                <button class="cal__btn cal__btn--prev" data-calendar-toggle="previous">prev</button>
+                                <div class="cal__header__label" data-calendar-label="month"></div>
+                                <button class="cal__btn cal__btn--next" data-calendar-toggle="next">next</button>
+                            </div>
+                            <div class="cal__week">
+                                <span>Пн</span> <span>Вт</span><span>Ср</span> <span>Чт</span> <span>Пт</span> <span>Сб</span> <span>Нд</span>
+                            </div>
+                            <div class="cal__body" data-calendar-area="month"></div>
+                        </div>
+                    </div>
+                    <div class="order__time">
+                        <input class="order__time--readonly" type="text" readonly hidden data-timelist='false'>
+                        <ul class="order__timelist">
+                            <li><span>9:00-10:00</span></li>
+                            <li><span>12:00-13:00</span></li>
+                            <li class="order__time--selected"><span>13:00-14:00</span></li>
+                            <li><span>15:00-16:00</span></li>
+                            <li><span>17:00-18:00</span></li>
+                            <li><span>19:00-20:00</span></li>
+                        </ul>
+                        <span class="order__time-label"></span>
+                    </div>
+                </div>
+                <div class="order__form">
+                    <form action="http://elit.oscorp.pro/ajax/cart-order.php" method="POST" id="cart-order-form">
+                        <input type="hidden" name="date">
+                        <input type="hidden" name="time">
+                        <label>
+                            <span>Ім`я <sup>*</sup></span>
+                            <input type="text" name="name" required>
+                        </label>
+                        <label>
+                            <span>Прізвище <sup>*</sup></span>
+                            <input type="text" name="sname" required>
+                        </label>
+                        <label>
+                            <span>Номер телефону <sup>*</sup></span>
+                            <input type="tel" name="tel" required>
+                        </label>
+                        <label>
+                            <span>E-mail <sup>*</sup></span>
+                            <input type="email" name="email" required>
+                        </label>
+                        <label>
+                            <span>Дата події <sup>*</sup></span>
+                            <input type="text" name="event" required>
+                        </label>
+                        <label>
+                            <span>Додаткова інформація</span>
+                            <textarea name="info" placeholder="Ваш коментар..."></textarea>
+                        </label>
+                        <div class="order__form-controls">
+                            <label>Нагадати про примірку
+                                <input type="checkbox" class="new--input" name="remind">
+                            </label>
+                            <button type="submit" class="btn btn--drose order__form-btn" >Записатись</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </section>
+
+  </main>
+  @@include('./chunks/footer.html')
+</body>
+</html>

@@ -76,7 +76,7 @@
 			</ul>
 		</nav>
 		<div class="header__booking">
-			<a class="btn btn--trans header__booking-btn" href="cart.html">Записатись на примірку <i>2</i></a>
+			<a class="btn btn--trans header__booking-btn" href="cart-order.html">Записатись на примірку <i>2</i></a>
 		</div>
 		<div class="header__lang">
 			<a href="#ua" class="lang__link lang__link--ua">Укр</a>/
@@ -92,16 +92,16 @@
                 <button type="button" class="btn btn--trans filter__toggle" data-dot="false">Підбір сукні</button>
                 <div class="filter">
     <button type="button" class="filter__close">X</button>
-    <form action="#filter" class="filter__form" id="filterForm">
+    <form action="#" class="filter__form" id="filterForm" onsubmit="applyCatalogFilter(this)">
         <div class="filter__filters">
             <fieldset class="filter__model">
                 <legend>Фасон</legend>
                 <ul class="filter__list filter__list--model">
-                    <li><input type="checkbox" name="" class="filter__model-ball"><span>Бальне</span></li>
-                    <li><input type="checkbox" name="" class="filter__model-grace"><span>Грецьке</span></li>
-                    <li><input type="checkbox" name="" class="filter__model-straight"><span>Пряме</span></li>
-                    <li><input type="checkbox" name="" class="filter__model-mermaid"><span>Русалка</span></li>
-                    <li><input type="checkbox" name="" class="filter__model-asiluet"><span>А-силует</span></li>
+                    <li><input type="checkbox" name="" value="Бальне" class="filter__model-ball"><span>Бальне</span></li>
+                    <li><input type="checkbox" name="" value="Грецьке" class="filter__model-grace"><span>Грецьке</span></li>
+                    <li><input type="checkbox" name="" value="Пряме" class="filter__model-straight"><span>Пряме</span></li>
+                    <li><input type="checkbox" name="" value="Русалка" class="filter__model-mermaid"><span>Русалка</span></li>
+                    <li><input type="checkbox" name="" value="А-силует" class="filter__model-asiluet"><span>А-силует</span></li>
                 </ul>
             </fieldset>
 
@@ -109,19 +109,19 @@
                 <legend>Бренд</legend>
                 <ul class="filter__list filter__list--brand">
                     <li>
-                        <input type="checkbox" name="111" class="filter__brand-input" id="brand1">
+                        <input type="checkbox" name="" value="Eva Lendel" class="filter__brand-input" id="brand1">
                         <label for="brand1">Eva Lendel</label>
                     </li>
                     <li>
-                        <input type="checkbox" name="" class="filter__brand-input" id="brand2">
+                        <input type="checkbox" name="" value="Tarik Ediz" class="filter__brand-input" id="brand2">
                         <label for="brand2">Tarik Ediz</label>
                     </li>
                     <li>
-                        <input type="checkbox" name="" class="filter__brand-input" id="brand3">
+                        <input type="checkbox" name="" value="Crystal Atelier" class="filter__brand-input" id="brand3">
                         <label for="brand3">Crystal Atelier</label>
                     </li>
                     <li>
-                        <input type="checkbox" name="" class="filter__brand-input" id="brand4">
+                        <input type="checkbox" name="" value="Sherri Hill" class="filter__brand-input" id="brand4">
                         <label for="brand4">Sherri Hill</label>
                     </li>
                 </ul>
@@ -129,14 +129,14 @@
             <fieldset class="filter__color">
                 <legend>Колір</legend>
                 <ul class="filter__list filter__list--color">
-                    <li><input type="checkbox" class="filter__color-input" style="background-color: #88000C"></li>
-                    <li><input type="checkbox" class="filter__color-input" style="background-color: #121212"></li>
-                    <li><input type="checkbox" class="filter__color-input" style="background-color: #F6C6C4"></li>
-                    <li><input type="checkbox" class="filter__color-input" style="background-color: #54644E"></li>
-                    <li><input type="checkbox" class="filter__color-input" style="background-color: #AA2243"></li>
-                    <li><input type="checkbox" class="filter__color-input" style="background-color: #131949"></li>
-                    <li><input type="checkbox" class="filter__color-input" style="background-color: #D9D9D9"></li>
-                    <li><input type="checkbox" class="filter__color-input" style="background-color: #E7D7E0"></li>
+                    <li><input type="checkbox" class="filter__color-input" value="#88000C" style="background-color: #88000C"></li>
+                    <li><input type="checkbox" class="filter__color-input" value="#121212" style="background-color: #121212"></li>
+                    <li><input type="checkbox" class="filter__color-input" value="#F6C6C4" style="background-color: #F6C6C4"></li>
+                    <li><input type="checkbox" class="filter__color-input" value="#54644E" style="background-color: #54644E"></li>
+                    <li><input type="checkbox" class="filter__color-input" value="#AA2243" style="background-color: #AA2243"></li>
+                    <li><input type="checkbox" class="filter__color-input" value="#131949" style="background-color: #131949"></li>
+                    <li><input type="checkbox" class="filter__color-input" value="#D9D9D9" style="background-color: #D9D9D9"></li>
+                    <li><input type="checkbox" class="filter__color-input" value="#E7D7E0" style="background-color: #E7D7E0"></li>
                 </ul>
             </fieldset>
         </div>
@@ -178,7 +178,7 @@
                 <li><i style="background-color: #AA2243"></i></li>
             </ul>
         </div>
-        <button class="btn btn--black product__btn">В примірку</button>
+        <button class="btn btn--black product__btn" onclick="addToCart(1)">В примірку</button>
     </div>
 </article><article class="product">
     <a href="product.html" class="product__link">
@@ -205,7 +205,7 @@
                 <li><i style="background-color: #AA2243"></i></li>
             </ul>
         </div>
-        <button class="btn btn--black product__btn">В примірку</button>
+        <button class="btn btn--black product__btn" onclick="addToCart(2)">В примірку</button>
     </div>
 </article><article class="product">
     <a href="product.html" class="product__link">
@@ -227,7 +227,7 @@
                 <li><i style="background-color: #AA2243"></i></li>
             </ul>
         </div>
-        <button class="btn btn--black product__btn">В примірку</button>
+        <button class="btn btn--black product__btn" onclick="addToCart(3)">В примірку</button>
     </div>
 </article><article class="product">
     <a href="product.html" class="product__link">
@@ -249,7 +249,7 @@
                 <li><i style="background-color: #AA2243"></i></li>
             </ul>
         </div>
-        <button class="btn btn--black product__btn">В примірку</button>
+        <button class="btn btn--black product__btn" onclick="addToCart(4)">В примірку</button>
     </div>
 </article><article class="product">
     <a href="product.html" class="product__link">
@@ -275,7 +275,7 @@
                 <li><i style="background-color: #AA2243"></i></li>
             </ul>
         </div>
-        <button class="btn btn--black product__btn">В примірку</button>
+        <button class="btn btn--black product__btn" onclick="addToCart(5)">В примірку</button>
     </div>
 </article><article class="product">
     <a href="product.html" class="product__link">
@@ -297,7 +297,7 @@
                 <li><i style="background-color: #AA2243"></i></li>
             </ul>
         </div>
-        <button class="btn btn--black product__btn">В примірку</button>
+        <button class="btn btn--black product__btn" onclick="addToCart(6)">В примірку</button>
     </div>
 </article>
             </section>
