@@ -1,7 +1,12 @@
 "use strict";
 
+
 let cart = [];
-if (localStorage.cart) cart = JSON.parse(localStorage.cart);
+
+if (localStorage.cart) {
+  cart = JSON.parse(localStorage.cart);
+  showCart();
+};
 
 window.addEventListener('load', () => {
 
@@ -39,11 +44,6 @@ window.addEventListener('load', () => {
     };
 
     if (home && device[1200]) video.controls = true;
-
-    if(device[768]) {
-      menu.appendChild(hbook);
-      menu.appendChild(hlang);
-    }
 
     /* Slick common obj */
     const slickObj = {
@@ -164,7 +164,6 @@ window.addEventListener('load', () => {
 
         [overlay, burger].forEach(el => el.addEventListener('click', toggleMobmenu));
     }());
-
 
 
 
@@ -323,6 +322,7 @@ window.addEventListener('load', () => {
           })
           .then(() => {
             localStorage.removeItem('cart');
+            deleteCookie('cart');
             w.location.href = `order-complete.html?date=${fd.get('date')}&time=${fd.get('time')}`;
           })
           .catch(() => alert('Ошибка отправки'));
@@ -330,37 +330,6 @@ window.addEventListener('load', () => {
           alert('Заполните необходимые поля');
         }
       });
-
-      /* Cart-order actions */
-      const del        = [...d.querySelectorAll('.cartitem__delete')];
-      const items      = [...d.querySelectorAll('.cartitem')];
-      const quantity   = d.querySelector('.header__booking-btn i');
-      const cartInner  = d.querySelector('.cart__inner');
-      let  itemsLength = items.length;
-
-      del.forEach(el => {
-          el.addEventListener('click', e => {
-            e.preventDefault();
-            delItem(el, 500)
-              .then(cartQuantity);
-        });
-      });
-
-
-      function delItem(el, deltime) {
-        return new Promise((resolve, reject) =>  {
-          el.closest('.cartitem').style.animation = `zoomOut ${deltime}ms both`;
-          setTimeout(() => {
-            el.closest('.cartitem').remove();
-            resolve();
-          }, deltime);
-        });
-      };
-
-      const cartQuantity = () => {
-        if(cart.length == 0) cartInner.innerHTML = '<h1 class="cart__title--empty">Ваша корзина пуста</h1>'
-      }
-
     };
 
     /* Order complete page */
@@ -423,6 +392,7 @@ function addToCart(id) {
             color : (color) ? color.value : null,
             size  : (size)  ?  size.value : null
           }
+          showCart();
           saveCart();
           return;
       }
@@ -438,22 +408,67 @@ function addToCart(id) {
 
   cart.push(item);
   saveCart();
+  showCart();
   updCartQuantity();
 }
 
 function saveCart() {
   if (window.localStorage) localStorage.cart = JSON.stringify(cart);
+  deleteCookie('cart');
+  setCookie('cart', localStorage.cart, 1);
 }
 
-function deleteCartItem(id) {
+function showCart() {
+  let list = document.querySelector('.cart__items');
+  if(list) {
+      list.innerHTML = '';
+      fetch('http://'+ window.location.host + '/_html/chunks/loop/product.json')
+      .then(res => res.json())
+      .then(res => {
+        res.forEach(el => {
+          for (let i in cart) {
+            if(el.id == cart[i].id) {
+              let li = document.createElement('li');
+                  li.className = "cartitem";
+                  li.innerHTML = `
+                                  <figure class="cartitem__figure"><a href="product.html"><img src="${el.image}" alt="Tarik Ediz 50310"></a></figure>
+                                  <div class="cartitem__info">
+                                      <div class="cartitem__desc">
+                                          <a class="cartitem__name" href="product.html">${el.title}</a>
+                                          <b class="cartitem__price">${el.price}<i>грн</i></b>
+                                      </div>
+                                      <div class="cartitem__collection">
+                                          <a href="collection.html" class="btn btn--trans">Tarik Ediz</a>
+                                      </div>
+                                      <button type="button" class="cartitem__delete" onclick="deleteCartItem(${el.id}, this)">X</button>
+                                  </div>
+                                `;
+                  list.appendChild(li);
+            }
+           }
+        });
+      })
+      .catch(err => console.error('Error:', err));
+  }
+}
+
+function deleteCartItem(id, el) {
   cart = cart.filter(item => item.id !== id);
+
+  el.closest('.cartitem').style.animation = `zoomOut 500ms both`;
+    setTimeout(() => {
+      el.closest('.cartitem').remove();
+  }, 500);
   saveCart();
   updCartQuantity();
 }
 
+
 function updCartQuantity() {
   let indicator = document.querySelector('.header__booking-btn i');
-  indicator.textContent = cart.length;
+  let cartInner = document.querySelector('.cart__inner');
+  if(indicator) indicator.textContent = cart.length;
+  if(cart.length == 0 && cartInner) cartInner.innerHTML = '<h1 class="cart__title--empty">Ваша корзина пуста</h1>'
 }
 
 updCartQuantity();
@@ -466,4 +481,20 @@ function applyCatalogFilter(form) {
   const action = form.action;
   checked.forEach(el => filter.push(el.value));
   window.location.href = `${action}&filter=${filter.join(',')}`;
+}
+
+function setCookie(cookiename, cookievalue, hours) {
+  let date = new Date();
+  date.setTime(date.getTime() + Number(hours) * 3600 * 1000);
+  document.cookie = cookiename + "=" + cookievalue + "; path=/;expires = " + date.toGMTString();
+}
+
+function getCookie(name) {
+  let match = document.cookie.match(RegExp('(?:^|;\\s*)' + name + '=([^;]*)')); return match ? match[1] : null;
+}
+
+function deleteCookie(name) {
+  setCookie(name, "", {
+    expires: -1
+  })
 }
