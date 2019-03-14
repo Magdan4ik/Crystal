@@ -13,6 +13,21 @@
         justify-items: center
     &__filter
         margin-bottom: 30px
+    &__more
+      text-align: center
+      margin-top: 60px
+      &-btn
+        &::after
+          content: ""
+          background: url('../img/icons/loading-ico.svg') no-repeat center/contain
+          width: 15px
+          height: 15px
+          margin-left: 15px
+        &:hover::after
+          background-image: url('../img/icons/loading-ico--white.svg')
+        &--loading
+          &::after
+            animation: rotate360 1s infinite linear
 
 /*==============================================================
             FILTER START
@@ -81,11 +96,12 @@
       +sm(font-size, 30px)
   &__list
     display: flex
-    align-items: center
+    align-items: baseline
     flex-flow: row wrap
     margin: 0 -5px
     &--model
       li
+        max-width: 85px
         margin: 15px
         text-align: center
         font-weight: 300
@@ -204,24 +220,40 @@
         display: flex
         justify-content: space-between
         align-items: center
-        padding: 25px
+        padding: 10px
         color: #000
         +sm(padding, 15px)
     &__title
         font-size: 24px
         font-weight: 300
         line-height: 1
-        flex-basis: 55%
+        flex-basis: 65%
         +sm(font-size, 20px)
     &__price
-        font-size: 36px
-        font-weight: 300
         flex-shrink: 0
+        text-align: center
+    &__curprice
+        font-size: 24px
+        font-weight: 300
         white-space: nowrap
-        +sm(font-size, 24px)
         i
             font-size: 15px
             font-style: normal
+    &__oldprice
+        position: relative
+        font-size: 18px
+        display: block
+        i
+          font-size: 12px
+          font-style: normal
+          &:before
+            position: absolute
+            content: ''
+            left: 0
+            top: 45%
+            right: 0
+            border-top: 1px solid #000
+            transform: skewY(8deg)
     &:hover
         box-shadow: 0px 3px 27px rgba(0, 0, 0, 0.4)
         .product__action

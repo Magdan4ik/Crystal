@@ -13,30 +13,49 @@
         +md(margin-bottom, 50px)
         +sm(margin-bottom, 30px)
     &__lside
-        flex-basis: 60%
         display: flex
         width: 60%
         +md(width, 100%)
         +md(flex-basis, auto)
     &__rside
         flex-basis: 30%
+        width: 100%
         color: #000
         font-weight: 300
     &__info
-        //
+    &__price
+        display: flex
+        align-items: baseline
+        margin-bottom: 10px
     &__name
         color: #000
         text-transform: none
         font-size: 36px
         margin-bottom: 15px
         +md(font-size, 32px !important)
-    &__price
+    &__curprice
         font-size: 36px
-        margin-bottom: 10px
+        font-weight: 300
         +sm(font-size, 24px)
         i
             font-size: 22px
             font-style: normal
+    &__oldprice
+        position: relative
+        font-size: 18px
+        display:
+        margin-left: 15px
+        i
+            font-size: 12px
+            font-style: normal
+            &:before
+                position: absolute
+                content: ''
+                left: 0
+                top: 45%
+                right: 0
+                border-top: 1px solid #000
+                transform: skewY(8deg)
     &__desc
         font-size: 16px
     &__properties
@@ -180,22 +199,24 @@
     &__slide
         img
             margin: 0 auto
+            &[data-gallery='true']
+                cursor: zoom-in
 
 /* Product additionally */
 .prodmore
     max-width: 1000px
     margin: 0 auto 45px auto
     &__title
-        font-size: 48px
+        font-size: 32px
         font-weight: 300
         line-height: 1
         color: #000
-        margin-bottom: 25px
-        +md(font-size, 36px)
+        margin-bottom: 10px
+        margin-left: 10px
+        +md(font-size, 28px)
         +sm(font-size, 24px)
     &__list
         display: flex
-        justify-content: center
         +sm(flex-wrap, wrap)
     .product
         margin: 10px

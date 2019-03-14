@@ -24,16 +24,20 @@
                             <li><img src="/img/catalog/product5.jpg"></li>
                         </ul>
                         <ul class="prodslider__slider">
-                            <li class="prodslider__slide"><img src="/img/catalog/product6.jpg" alt=""></li>
-                            <li class="prodslider__slide"><img src="/img/catalog/product5.jpg" alt=""></li>
+                            <li class="prodslider__slide"><img src="/img/catalog/product6.jpg" data-popup="/img/catalog/product6.jpg?big" data-gallery='true'></li>
+                            <li class="prodslider__slide"><img src="/img/catalog/product5.jpg" data-popup="/img/catalog/product5.jpg?big" data-gallery='true'></li>
                         </ul>
                     </div>
                 </div>
+
                 <div class="prodcard__rside">
 
                     <div class="prodcard___info">
                         <h1 class="prodcard__name">Tarik Ediz 50294</h1>
-                        <p class="prodcard__price">11 520 <i>грн</i></p>
+                        <div class="prodcard__price">
+							<span class="prodcard__curprice">11 520 <i>грн</i></span>
+							<span class="prodcard__oldprice">21 520 <i>грн</i></span>
+						</div>
                         <p class="prodcard__desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae ex dignissim orci molestie porttitor. Donec et facilisis est. Duis ante erat, porta nec tristique lobortis, pharetra id magna. Donec a ultrices mauris. Proin eget lobortis augue</p>
                     </div>
 
@@ -73,7 +77,7 @@
                         </li>
                     </ul>
                     <div class="prodcard__actions">
-                        <button type="button" class="btn btn--drose" onclick="addToCart(1)">В примірку</button>
+                        <button type="button" class="btn btn--drose" onclick="addToCart(1, this)">В примірку</button>
                     </div>
                     <div class="prodcard__social">
                         <p>Поділись:</p>

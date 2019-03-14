@@ -1,13 +1,14 @@
 .footer
-	margin-top: 210px
-	+lg(margin-top, 100px)
+	margin-top: 100px
 	&__inner
 	&__topside
 		display: flex
 		border-bottom: 1px solid var(--border-color-grey)
 		+sm(flex-direction, column)
+		+sm(padding-bottom, 20px)
 	&__lside
 		margin-right: 60px
+		flex-shrink: 0
 		+sm-block()
 			margin: 0
 
@@ -16,34 +17,54 @@
 		flex-shrink: 0
 		img
 			margin: 0 auto
+			+sm(max-width, 150px)
 	&__social
 		margin-top: 20px
 		+sm(margin, 10px 0)
 		.social__item
 			margin: 7px
 	&__nav
-		display: flex
-		flex-wrap: wrap
+		display: grid
+		grid-template-columns: repeat(5, 1fr)
+		grid-column-gap: 3%
+		width: 100%
+		+lg(grid-template-columns, repeat(3, 1fr))
+		+sm(grid-template-columns, 1fr)
 	&__navlist
-		margin-right: 60px
 		margin-bottom: 25px
 		font-style: normal
 		font-weight: 300
 		line-height: normal
 		font-size: 16px
 		color: #646464
-		+xs(width, 100%)
-		+xs(margin-right, 0)
-		&:last-of-type
-			margin-right: 0
+		+sm(text-align, center)
+		+sm(margin-bottom, 0)
 
 	&__navtitle
+		display: inline-flex
+		align-items: center
 		font-size: 14px
 		font-weight: 900
 		text-transform: uppercase
 		color: #000
 		margin-bottom: 25px
+		&--active
+		+sm-block()
+			margin: 10px 0
+			text-align: center
+			&::after
+				background: url('/img/arrow-down.svg') no-repeat center/contain
+				content: ""
+				width: 12px
+				height: 12px
+				margin-left: 10px
+				display: block
+				transition: 0.4s transform
+			&.footer__navtitle--active
+				&::after
+					transform: scaleY(-1)
 	&__navitem
+		+sm(display, none)
 		a
 			display: inline-block
 			padding: 5px 0

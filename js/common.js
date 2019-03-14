@@ -1,34 +1,32 @@
 "use strict";
-
-let cart = [];
-if (localStorage.cart) cart = JSON.parse(localStorage.cart);
+const lang = document.documentElement.lang;
+let   cart = [];
+if (getCookie('cart')) cart = JSON.parse(getCookie('cart'));
 
 window.addEventListener('load', () => {
-
     const d = document;
     const w = window;
-    const lang      = d.documentElement.lang;
-    const video     = d.getElementById('h-video');
-    const instafeed = d.getElementById('instafeed');
-    const home      = d.querySelector('.home');
-    const bSlider   = d.querySelector('#brands-slider');
-    const filter    = d.querySelector('.filter');
-    const order     = d.querySelector('.order');
-    const pcard     = d.querySelector('.prodcard');
-    const hbook     = d.querySelector('.header__booking');
-    const hlang     = d.querySelector('.header__lang');
-    const menu      = d.querySelector('.header__nav');
-    const steps     = d.querySelector('.cart-order__steps');
-    const complete  = d.querySelector('.order-complete');
-    let   device    =  {
+    const video      = d.getElementById('h-video');
+    const instafeed  = d.getElementById('instafeed');
+    const home       = d.querySelector('.home');
+    const prodcard   = d.querySelector('.prodcard');
+    const catMoreBtn = d.querySelector('.catalog__more-btn');
+    const bSlider    = d.querySelector('#brands-slider');
+    const filter     = d.querySelector('.filter');
+    const order      = d.querySelector('.order');
+    const steps      = d.querySelector('.cart-order__steps');
+    const complete   = d.querySelector('.order-complete');
+    let   device     =  {
       '768'   : w.matchMedia('(max-width: 768px)').matches,
       '1200'  : w.matchMedia('(max-width: 1200px)').matches
     }
 
+    d.body.style.opacity = '1';
+
      /* OnePage Scroll */
     if(home && !device[1200]) {
       onePageScroll(".home", {
-        pagination: false,
+        pagination: true,
         animationTime: 1500,
         footer: "footer",
         delay: 500,
@@ -40,9 +38,21 @@ window.addEventListener('load', () => {
 
     if (home && device[1200]) video.controls = true;
 
-    if(device[768]) {
-      menu.appendChild(hbook);
-      menu.appendChild(hlang);
+    /* Footer Toggle menu */
+    if (device[768]) {
+      const title      = [...d.querySelectorAll('.footer__navtitle')];
+      const li         = [...d.querySelectorAll('.footer__navitem')];
+      const activeClss = "footer__navtitle--active";
+      title.forEach(el => el.addEventListener('click', e => {
+        e.preventDefault();
+        const sib = [...el.parentElement.children].filter(child => child !== el);
+        if(!el.classList.contains(activeClss)) {
+          title.forEach(el => el.classList.remove(activeClss));
+          el.classList.add(activeClss);
+          li.forEach(li => $(li).slideUp());
+          sib.forEach(sib => $(sib).slideDown());
+        };
+       }));
     }
 
     /* Slick common obj */
@@ -82,6 +92,7 @@ window.addEventListener('load', () => {
         fade: false,
         swipe: false,
         asNavFor: '.prodslider__nav',
+        infinite: false,
         responsive: [
           {
             breakpoint: 769,
@@ -98,7 +109,8 @@ window.addEventListener('load', () => {
         slidesToScroll: 1,
         asNavFor: '.prodslider__slider',
         vertical: true,
-        focusOnSelect: true
+        focusOnSelect: true,
+        arrows: false
       },
       prodMore: {
         slidesToShow: 2,
@@ -117,10 +129,10 @@ window.addEventListener('load', () => {
       }
     };
 
-    /* Brands init slider */
-    if(bSlider) {
-      $(bSlider).slick(slickObj.brandS);
-    };
+    $(bSlider).slick(slickObj.brandS);
+    $('.prodslider__slider').slick(slickObj.prodS);
+    $('.prodslider__nav').slick(slickObj.prodNav);
+    if(device[768]) $('.prodmore__list').slick(slickObj.prodMore);
 
 
     /*Insta */
@@ -148,8 +160,9 @@ window.addEventListener('load', () => {
 
 
 
-  /* Burger Menu*/
+  /* Mobile Menu*/
     (function() {
+      /* Burger menu */
       let burger  = d.querySelector('.header__burg'),
           nav     = d.querySelector('.header__nav'),
           overlay = d.createElement('div');
@@ -163,9 +176,26 @@ window.addEventListener('load', () => {
         };
 
         [overlay, burger].forEach(el => el.addEventListener('click', toggleMobmenu));
+
+      /* Toggle Mobile Sumbenu */
+      const ddown = d.querySelectorAll('.header__navlist-toggle');
+
+        ddown.forEach(el => {
+          el.addEventListener('click', (event) => {
+            toggleMore(el);
+          });
+        });
+
+        function toggleMore(el) {
+          el.classList.toggle('active');
+          if(el.classList.contains('active')) {
+            $(el.nextElementSibling).slideDown();
+          } else {
+            $(el.nextElementSibling).slideUp();
+          }
+        };
+  
     }());
-
-
 
 
     /* Catalog filter toggle */
@@ -204,7 +234,6 @@ window.addEventListener('load', () => {
       vanillacalendar.cal.classList.add('call--init');
       const form   = d.querySelector('#cart-order-form');
       const time   = d.querySelectorAll('.order__timelist li');
-      const timeSp = d.querySelectorAll('.order__timelist li span');
       const timeL  = d.querySelector('.order__time-label');
       const timeS  = d.querySelector('.order__time--selected');
       const timeM  = d.querySelector('.order__time--readonly');
@@ -221,6 +250,9 @@ window.addEventListener('load', () => {
         date: d.querySelector('.cal__date--today').dataset.calendarDate,
         time: d.querySelector('.order__time--selected').textContent
       }
+      const prodVal  = [...d.querySelectorAll('input[name="prop[]"]')].map(inp => inp.value);
+      const prodStr  = prodVal.join();
+
 
       mBtn.forEach(el=> {
         el.addEventListener('click', () => {
@@ -266,6 +298,9 @@ window.addEventListener('load', () => {
       saveDate(defDate.date, defDate.time); //Default
       timeM.value = defDate.time; //Default
 
+
+
+
       /* Inputs mask */
       const telOptions = {
         mask: '+{38}(000)000-00-00'
@@ -280,50 +315,52 @@ window.addEventListener('load', () => {
       const eventMask = new IMask(inputs.event, eventOptions);
 
       let isCompleteForm = {
-        tel: false,
-        wday: false
+        tel: false
       }
 
       telMask
         .on('accept', () =>  isCompleteForm.tel = false)
         .on('complete', () => isCompleteForm.tel = true);
 
-      eventMask
-        .on('accept', () =>  isCompleteForm.wday = false)
-        .on('complete', () => isCompleteForm.wday = true);
+
 
 
       /* Cart-order steps */
       const step = [...steps.querySelectorAll('.cart-order__step')];
       const clss = ['cart-order__step--prev', 'cart-order__step--active', 'cart-order__step--next'];
       const next = steps.querySelector('.cart__next-btn');
-
-      next.addEventListener('click', e => {
-        e.preventDefault();
-        step.forEach(st => {
-          step.forEach(s => s.classList.remove(...clss));
-          st.classList.add(clss[1]);
-          const { nextElementSibling: next, previousElementSibling: prev } = st;
-          prev && prev.classList.add(clss[0]);
-          next && next.classList.add(clss[2]);
+      if(next) {
+        next.addEventListener('click', e => {
+          e.preventDefault();
+          let pr;
+          step.forEach(st => {
+            step.forEach(s => s.classList.remove(...clss));
+            st.classList.add(clss[1]);
+            const { nextElementSibling: next, previousElementSibling: prev } = st;
+            prev && prev.classList.add(clss[0]);
+            next && next.classList.add(clss[2]);
+            pr = prev;
+          });
+          pr.addEventListener("webkitAnimationEnd", () => {
+            pr.style.display = 'none';
+            timeL.style.top = timeS.offsetTop + "px"; //Default
+          });
         });
-      });
-
-      const maxH = step.reduce((a, b) => Math.max(a.offsetHeight, b.offsetHeight));
-      steps.style.minHeight = maxH + 'px';
+      }
 
       form.addEventListener('submit', e => {
         e.preventDefault();
         const isValid = Object.values(isCompleteForm).every(item => item);
         if (isValid) {
           const fd = new FormData(e.target);
+          fd.append('product', prodStr); //append products variables
           fetch(e.target.action, {
             method: 'POST',
             body: fd
           })
           .then(() => {
-            localStorage.removeItem('cart');
-            w.location.href = `order-complete.html?date=${fd.get('date')}&time=${fd.get('time')}`;
+            deleteCookie('cart');
+            w.location.href = `/complete?date=${fd.get('date')}&time=${fd.get('time')}`;
           })
           .catch(() => alert('Ошибка отправки'));
         } else {
@@ -331,18 +368,15 @@ window.addEventListener('load', () => {
         }
       });
 
-      /* Cart-order actions */
+      /* Cart-order delte actions */
       const del        = [...d.querySelectorAll('.cartitem__delete')];
-      const items      = [...d.querySelectorAll('.cartitem')];
-      const quantity   = d.querySelector('.header__booking-btn i');
       const cartInner  = d.querySelector('.cart__inner');
-      let  itemsLength = items.length;
 
       del.forEach(el => {
           el.addEventListener('click', e => {
             e.preventDefault();
             delItem(el, 500)
-              .then(cartQuantity);
+              .then(isCartEmpty);
         });
       });
 
@@ -357,8 +391,11 @@ window.addEventListener('load', () => {
         });
       };
 
-      const cartQuantity = () => {
-        if(cart.length == 0) cartInner.innerHTML = '<h1 class="cart__title--empty">Ваша корзина пуста</h1>'
+      const isCartEmpty = () => {
+        if(cart.length == 0) {
+          if(lang == 'ru') cartInner.innerHTML = '<h1 class="cart__title--empty">Ваша примерка пуста</h1>'
+          if(lang == 'ua') cartInner.innerHTML = '<h1 class="cart__title--empty">Ваша примірка порожня</h1>'
+        }
       }
 
     };
@@ -371,57 +408,193 @@ window.addEventListener('load', () => {
     }
 
 
-    /* Product card */
-    if(pcard) {
-      $('.prodslider__slider').slick(slickObj.prodS);
-      $('.prodslider__nav').slick(slickObj.prodNav);
-      if(device[768]) $('.prodmore__list').slick(slickObj.prodMore);
-    };
+    /* Popup`s */
+    d.querySelectorAll('.open-popup').forEach(el => {
+      el.addEventListener('click', () => {
+        d.querySelector(el.dataset.modal).dataset.visible = true;
+      });
+    });
+
+    d.querySelectorAll('.popup-box').forEach(el => {
+      el.addEventListener('click', e => {
+        if(e.target.classList.contains("popup-box") || e.target.classList.contains("popup-box__close")) {
+          el.dataset.visible = false;
+        }
+      });
+    });
+
+    /* Load more Products */
+    if(catMoreBtn) {
+      const catalog = d.querySelector('.catalog__products');
+      const paginat = d.querySelector('.pagination');
+      const path    = catMoreBtn.dataset.path;
+      const maxpage = +catMoreBtn.dataset.maxpage;
+      let   curpage = +catMoreBtn.dataset.curentpage;
+
+      noMoreProd(curpage, maxpage);
+
+      catMoreBtn.addEventListener('click', () => {
+        if(curpage < maxpage) {
+          curpage ++;
+          paginat.classList.add('invisible');
+          catMoreBtn.classList.add('catalog__more-btn--loading');
+          fetch(`https://cors-anywhere.herokuapp.com/http://elit.oscorp.pro/index.php?route=product/moreproduct&path=${path}&page=${curpage}`, {
+            method: 'GET'
+          })
+          .then(resp => { return resp.text()})
+          .then(html => {
+            catMoreBtn.classList.remove('catalog__more-btn--loading');
+            catalog.innerHTML += html;
+          })
+          .catch(err => console.error('Error:', err));
+        }
+        noMoreProd(curpage, maxpage);
+      });
+      function noMoreProd(cur, max) {
+        if(cur === max) {
+          $(catMoreBtn).fadeOut();
+        }
+      }
+    }
+
 
 });
 
 
 
 
-function initMap() {
-  const iconUrl  = '/img/icons/map__marker--red.png';
-  let coordLviv  = {lat: 49.8311398, lng: 24.033193900000015};
-  let coordKiev  = {lat: 50.4370785, lng: 30.517750699999965};
-  let coordLvivA = {lat: 49.82873699999999, lng: 23.991688000000067};
-  let mapKiev    = new google.maps.Map(document.getElementById('mapKiev'), {zoom: 17, center: coordKiev});
-  let mapLviv    = new google.maps.Map(document.getElementById('mapLviv'), {zoom: 17, center: coordLviv});
-  let mapLvivA   = new google.maps.Map(document.getElementById('mapLvivA'),{zoom: 17, center: coordLvivA});
 
-  const markerKiev     = new google.maps.Marker({
-      position: coordKiev,
-      map: mapKiev,
-      animation: google.maps.Animation.BOUNCE,
-      icon: { url: iconUrl}
-  });
-  const markerLviv = new google.maps.Marker({
-      position: coordLviv,
-      map: mapLviv,
-      animation: google.maps.Animation.BOUNCE,
-      icon: { url: iconUrl}
-  });
-  const markerLvivA  = new google.maps.Marker({
-      position: coordLvivA,
-      map: mapLvivA,
-      animation: google.maps.Animation.BOUNCE,
-      icon: { url: iconUrl}
-  });
+/* Gallery in popup start */
+{
+  let current_photo = 1;
+  let  images = null;
+  document.addEventListener("click", e => popGallery(e));
+  document.onkeydown = popGalleryKey;
+
+  function popGallery(e) {
+    if (e.srcElement.dataset.gallery == 'true') {
+      images = (images == null ? document.querySelectorAll(".prodslider__slider img").length : images);
+
+        document.querySelectorAll(".prodslider__slider li img").forEach((img, i) => {
+          img.dataset.n = (i + 1);
+        });
+
+        current_photo = (parseInt(e.target.dataset.n));
+        const popup = document.createElement('div');
+        popup.id = 'popGallery';
+        popup.className = 'popup-box';
+        popup.dataset.visible = true;
+        document.body.appendChild(popup);
+        popup.innerHTML += `
+          <div class="popup-box__content">
+            <div class="popup-box__close"></div>
+            <div id="popup-load" class="popup-box__load"></div>
+            <div id="popup-prev" class="popup-box__nav">prev</div>
+            <div id="popup-next" class="popup-box__nav">next</div>
+            <div id="popup-slides" class="popup-box__slides"></div>
+            <div class="popup-box__images" id="popup-img">
+              <img id="popup-photo" class="popup-box__image" src="${e.srcElement.dataset.popup}" onclick="window.open(this.src)">
+            </div>
+          </div>`;
+        popGalleryNav();
+        popGalleryPreload(document.getElementById("popup-photo"));
+    } else if (document.getElementById("popGallery") && e.srcElement.classList.contains("popup-box") || e.srcElement.classList.contains("popup-box__close")) {
+        document.getElementById("popGallery").remove();
+    } else if (document.getElementById("popGallery") && e.srcElement.id == "popup-next" || e.srcElement.id == "popup-prev") {
+        (e.srcElement.id == "popup-next") ? current_photo++ : current_photo--;
+
+        let elements = document.querySelectorAll(".prodslider__slider li");
+        let src = (elements.item(current_photo - 1).getElementsByTagName("img")[0].dataset.popup);
+        let img = document.getElementById("popup-photo");
+        img.src = src;
+        popGalleryNav();
+        popGalleryPreload(img);
+    }
+  }
+
+
+  function popGalleryNav() {
+    document.getElementById("popup-slides").innerHTML = "<b>" + current_photo + "</b> / " + images;
+    document.getElementById("popup-prev").style.display = (current_photo == 1 || images == 0) ? "none" : "flex";
+    document.getElementById("popup-next").style.display = (current_photo == images || images == 0) ? "none" : "flex";
+  }
+
+  function popGalleryPreload(img) {
+    let preload = document.getElementById("popup-load");
+    let interval = setInterval(() => {
+      if(img.complete) {
+        $(preload).fadeOut();
+        clearInterval(interval);
+      } else {
+        $(preload).fadeIn();
+      }
+    }, 100)
+  }
+
+  function popGalleryKey(e) {
+    e = e || window.event;
+    if (document.getElementById("popGallery")) {
+        if (e.keyCode == "37") { // ON KEYDOWN LEFT ARROW
+          if (document.getElementById("popup-prev").style.display != "none") document.getElementById("popup-prev").click();
+        }
+        else if (e.keyCode == "39") { // ON KEYDOWN RIGHT ARROW
+          if (document.getElementById("popup-next").style.display != "none") document.getElementById("popup-next").click();
+        }
+        else if (e.keyCode == "27") { // ON KEYDOWN ESCAPE
+          document.getElementById("popGallery").remove();
+        }
+    }
+  }
+
 }
 
+/* Google map */
+function initMap() {
+
+  const gMap = {
+    Kiev: {
+      position: {lat: 50.4370785, lng: 30.517750699999965},
+      map() { return newMap('mapKiev', this.position) }
+    },
+    Lviv: {
+      position: {lat: 49.8311398, lng: 24.033193900000015},
+      map() { return newMap('mapLviv', this.position) }
+    },
+    LvivA: {
+      position: {lat: 49.8311398, lng: 24.033193900000015},
+      map() { return newMap('mapLvivA', this.position) }
+    }
+  };
+
+  for(let key in gMap) {
+      gMarker(gMap[key].position, gMap[key].map() );
+  }
+
+  function gMarker(position, map) {
+    return new google.maps.Marker({
+        position,
+        map,
+        animation: google.maps.Animation.BOUNCE,
+        icon: { url: '/img/icons/map__marker--red.png'}
+    })
+  }
+
+  function newMap(id, position) {
+    return new google.maps.Map(document.getElementById(id), {zoom: 15, center: position})
+  }
+}
+
+
 /* Global Cart scripts */
-function addToCart(id) {
+function addToCart(id, btn) {
   let color = [...document.querySelectorAll('[name=p-color]')].filter(el => el.checked)[0];
   let size  = [...document.querySelectorAll('[name=p-size]')].filter(el => el.checked)[0];
 
   for (let i in cart) {
       if(cart[i].id == id) {
           cart[i].prop = {
-            color : (color) ? color.value : null,
-            size  : (size)  ?  size.value : null
+            color : (color) ? color.value : "",
+            size  : (size)  ?  size.value : ""
           }
           saveCart();
           return;
@@ -431,18 +604,24 @@ function addToCart(id) {
   let item  = {
     id: id,
     prop: {
-      color : (color) ? color.value : null,
-      size  : (size)  ?  size.value : null
+      color : (color) ? color.value : "",
+      size  : (size)  ?  size.value : ""
     }
   };
 
   cart.push(item);
   saveCart();
   updCartQuantity();
+  cartPopup(btn);
 }
 
 function saveCart() {
-  if (window.localStorage) localStorage.cart = JSON.stringify(cart);
+  if (navigator.cookieEnabled) {
+    deleteCookie('cart');
+    setCookie('cart', JSON.stringify(cart), 240);
+  } else {
+    alert('Включите cookie в настройках браузера');
+  }
 }
 
 function deleteCartItem(id) {
@@ -459,11 +638,45 @@ function updCartQuantity() {
 updCartQuantity();
 
 
-function applyCatalogFilter(form) {
+function cartPopup(btn) {
+  const popup       = document.querySelector('#popProduct');
+  const popupTitle  = popup.querySelector('.popup-box__title i');
+  let   prodName;
+  if (btn.closest('.product'))  prodName = btn.closest('.product').querySelector('.product__title');
+  if (btn.closest('.prodcard')) prodName = btn.closest('.prodcard').querySelector('.prodcard__name');
+  popupTitle.innerHTML = '';
+  popupTitle.innerHTML = prodName.textContent;
+  popup.dataset.visible = true;
+}
+
+function cityPopup(city) {
+  deleteCookie('city');
+  setCookie('city', encodeURIComponent(city), 96);
+  location.reload();
+}
+
+
+function applyCatalogFilter(form, event) {
   event.preventDefault();
   const filter  = [];
   const checked = [...document.querySelectorAll('.filter__filters input')].filter(el => el.checked);
   const action = form.action;
   checked.forEach(el => filter.push(el.value));
   window.location.href = `${action}&filter=${filter.join(',')}`;
+}
+
+function setCookie(cookiename, cookievalue, hours) {
+  let date = new Date();
+  date.setTime(date.getTime() + Number(hours) * 3600 * 1000);
+  document.cookie = cookiename + "=" + cookievalue + "; path=/;expires = " + date.toGMTString();
+}
+
+function getCookie(name) {
+  let match = document.cookie.match(RegExp('(?:^|;\\s*)' + name + '=([^;]*)')); return match ? match[1] : null;
+}
+
+function deleteCookie(name) {
+  setCookie(name, "", {
+    expires: -1
+  })
 }

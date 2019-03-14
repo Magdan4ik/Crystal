@@ -12,16 +12,18 @@
         margin-top: 30vh
         display: flex
         justify-content: space-between
-        align-items: center
-        +md(flex-direction, column)
+        align-items: flex-end
+        +md-block()
+            flex-direction: column
+            align-items: center
         +sm(margin-top, 100px)
     &__lside
         max-width: 570px
         text-align: center
     &__rside
         flex-basis: 45%
-        line-height: 57px
-        font-size: 60px
+        line-height: 1
+        font-size: 40px
         text-align: center
         +md(margin-top, 20px)
         +sm(font-size, 18px)
@@ -29,13 +31,16 @@
         color: #000
         font-weight: 300
         line-height: 1
-        font-size: 71px
+        font-size: 45px
         text-transform: uppercase
+        text-align: left
+        +md(text-align, center)
         +sm(font-size, 36px)
     &__subtitle
         font-weight: 300
         line-height: 1
         font-size: 48px
+        text-align: left
         +sm-block()
             margin-top: 30px
             font-size: 18px

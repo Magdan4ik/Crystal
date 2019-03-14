@@ -47,6 +47,7 @@ html, body
   height: 100%
 
 body
+  opacity: 0
   min-width: 320px
   max-width: 1920px
   margin: 0 auto
@@ -57,7 +58,9 @@ body
   font-weight: 500
   overflow-x: hidden
   line-height: normal
-  transition: 0.3s opacity
+  transition: 1s opacity
+  &:not([class^="viewing-page"])
+    opacity: 1
   &[class^="viewing-page"]
     overflow: hidden
     main
@@ -73,7 +76,7 @@ h1
 
 main
   padding-top: 90px
-  min-height: calc(100vh - 480px)
+  min-height: calc(100vh - 450px)
   +sm(padding-top, 55px)
 
 a,
@@ -263,6 +266,7 @@ input
     &:hover
       color: #fff
       background: #d58481
+      border-color: #d58481
   &--right
     font-size: 72px
     font-weight: 300
@@ -405,3 +409,135 @@ input
     a
       &::before
         transform: rotate(-45deg)
+
+
+/*==============================================================
+            POPUP START
+/*============================================================= */
+.popup-box
+  visibility: hidden
+  opacity: 0
+  position: fixed
+  background-color: rgba(0, 0, 0, 0.8)
+  z-index: 1000
+  left: 0
+  top: 0
+  width: 100vw
+  height: 100vh
+  overflow: auto
+  padding: 15px
+  display: flex
+  justify-content: center
+  align-items: center
+  &[data-visible='true']
+    animation: OpenModal 0.3s both
+    visibility: visible
+    opacity: 1
+  &[data-visible='false']
+    animation: CloseModal 0.3s both
+    visibility: hidden
+    opacity: 0
+  &__close
+    position: absolute
+    right: 5px
+    top: 5px
+    background: none
+    color: #000
+    font-size: 28px
+    line-height: 1
+    padding: 0
+    margin: 0
+    outline: none
+    border: none
+    cursor: pointer
+    z-index: 3
+    &::before
+      content: '\2715'
+  &__content
+    position: relative
+    font-size: 18px
+    width: 100%
+    max-width: 550px
+    max-height: 100%
+    overflow-y: auto
+    background-color: #fff
+    padding: 30px 20px
+  &__title
+    text-align: center
+    font-size: 24px
+    font-weight: 300
+    i
+      font-style: normal
+      font-weight: 500
+  &__actions
+    margin-top: 20px
+    display: flex
+    justify-content: space-between
+    &-btn
+      flex-basis: 49%
+      font-size: 13px
+  &__city
+    &-title
+      line-height: 1
+      font-size: 42px
+      font-weight: 300
+      text-transform: uppercase
+      text-align: center
+      color: #000
+      +sm(font-size, 26px)
+    &-list
+      margin-top: 20px
+      display: flex
+      justify-content: center
+      flex-wrap: wrap
+    &-btn
+      margin: 5px
+      min-width: 150px
+  &__images
+  &__image
+    margin: 0 auto
+    cursor: zoom-in
+  &__nav
+    position: absolute
+    top: 0
+    height: 100%
+    background: no-repeat center/17px
+    width: 50px
+    display: flex
+    justify-content: center
+    align-items: center
+    cursor: pointer
+    font-size: 0
+    opacity: 0.5
+    z-index: 2
+    transition: 0.3s opacity
+    &:hover
+      opacity: 1
+    &#popup-prev
+      left: 0
+      background-image: url(/img/slider-arrow--l.svg)
+    &#popup-next
+      right: 0
+      background-image: url(/img/slider-arrow--r.svg)
+  &__slides
+    position: absolute
+    background: rgba(255,255,255,0.7)
+    padding: 10px
+    bottom: 0
+    left: 0
+    right: 0
+    width: 100%
+    text-align: center
+    z-index: 2
+  &__load
+    position: absolute
+    left: 10px
+    top: 0
+    background: url(/img/preloader.svg) no-repeat center/contain
+    width: 60px
+    height: 30px
+
+#popGallery .popup-box__content
+  max-width: 70vh
+  overflow: hidden
+  padding: 0

@@ -5,7 +5,10 @@
         </figure>
         <div class="product__info">
             <h3 class="product__title">@@title</h3>
-            <b class="product__price">@@price<i>грн</i></b>
+            <div class="product__price">
+                <b class="product__curprice">@@price<i>грн</i></b>
+                
+            </div>
         </div>
         
         
@@ -18,6 +21,6 @@
                 <li><i style="background-color: #AA2243"></i></li>
             </ul>
         </div>
-        <button class="btn btn--black product__btn" onclick="addToCart(@@id)">В примірку</button>
+        <button class="btn btn--black product__btn" onclick="addToCart(@@id, this)">В примірку</button>
     </div>
 </article>

@@ -12,6 +12,7 @@
         margin-bottom: 25px
         &--empty
             font-size: 50px
+            text-align: center
     &__items
         margin-bottom: 50px
         +sm(margin-bottom, 25px)
@@ -23,7 +24,7 @@
 
 .cartitem
     display: flex
-    align-items: flex-end
+    align-items: center
     justify-content: space-between
     margin-bottom: 20px
     &__figure
@@ -66,7 +67,7 @@
         +sm(margin-bottom, 20px)
     &__price
         font-size: 36px
-        font-weight: 700
+        font-weight: 300
         white-space: nowrap
         color: #000
         i
@@ -97,3 +98,9 @@
             transform: rotate(45deg)
         &:after
             transform: rotate(-45deg)
+    &__props
+        transform: scale(0.8)
+        transform-origin: left
+        pointer-events: none
+        input:disabled:not(:checked)
+            display: none

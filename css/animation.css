@@ -237,7 +237,7 @@
 
 
   @keyframes insta {
-    from {
+    0% {
       transform: translate3d(-50%, 0, 0) scale3d(0.9, 0.9, 0.9);
       -webkit-transform: translate3d(-50%, 0, 0) scale3d(0.9, 0.9, 0.9);
     }
@@ -249,11 +249,7 @@
       transform: translate3d(-50%, 0, 0) scale3d(1, 1, 1);
       -webkit-transform: translate3d(-50%, 0, 0) scale3d(1, 1, 1);
     }
-    60% {
-      transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
-      -webkit-transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
-    }
-    100% {
+    60%, 100% {
       transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
       -webkit-transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
     }
@@ -262,8 +258,8 @@
   @keyframes dropdown {
     from {
       opacity: 0;
-      -webkit-transform: translate3d(0, 15px, 0);
-      transform: translate3d(0, 15px, 0);
+      -webkit-transform: translate3d(0, -15px, 0);
+      transform: translate3d(0, -15px, 0);
     }
     to {
       opacity: 1;
@@ -338,5 +334,36 @@
     opacity: 1;
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
+  }
+}
+
+
+@keyframes OpenModal {
+  from {
+    transform: scale(1.1); 
+    opacity: 0;
+  }
+  to {
+   transform: scale(1); 
+   opacity: 1;
+  }
+}
+
+@keyframes CloseModal {
+  from {
+    visibility: visible;
+    transform: scale(1); 
+    opacity: 1;
+  }
+  to {
+   transform: scale(1.1); 
+   opacity: 0;
+   visibility: hidden;
+  }
+}
+
+@keyframes rotate360 {
+  to {
+    transform: rotate(360deg);
   }
 }

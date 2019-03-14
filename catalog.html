@@ -34,11 +34,13 @@
 		<nav class="header__nav">
 			<ul class="header__navlist">
 				<li><a href="/"><span>Головна</span></a></li>  <!-- li.current -->
-				<li><a href="collection.html">
-					<span>Сукні</span></a>
+				<li>
+					<a href="collection.html"><span>Сукні</span></a>
+					<i class="header__navlist-toggle"></i>
 					<ul class="header__navlist-dropdown">
 						<li>
 							<a href="#">Весільні сукні</a>
+							<i class="header__navlist-toggle"></i>
 							<ul class="header__navlist-dropdown">
 								<li><a href="collection.html">The Icon 2019 by CD</a></li>
 								<li><a href="#">Paris 2019 by CD</a></li>
@@ -51,6 +53,7 @@
 						</li>
 						<li>
 							<a href="#">Вечірні сукні</a>
+							<i class="header__navlist-toggle"></i>
 							<ul class="header__navlist-dropdown">
 								<li><a href="#">Glam Vibes</a></li>
 								<li><a href="#">Rebel collection</a></li>
@@ -61,6 +64,7 @@
 						</li>
 						<li>
 							<a href="#">Crystal Atelier</a>
+							<i class="header__navlist-toggle"></i>
 							<ul class="header__navlist-dropdown">
 								<li><a href="#">Весільні сукні на знижці</a></li>
 								<li><a href="#">Вечірні сукні на знижці</a></li>
@@ -74,14 +78,14 @@
 				<li><a href="whyus.html"><span>Чому ми?</span></a></li>
 				<li><a href="blog.html"><span>Блог</span></a></li>
 			</ul>
+			<div class="header__booking">
+				<a class="btn btn--trans header__booking-btn" href="cart-order.html">Записатись на примірку <i>2</i></a>
+			</div>
+			<div class="header__lang">
+				<a href="#ua" class="lang__link lang__link--ua">Укр</a>/
+				<a href="#ru" class="lang__link lang__link--ru">Рус</a>
+			</div>
 		</nav>
-		<div class="header__booking">
-			<a class="btn btn--trans header__booking-btn" href="cart-order.html">Записатись на примірку <i>2</i></a>
-		</div>
-		<div class="header__lang">
-			<a href="#ua" class="lang__link lang__link--ua">Укр</a>/
-			<a href="#ru" class="lang__link lang__link--ru">Рус</a>
-		</div>
 	</div>
 </header>
 <body>
@@ -165,7 +169,10 @@
         </figure>
         <div class="product__info">
             <h3 class="product__title">Tarik Ediz 50310</h3>
-            <b class="product__price">11500<i>грн</i></b>
+            <div class="product__price">
+                <b class="product__curprice">11500<i>грн</i></b>
+                
+            </div>
         </div>
         
         
@@ -178,7 +185,7 @@
                 <li><i style="background-color: #AA2243"></i></li>
             </ul>
         </div>
-        <button class="btn btn--black product__btn" onclick="addToCart(1)">В примірку</button>
+        <button class="btn btn--black product__btn" onclick="addToCart(1, this)">В примірку</button>
     </div>
 </article><article class="product">
     <a href="product.html" class="product__link">
@@ -187,7 +194,10 @@
         </figure>
         <div class="product__info">
             <h3 class="product__title">Tarik Ediz 50310</h3>
-            <b class="product__price">11500<i>грн</i></b>
+            <div class="product__price">
+                <b class="product__curprice">11500<i>грн</i></b>
+                <b class="product__oldprice">21500<i>грн</i></b>
+            </div>
         </div>
         
             <div class="product__label product__label--sale">
@@ -205,7 +215,7 @@
                 <li><i style="background-color: #AA2243"></i></li>
             </ul>
         </div>
-        <button class="btn btn--black product__btn" onclick="addToCart(2)">В примірку</button>
+        <button class="btn btn--black product__btn" onclick="addToCart(2, this)">В примірку</button>
     </div>
 </article><article class="product">
     <a href="product.html" class="product__link">
@@ -214,7 +224,10 @@
         </figure>
         <div class="product__info">
             <h3 class="product__title">Crystal Design Sunshine</h3>
-            <b class="product__price">11500<i>грн</i></b>
+            <div class="product__price">
+                <b class="product__curprice">11500<i>грн</i></b>
+                
+            </div>
         </div>
         
         
@@ -227,7 +240,7 @@
                 <li><i style="background-color: #AA2243"></i></li>
             </ul>
         </div>
-        <button class="btn btn--black product__btn" onclick="addToCart(3)">В примірку</button>
+        <button class="btn btn--black product__btn" onclick="addToCart(3, this)">В примірку</button>
     </div>
 </article><article class="product">
     <a href="product.html" class="product__link">
@@ -236,7 +249,10 @@
         </figure>
         <div class="product__info">
             <h3 class="product__title">Crystal Design Medelin</h3>
-            <b class="product__price">11500<i>грн</i></b>
+            <div class="product__price">
+                <b class="product__curprice">11500<i>грн</i></b>
+                
+            </div>
         </div>
         
         
@@ -249,7 +265,7 @@
                 <li><i style="background-color: #AA2243"></i></li>
             </ul>
         </div>
-        <button class="btn btn--black product__btn" onclick="addToCart(4)">В примірку</button>
+        <button class="btn btn--black product__btn" onclick="addToCart(4, this)">В примірку</button>
     </div>
 </article><article class="product">
     <a href="product.html" class="product__link">
@@ -258,7 +274,10 @@
         </figure>
         <div class="product__info">
             <h3 class="product__title">Sherri Hill 52050</h3>
-            <b class="product__price">11500<i>грн</i></b>
+            <div class="product__price">
+                <b class="product__curprice">11500<i>грн</i></b>
+                
+            </div>
         </div>
         
         
@@ -275,7 +294,7 @@
                 <li><i style="background-color: #AA2243"></i></li>
             </ul>
         </div>
-        <button class="btn btn--black product__btn" onclick="addToCart(5)">В примірку</button>
+        <button class="btn btn--black product__btn" onclick="addToCart(5, this)">В примірку</button>
     </div>
 </article><article class="product">
     <a href="product.html" class="product__link">
@@ -284,7 +303,10 @@
         </figure>
         <div class="product__info">
             <h3 class="product__title">Tarik Ediz 50310</h3>
-            <b class="product__price">11500<i>грн</i></b>
+            <div class="product__price">
+                <b class="product__curprice">11500<i>грн</i></b>
+                
+            </div>
         </div>
         
         
@@ -297,9 +319,12 @@
                 <li><i style="background-color: #AA2243"></i></li>
             </ul>
         </div>
-        <button class="btn btn--black product__btn" onclick="addToCart(6)">В примірку</button>
+        <button class="btn btn--black product__btn" onclick="addToCart(6, this)">В примірку</button>
     </div>
 </article>
+            </section>
+            <section class="catalog__more">
+                <button class="btn btn--trans catalog__more-btn" type="button" data-path="59_63_67" data-fitler="" data-maxpage="9" data-curentpage="1">Показать еще</button>
             </section>
             <ul class="pagination">
     <li class="pagination__prev"><a href="">prev</a></li>
@@ -369,5 +394,28 @@
 		</div>
 	</div>
 </footer>
+
+<div id="popProduct" class="popup-box">
+	<div class="popup-box__content">
+		<div class="popup-box__close"></div>
+		<h2 class="popup-box__title"><i></i> успішно додано. Перейти до оформлення примірки?
+			</h2>
+		<div class="popup-box__actions">
+			<button type="button" class="btn btn--drose popup-box__actions-btn" onclick="location.href='/cart-order.html'">Записаться на примерку</button>
+			<button type="button" class="btn btn--drose popup-box__actions-btn" onclick="document.querySelector('#popProduct').dataset.visible = false;">Продолжить выбор</button>
+		</div>
+	</div>
+</div>
+
+<div id="popCity" class="popup-box">
+	<div class="popup-box__content">
+		<div class="popup-box__close"></div>
+		<h2 class="popup-box__city-title">Оберіть місто</h2>
+		<div class="popup-box__city-list">
+			<button type="button" class="btn btn--black popup-box__city-btn" onclick="cityPopup(this.textContent)">Вінниця</button>
+			<button type="button" class="btn btn--black popup-box__city-btn" onclick="cityPopup(this.textContent)">Київ</button>
+		</div>
+	</div>
+</div>
 </body>
 </html>

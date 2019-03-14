@@ -55,10 +55,25 @@ function getScrollbarWidth(element) {
     return element.offsetWidth - element.clientWidth;
 }
 
-//  headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 
+const lighter = (color, opacity) => {
+    if (false) {
+        // захуяриш, коли буде время
+    };
+    color = color.replace('#', '').match(/.{1,2}/g).map(el => parseInt(el, 16)).join();
+    return `rgba(${color},${opacity})`
+};
+
+lighter('#000000', '0.5');
+
+//  headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 
 /*
 
 
+
+
+
+
 */
+
