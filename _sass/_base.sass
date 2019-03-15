@@ -497,6 +497,7 @@ input
   &__image
     margin: 0 auto
     cursor: zoom-in
+    transition: 0.3s opacity
   &__nav
     position: absolute
     top: 0
@@ -541,3 +542,9 @@ input
   max-width: 70vh
   overflow: hidden
   padding: 0
+
+#popGallery
+  #popup-zoom
+    &:hover
+      img
+        opacity: 0

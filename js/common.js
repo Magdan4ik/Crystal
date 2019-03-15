@@ -244,7 +244,8 @@ window.addEventListener('load', () => {
         time:  form.querySelector('input[name="time"]'),
         date:  form.querySelector('input[name="date"]'),
         tel:   form.querySelector('input[name="tel"]'),
-        event: form.querySelector('input[name="event"]')
+        event: form.querySelector('input[name="event"]'),
+        city:  form.querySelector('input[name="city"]')
       }
       const defDate = {
         date: d.querySelector('.cal__date--today').dataset.calendarDate,
@@ -295,11 +296,13 @@ window.addEventListener('load', () => {
         if(time) timeM.value = time;
       }
 
+      function saveCity(city) {
+        if (city) inputs.city.value = decodeURIComponent(city);
+      }
+
+      saveCity(getCookie('city'));
       saveDate(defDate.date, defDate.time); //Default
       timeM.value = defDate.time; //Default
-
-
-
 
       /* Inputs mask */
       const telOptions = {
@@ -321,8 +324,6 @@ window.addEventListener('load', () => {
       telMask
         .on('accept', () =>  isCompleteForm.tel = false)
         .on('complete', () => isCompleteForm.tel = true);
-
-
 
 
       /* Cart-order steps */
@@ -353,14 +354,14 @@ window.addEventListener('load', () => {
         const isValid = Object.values(isCompleteForm).every(item => item);
         if (isValid) {
           const fd = new FormData(e.target);
-          fd.append('product', prodStr); //append products variables
+          fd.append('product', prodStr); //append products variables as string
           fetch(e.target.action, {
             method: 'POST',
             body: fd
           })
           .then(() => {
             deleteCookie('cart');
-            w.location.href = `/complete?date=${fd.get('date')}&time=${fd.get('time')}`;
+            w.location.href = `/complete?date=${fd.get('date')}&time=${fd.get('time')}&city=${fd.get('city')}`;
           })
           .catch(() => alert('Ошибка отправки'));
         } else {
@@ -402,9 +403,20 @@ window.addEventListener('load', () => {
 
     /* Order complete page */
     if(complete) {
-      let date = complete.querySelector('.order-complete__date');
       let url = (new URL(document.location)).searchParams;
+      let date = complete.querySelector('.order-complete__date');
+      let addr = complete.querySelector('.order-complete__addr');
+      let targetAddr;
+      if(url.get('city') == "Киев" || url.get('city') == "Київ") {
+        if(lang == 'ua') targetAddr = "за адресою: м. Київ, вул. Шота Руставеллі, 34"
+        if(lang == 'ru') targetAddr = "по адресу: г. Киев, ул. Шота Руставелли, 34"
+      }
+      else if (url.get('city') == "Львов" || url.get('city') == "Львів") {
+        if(lang == 'ua') targetAddr = "за адресою: м. Львів, вул. І. Франка, 61"
+        if(lang == 'ru') targetAddr = "по адресу: г. Львов, ул. И. Франка, 61"
+      }
       date.textContent = url.get('date') +' ('+ url.get('time') +')';
+      addr.textContent = targetAddr;
     }
 
 
@@ -438,7 +450,7 @@ window.addEventListener('load', () => {
           curpage ++;
           paginat.classList.add('invisible');
           catMoreBtn.classList.add('catalog__more-btn--loading');
-          fetch(`https://cors-anywhere.herokuapp.com/http://elit.oscorp.pro/index.php?route=product/moreproduct&path=${path}&page=${curpage}`, {
+          fetch(`/index.php?route=product/moreproduct&path=${path}&page=${curpage}`, {
             method: 'GET'
           })
           .then(resp => { return resp.text()})
@@ -493,25 +505,28 @@ window.addEventListener('load', () => {
             <div id="popup-next" class="popup-box__nav">next</div>
             <div id="popup-slides" class="popup-box__slides"></div>
             <div class="popup-box__images" id="popup-img">
-              <img id="popup-photo" class="popup-box__image" src="${e.srcElement.dataset.popup}" onclick="window.open(this.src)">
+              <figure id="popup-zoom" class="popup-box__zoomed" style="background-image: url('${e.srcElement.dataset.popup}')" onmousemove='zooming(event)' >
+                <img id="popup-photo" class="popup-box__image" src="${e.srcElement.dataset.popup}">
+              </figure>
             </div>
           </div>`;
         popGalleryNav();
         popGalleryPreload(document.getElementById("popup-photo"));
-    } else if (document.getElementById("popGallery") && e.srcElement.classList.contains("popup-box") || e.srcElement.classList.contains("popup-box__close")) {
-        document.getElementById("popGallery").remove();
+    } else if (e.srcElement.classList.contains("popup-box") || e.srcElement.classList.contains("popup-box__close")) {
+        if (document.getElementById("popGallery")) document.getElementById("popGallery").remove();
     } else if (document.getElementById("popGallery") && e.srcElement.id == "popup-next" || e.srcElement.id == "popup-prev") {
         (e.srcElement.id == "popup-next") ? current_photo++ : current_photo--;
 
         let elements = document.querySelectorAll(".prodslider__slider li");
         let src = (elements.item(current_photo - 1).getElementsByTagName("img")[0].dataset.popup);
-        let img = document.getElementById("popup-photo");
+        let img  = document.getElementById("popup-photo");
+        let zoom = document.getElementById("popup-zoom");
         img.src = src;
+        zoom.style.backgroundImage = `url('${src}')`;
         popGalleryNav();
         popGalleryPreload(img);
     }
   }
-
 
   function popGalleryNav() {
     document.getElementById("popup-slides").innerHTML = "<b>" + current_photo + "</b> / " + images;
@@ -547,6 +562,17 @@ window.addEventListener('load', () => {
   }
 
 }
+
+function zooming(e) {
+    let zoomer = e.currentTarget;
+    let offsetX, offsetY, x, y;
+    e.offsetX ? offsetX = e.offsetX : offsetX = e.touches[0].pageX
+    e.offsetY ? offsetY = e.offsetY : offsetX = e.touches[0].pageX
+    x = offsetX/zoomer.offsetWidth*100
+    y = offsetY/zoomer.offsetHeight*100
+    zoomer.style.backgroundPosition = x + '% ' + y + '%';
+}
+
 
 /* Google map */
 function initMap() {
@@ -676,7 +702,5 @@ function getCookie(name) {
 }
 
 function deleteCookie(name) {
-  setCookie(name, "", {
-    expires: -1
-  })
+  document.cookie = name+'=; Max-Age=-99999999;';
 }
