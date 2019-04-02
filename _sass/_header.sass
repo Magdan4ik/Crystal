@@ -1,10 +1,11 @@
 .header
 	position: fixed
 	top: 0
-	left: 0
-	right: 0
 	background-color: var(--primary-color)
 	z-index: 10
+	width: 100%
+	max-width: 1920px
+	margin 0 aut0
 	&__inner
 		height: 90px
 		max-width: 1920px
@@ -135,8 +136,8 @@
 				padding: 0 0 0 10px
 			> li
 				.header__navlist-toggle
-					width: 20px
-					height: 20px
+					width: 15px
+					height: 15px
 				+lg-block()
 					display: flex
 					justify-content: space-between
@@ -172,9 +173,9 @@
 					font-weight: 500
 		&-toggle
 			display: none
-			background: url(/img/icons/arrow__down.svg) no-repeat center/contain
-			width: 25px
-			height: 25px
+			background: url(/img/icons/arrow__down--simple.svg) no-repeat center/contain
+			width: 20px
+			height: 20px
 			flex-shrink: 0
 			-webkit-tap-highlight-color: transparent
 			+lg(display, block)

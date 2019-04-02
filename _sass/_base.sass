@@ -29,11 +29,12 @@ $_xs: 500px
   color: #fff
 
 \::-webkit-scrollbar
+  background-color: var(--primary-color)
   width: 6px
   height: 6px
 
 \::-webkit-scrollbar-thumb
-  background-color: var(--primary-color)
+  background-color: #D58481
   border-radius: 3px
 
 *
@@ -222,6 +223,9 @@ input
   z-index: 10
   background: rgba(0, 0, 0, 0.5)
 
+.page__title
+  text-align: center
+
 /*==============================================================
             BUTTONS START
 /*============================================================= */
@@ -311,6 +315,16 @@ input
       display: inline-block
       padding: 10px
       transform: rotate(-45deg)
+  +md-block()
+    &::before
+      border-width: 1px
+    &::after
+      border-width: 0 1px 1px 0
+  +sm-block()
+    &::after
+      padding: 6px
+      margin-left: -14px
+
 
 .social
   display: flex
@@ -496,7 +510,6 @@ input
   &__images
   &__image
     margin: 0 auto
-    cursor: zoom-in
     transition: 0.3s opacity
   &__nav
     position: absolute
@@ -543,8 +556,9 @@ input
   overflow: hidden
   padding: 0
 
-#popGallery
-  #popup-zoom
-    &:hover
-      img
-        opacity: 0
+.popup-box__zoomed
+  background-size: 0
+  &:hover
+    background-size: initial
+    img
+      opacity: 0

@@ -32,7 +32,10 @@ var vanillacalendar = {
 		var dateEl = document.createElement('span')
 		dateEl.innerHTML = num
 		newDay.className = 'cal__date'
-		newDay.setAttribute('data-calendar-date', this.date.toLocaleDateString())
+		newDay.setAttribute('data-calendar-date', this.formatDate(this.date))
+		if (this.date.getDay() == 0) {
+ 			newDay.setAttribute('data-sunday', true);
+		}
 		if (num === 1) {
 			var offset = ((day - 1) * 14.28)
 			if (offset > 0) {
@@ -91,5 +94,14 @@ var vanillacalendar = {
 		for (var i = 0; i < this.activeDates.length; i++) {
 			this.activeDates[i].classList.remove('cal__date--selected')
 		}
+	},
+	formatDate(date) {
+		var d = new Date(date),
+			month = '' + (d.getMonth() + 1),
+			day = '' + d.getDate(),
+			year = d.getFullYear();
+		if (month.length < 2) month = '0' + month;
+		if (day.length < 2) day = '0' + day;
+		return [day, month, year].join('.');
 	}
 }

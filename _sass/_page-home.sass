@@ -1,81 +1,67 @@
-.home
-    width: 100%
-    height: 100%
-    display: block
-    position: relative
-    padding: 0
-    -webkit-transform-style: preserve-3d
 .h-section
     position: relative
     width: 100%
-    height: 100%
+    height: calc(100vh - 90px)
+    margin-bottom: 20px
     +lg-block()
         height: 100vh
         max-height: 700px
     +sm-block()
         max-height: 500px
-        margin-bottom: 20px
     &.active
         visibility: visible
         opacity: 1
+    &--collection
+        &:nth-of-type(2)
+            .h-collection
+                justify-content: flex-end
+                &__txt
+                    margin-left: auto
+                    margin-right: 10%
+    &--video
+        height: auto !important
+    &--info
+        +sm-block()
+            max-height: initial
+            min-height: 500px
     &__title
+        background: rgba(255, 255, 255, 0.9)
+        padding: 5%
         line-height: 1.2
         font-size: 71px
         letter-spacing: 0.01em
         text-transform: uppercase
         color: inherit
-        font-weight: 300
-        +xl(font-size, 42px)
-        +md(font-size, 36px)
+        font-weight: 100
+        +xl(font-size, 51px)
+        +md(font-size, 41px)
         +sm-block()
             font-size: 27px
-            background: rgba(255,255,255,0.1)
             padding: 15px
     &__link
         display: block
-        color: var(--primary-color)
+        color: #D58481
         transition: 0.3s
         &:hover
-            color: var(--primary-color--hover)
+            color: #c56561
             .arrow--r
                 transform: translateX(15px)
 
 .h-collection
     height: 100%
-    background: url('/img/h-collection.jpg') no-repeat center top/cover
+    background: no-repeat center top/cover
     display: flex
     align-items: center
-    justify-content: flex-end
-    padding-bottom: 10%
-    padding-right: 10%
+    justify-content: flex-start
     &__txt
-        max-width: 45%
+        max-width: 35%
         min-width: 200px
-        margin-left: auto
-    +xl-block()
-        padding-right: 5vw
-        padding-bottom: 5vw
+        margin-left: 10.5%
+        margin-right: auto
     &__link
         color: #D58481
         &:hover
             color: #d45d59
-
-.h-second
-    height: 100%
-    background: url('/img/h-second.jpg') no-repeat center top/cover
-    display: flex
-    align-items: flex-start
-    justify-content: flex-end
-    padding-top: 10%
-    padding-right: 10%
-    +sm-block()
-     align-items: center
-    &__txt
-        max-width: 45%
-        min-width: 200px
-        margin-left: auto
-    &__title
-        color: var(--primary-color)
 
 .h-sale
     height: 100%
@@ -108,6 +94,8 @@
             width: 100%
             object-fit: cover
             object-position: center top
+            position: relative
+            z-index: -1
         &--lside
             padding-right: 10px
             padding-top: 5%
@@ -124,113 +112,52 @@
         background: #000
         max-width: 100%
 
-
-.h-more
+.h-info
     height: 100%
+    background: no-repeat center top/cover
     &__inner
         height: 100%
         display: flex
-    &__lside
-        position: relative
-        z-index: 2
-        flex-basis: 40%
-        +sm-block()
-            position: static
-        img
-            height: 100%
-            object-fit: contain
-    &__rside
-        flex-basis: 60%
-        img
-            height: 100%
-            width: 100%
-            object-fit: cover
+        align-items: center
     &__box
         background: #fff
-        position: absolute
-        top: 20%
-        left: 25%
-        width: 90%
-        z-index: 2
+        max-width: 33%
+        min-width: 200px
+        margin-left: 10.5%
+        margin-right: auto
         +md(min-width, 350px)
         +sm-block()
-            left: 0
-            right: 0
             background: rgba(255, 255, 255, 0.8)
     &__txt
-        padding: 5% 10%
+        padding: 8% 9%
         font-size: 16px
         line-height: normal
         color: #121212
         max-height: 50vh
         overflow-y: auto
         +sm-block()
-            max-height: 40vh
+            max-height: initial
     &__title
-        margin-bottom: 30px
-        font-size: 101px
+        margin-bottom: 15px
+        font-size: 45px
         line-height: 1
-        font-weight: 300
+        font-weight: 100
         color: #121212
-        +xl(font-size, 40px)
+        text-transform: uppercase
+        +xl(font-size, 30px)
     &__link
-        background: var(--primary-color)
+        background: var(--primary-color--hover)
         height: 80px
         width: 100%
+        padding: 0 9%
         display: block
         font-size: 0
         transition: 0.3s background
         +sm(height, 50px)
-        span
-            padding: 0 10%
         &:hover
-            background: var(--primary-color--hover)
+            background: #D58481
             span
                 transform: translateX(15px)
-
-
-.h-about
-    height: 100%
-    &__inner
-        height: 100%
-        background: url(/img/h-about.jpg) no-repeat center top/cover
-        display: flex
-        align-items: center
-        justify-content: flex-start
-    &__box
-        background: #fff
-        flex-basis: 35%
-        position: relative
-        left: 10%
-        +md(min-width, 350px)
-        +sm-block()
-            left: 0
-            right: 0
-            background: rgba(255, 255, 255, 0.8)
-    &__txt
-        padding: 5% 10% 10%
-        font-size: 16px
-        line-height: normal
-        color: #121212
-        max-height: 70vh
-        overflow-y: auto
-        +sm-block()
-            max-height: 40vh
-    &__title
-        margin-bottom: 30px
-        font-size: 101px
-        line-height: 1
-        font-weight: 300
-        color: #121212
-        +xl(font-size, 40px)
-    &__link
-        background: var(--primary-color)
-        height: 80px
-        width: 100%
-        display: block
-        font-size: 0
-        transition: 0.3s background
-        +sm(height, 50px)
 
 .h-info
     height: 100%

@@ -1,15 +1,14 @@
 @@include('./chunks/head.html')
 @@include('./chunks/header.html')
-<body style="opacity: 0">
+<body>
   <main class="main">
     <div class="home">
-
-      <section class="h-section">
-        <div class="h-collection">
+      <section class="h-section h-section--collection">
+        <div class="h-collection" style="background-image:url('http://crystalsalon.com.ua/image/cache/catalog/Banners/b3-1919x1024.jpg')">
           <div class="h-collection__txt">
             <a href="#collection" class="h-section__link h-collection__link">
               <p class="h-section__title">
-                Нова колекцiя Весільних суконь
+                Crystal design
                 <span class="arrow--r"></span>
               </p>
             </a>
@@ -17,12 +16,12 @@
         </div>
       </section>
 
-      <section class="h-section">
-        <div class="h-second">
-          <div class="h-second__txt">
-            <a href="#second" class="h-section__link">
+      <section class="h-section h-section--collection">
+        <div class="h-collection" style="background-image:url('http://crystalsalon.com.ua/image/cache/catalog/Banners/b2-1919x1024.jpg')">
+          <div class="h-collection__txt">
+            <a href="#collection" class="h-section__link h-collection__link">
               <p class="h-section__title">
-                Весільні сукні EVA LENDEL
+                Весільні сукні Eva Lendel
                 <span class="arrow--r"></span>
               </p>
             </a>
@@ -30,7 +29,7 @@
         </div>
       </section>
 
-      <section class="h-section">
+      <section class="h-section h-section--sale">
         <div class="h-sale">
           <div class="h-sale__inner">
             <a class="h-sale__link">Sale</a>
@@ -41,56 +40,42 @@
       </section>
 
 
-      <section class="h-section">
+      <section class="h-section h-section--video">
         <div class="h-video">
-          <video width="100%" height="100%" loop id='h-video'>
+          <video width="100%" height="100%" loop muted controls id='h-video'>
             <source src="/video/Crystal.mp4" type="video/mp4">
           </video>
         </div>
       </section>
 
-      <section class="h-section">
-        <div class="h-more">
-          <div class="h-more__inner">
-            <div class="h-more__lside">
-              <img src="/img/h-more-1.png" alt="">
-              <div class="h-more__box">
-                <div class="h-more__txt">
-                  <h3 class="h-more__title">Crystal</h3>
-                  <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam odio ante, porta sed condimentum euismod, ullamcorper non lectus. 
-                      In posuere in nisi vel bibendum. Praesent et pharetra metus, non semper lectus. Cras nec lacinia nisi. 
-                      Proin sed arcu nec mi blandit congue. Donec semper leo id fermentum suscipit. Nam id libero gravida, aliquet turpis et, dapibus enim. 
-                      Quisque est ligula, tincidunt in maximus a, rutrum a nulla. In hac habitasse platea dictumst.
-                  </p>
+      <section class="h-section h-section--info">
+          <div class="h-info" style="background-image: url('/img/h-info-1.jpg')">
+            <div class="h-info__inner">
+              <div class="h-info__box">
+                <div class="h-info__txt">
+                  <h1 class="h-info__title">Весільний салон - Crystal</h1>
+                  <p>Салон CRYSTAL пропонує величезний вибір унікальних вечірніх та весільних суконь. У нас ви обов'язково знайдете відповідне вбрання для будь-якої урочистої події . Наші фахівці допоможуть вам визначитися зі стилем та фасоном сукні, а також підберуть для вас моделі найвищої якості. Найновіші колекції, найнижчі ціни, найдосвідченіші фахівці, які люблять свою справу – все це про салон весільних і вечірніх суконь CRYSTAL.</p>
                 </div>
-                <a href="#" class="h-more__link"><span class="arrow--r">Перейти</span></a>
+                <a href="whyus.html" class="h-info__link"><span class="arrow--r">Перейти</span></a>
               </div>
             </div>
-            <div class="h-more__rside">
-                <img src="/img/h-more-2.jpg" alt="">
-            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section class="h-section">
-          <div class="h-about">
-            <div class="h-about__inner">
-              <div class="h-about__box">
-                <div class="h-about__txt">
-                  <h3 class="h-about__title">Про нас</h3>
-                  <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam odio ante, porta sed condimentum euismod, ullamcorper non lectus. 
-                      In posuere in nisi vel bibendum. Praesent et pharetra metus, non semper lectus. Cras nec lacinia nisi. 
-                      Proin sed arcu nec mi blandit congue. Donec semper leo id fermentum suscipit. Nam id libero gravida, aliquet turpis et, dapibus enim. 
-                      Quisque est ligula, tincidunt in maximus a, rutrum a nulla. In hac habitasse platea dictumst.
-                  </p>
+        <section class="h-section h-section--info">
+          <div class="h-info" style="background-image: url('/img/h-info-2.jpg')">
+            <div class="h-info__inner">
+              <div class="h-info__box">
+                <div class="h-info__txt">
+                  <h3 class="h-info__title">Crystal Atelier</h3>
+                  <p>Ми шануємо Вашу індивідуальність і захоплюємося нею! Ми можемо зробити все, щоб її зберегти і підкреслити та знаємо, як здійснити Вашу мрію про Вашу весільну сукню! Саме тому ми розширили концепцію сервісу салону і доповнили новою ідеєю - ательє! Після вибору весільної сукні у салоні Крістал Ваше замовлення переходить до рук справжніх професіоналів. Далі за роботу беруться наші феї… і розпочинається це магічне дійство - пошиття або індивідуалізація Вашої весільної сукні!</p>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        <section class="h-section">
+        <section class="h-section h-section--insta">
           <div class="h-info">
             <div class="h-brands">
               <div class="h-brands__title">Бренди</div>
@@ -114,9 +99,8 @@
             </div>
           </div>
         </section>
-        @@include('./chunks/footer.html')
     </div>
   </main>
-
+  @@include('./chunks/footer.html')
 </body>
 </html>

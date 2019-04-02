@@ -19,17 +19,26 @@
 			margin: 0 auto
 			+sm(max-width, 150px)
 	&__social
-		margin-top: 20px
+		margin-top: 15px
 		+sm(margin, 10px 0)
 		.social__item
 			margin: 7px
+	&__addr
+		li
+			margin-bottom: 5px
+			font-weight: 300
+			text-align: center
 	&__nav
 		display: grid
 		grid-template-columns: repeat(5, 1fr)
 		grid-column-gap: 3%
 		width: 100%
 		+lg(grid-template-columns, repeat(3, 1fr))
-		+sm(grid-template-columns, 1fr)
+		+sm-block()
+			grid-template-columns: 1fr
+			justify-items: center
+			text-align: center
+	&__navblock
 	&__navlist
 		margin-bottom: 25px
 		font-style: normal
@@ -37,8 +46,10 @@
 		line-height: normal
 		font-size: 16px
 		color: #646464
-		+sm(text-align, center)
-		+sm(margin-bottom, 0)
+		+sm-block()
+			display: none
+			text-align: center
+			margin-bottom: 0
 
 	&__navtitle
 		display: inline-flex
@@ -64,21 +75,36 @@
 				&::after
 					transform: scaleY(-1)
 	&__navitem
-		+sm(display, none)
 		a
 			display: inline-block
 			padding: 5px 0
 			transition: 0.3s color
 			&:hover
 				color: #000
+	&__booking
+		display: none
+		margin: 20px 0
+		text-align: center
+		+sm(display, block)
 	&__copyright
 		display: flex
 		justify-content: center
 		align-items: center
+		flex-wrap: wrap
 		height: 60px
 		text-align: center
 		font-size: 14px
 		font-weight: 900
 		text-transform: uppercase
+
+.oscorp
+	display: inline-flex
+	align-items: center
+	a
+		background: url('/img/oscorp__logo.png') no-repeat 100% 50%
+		background-size: contain
+		font-size: 0
+		padding-right: 80px
+		height: 50px
 
 

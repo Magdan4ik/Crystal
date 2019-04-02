@@ -12,11 +12,31 @@
         +sm(margin-bottom, 20px)
     &__list
     &__item
-        margin-bottom: 100px
-        +sm(margin-bottom, 50px)
-        +sm-block()
-            .btn--right
-                padding: 0 15px
+        margin-bottom: 70px
+        box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.5)
+        +sm(margin-bottom, 30px)
+        &-link
+            position: relative
+            display: block
+        &-title
+            position: absolute
+            bottom: 0
+            background: #fff
+            width: 100%
+            margin: 0
+            padding: 19px
+            font-size: 48px
+            font-weight: 100
+            line-height: 1
+            transition: 2s background
+            +md-block()
+                font-size: 30px
+            +sm-block()
+                padding: 10px 15px
+                margin: 0
+                font-size: 22px
+                .btn--right
+                    padding: 0 15px
     &__img
         width: 100%
         height: auto

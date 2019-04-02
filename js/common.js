@@ -20,37 +20,49 @@ window.addEventListener('load', () => {
       '768'   : w.matchMedia('(max-width: 768px)').matches,
       '1200'  : w.matchMedia('(max-width: 1200px)').matches
     }
+    const hsale  =  {
+      block : d.querySelector('.h-sale'),
+      left  : d.querySelector('.h-sale__img--lside'),
+      right : d.querySelector('.h-sale__img--rside')
+    };
 
-    d.body.style.opacity = '1';
-
-     /* OnePage Scroll */
+     /* Scroll effects */
     if(home && !device[1200]) {
-      onePageScroll(".home", {
-        pagination: true,
-        animationTime: 1500,
-        footer: "footer",
-        delay: 500,
-        afterMove: (index, section) => {
-          section.querySelector('#h-video')? video.play() : video.pause()
-        }
+      w.addEventListener("scroll",  () => {
+        inView(video)? video.play() : video.pause();
+        if(inView(hsale.block)) {
+          let top = hsale.left.getBoundingClientRect().top;
+          hsale.left.firstChild.style.transform = `translateY(${-top/3}px)`;
+          hsale.right.firstChild.style.transform = `translateY(${top/3}px)`;
+        };
       });
     };
+
+
+    function inView(el) {
+      if(el) {
+        let docViewTop = window.pageYOffset;
+        let docViewBottom = docViewTop + window.innerHeight;
+        let elTop = el.getBoundingClientRect().top + window.pageYOffset;
+        let elBottom = elTop + el.clientHeight;
+        return (docViewBottom >= elTop && docViewTop <= elBottom);
+      }
+    }
 
     if (home && device[1200]) video.controls = true;
 
     /* Footer Toggle menu */
     if (device[768]) {
       const title      = [...d.querySelectorAll('.footer__navtitle')];
-      const li         = [...d.querySelectorAll('.footer__navitem')];
+      const ul         = [...d.querySelectorAll('.footer__navlist')];
       const activeClss = "footer__navtitle--active";
       title.forEach(el => el.addEventListener('click', e => {
         e.preventDefault();
-        const sib = [...el.parentElement.children].filter(child => child !== el);
         if(!el.classList.contains(activeClss)) {
           title.forEach(el => el.classList.remove(activeClss));
           el.classList.add(activeClss);
-          li.forEach(li => $(li).slideUp());
-          sib.forEach(sib => $(sib).slideDown());
+          ul.forEach(ul => $(ul).slideUp());
+          $(el.nextElementSibling).slideDown();
         };
        }));
     }
@@ -137,9 +149,8 @@ window.addEventListener('load', () => {
 
     /*Insta */
     if(instafeed) {
-      const proxyUrl  = 'https://cors-anywhere.herokuapp.com/',
-            targetUrl = 'https://api.instagram.com/v1/users/self/media/recent/?access_token=308771480.1677ed0.0c498cb30a344f6c88f2620d4f9f8079&count=6'
-      fetch(proxyUrl + targetUrl)
+      const targetUrl = 'https://api.instagram.com/v1/users/self/media/recent/?access_token=308771480.1677ed0.0c498cb30a344f6c88f2620d4f9f8079&count=6'
+      fetch(targetUrl)
       .then(res => res.json())
       .then(res => {
             res.data.forEach(el => {
@@ -253,7 +264,11 @@ window.addEventListener('load', () => {
       }
       const prodVal  = [...d.querySelectorAll('input[name="prop[]"]')].map(inp => inp.value);
       const prodStr  = prodVal.join();
+      const offTime  = [...time];
+            offTime.splice(0, 5);
+      let sunday;
 
+      if(new Date().getDay() == 0) sunday = true;
 
       mBtn.forEach(el=> {
         el.addEventListener('click', () => {
@@ -285,10 +300,15 @@ window.addEventListener('load', () => {
         date.forEach(el => {
           el.addEventListener('click', () => {
             saveDate(el.dataset.calendarDate, null);
+            ifBusy(el.dataset.calendarDate);
+            ifSunday(el.dataset.sunday);
           });
         });
       }
       liveDate();
+      ifSunday(sunday);
+      ifBusy(defDate.date);
+
 
       function saveDate(date, time) {
         if(time) inputs.time.value = time;
@@ -298,6 +318,32 @@ window.addEventListener('load', () => {
 
       function saveCity(city) {
         if (city) inputs.city.value = decodeURIComponent(city);
+      }
+
+      function ifSunday(sunday) {
+        if(sunday) {
+          offTime.forEach(t => t.style.display = 'none');
+          $(time[0]).click();
+        } else {
+          offTime.forEach(t => t.style.display = 'block');
+        }
+      }
+
+      function ifBusy(date) {
+        d.querySelectorAll(".order__timelist li").forEach(li => {li.style.display = 'block'});
+        let city = decodeURIComponent(getCookie('city'));
+        if(city == "Киев"  || city == "Київ")  city = 'kiev';
+        if(city == "Львов" || city == "Львів") city = 'lviv';
+        fetch(`/crm/site/getDate?city=${city}`)
+        .then(res => res.json())
+        .then(res => {
+          for (let i in res) {
+            if(res[i].date == date) {
+              let blocked = d.querySelectorAll(".order__timelist li[data-time='"+ res[i].time +"']");
+                  blocked.forEach(li => {li.style.display = 'none'});
+            }
+          }
+        })
       }
 
       saveCity(getCookie('city'));
@@ -406,17 +452,20 @@ window.addEventListener('load', () => {
       let url = (new URL(document.location)).searchParams;
       let date = complete.querySelector('.order-complete__date');
       let addr = complete.querySelector('.order-complete__addr');
-      let targetAddr;
-      if(url.get('city') == "Киев" || url.get('city') == "Київ") {
-        if(lang == 'ua') targetAddr = "за адресою: м. Київ, вул. Шота Руставеллі, 34"
-        if(lang == 'ru') targetAddr = "по адресу: г. Киев, ул. Шота Руставелли, 34"
+      let urlDate = url.get('date') || date.textContent;
+      let urlTime = url.get('time') || date.textContent;
+      let urlCity = url.get('city');
+      let tarAddr = addr.textContent;
+      if(urlCity == "Киев" || urlCity == "Київ") {
+        if(lang == 'ua') tarAddr = "за адресою: м. Київ, вул. Шота Руставеллі, 34"
+        if(lang == 'ru') tarAddr = "по адресу: г. Киев, ул. Шота Руставелли, 34"
       }
-      else if (url.get('city') == "Львов" || url.get('city') == "Львів") {
-        if(lang == 'ua') targetAddr = "за адресою: м. Львів, вул. І. Франка, 61"
-        if(lang == 'ru') targetAddr = "по адресу: г. Львов, ул. И. Франка, 61"
+      else if (urlCity == "Львов" || urlCity == "Львів") {
+        if(lang == 'ua') tarAddr = "за адресою: м. Львів, вул. І. Франка, 61"
+        if(lang == 'ru') tarAddr = "по адресу: г. Львов, ул. И. Франка, 61"
       }
-      date.textContent = url.get('date') +' ('+ url.get('time') +')';
-      addr.textContent = targetAddr;
+      date.textContent = `${urlDate} (${urlTime})`;
+      addr.textContent = tarAddr;
     }
 
 
@@ -434,6 +483,8 @@ window.addEventListener('load', () => {
         }
       });
     });
+
+    if (!getCookie("city")) d.getElementById("popCity").dataset.visible = true;
 
     /* Load more Products */
     if(catMoreBtn) {
@@ -587,7 +638,7 @@ function initMap() {
       map() { return newMap('mapLviv', this.position) }
     },
     LvivA: {
-      position: {lat: 49.8311398, lng: 24.033193900000015},
+      position: {lat: 49.828446, lng: 23.991518},
       map() { return newMap('mapLvivA', this.position) }
     }
   };
@@ -657,8 +708,8 @@ function deleteCartItem(id) {
 }
 
 function updCartQuantity() {
-  let indicator = document.querySelector('.header__booking-btn i');
-  indicator.textContent = cart.length;
+  let indicator = document.querySelectorAll('.header__booking-btn i');
+  indicator.forEach(el => el.textContent = cart.length);
 }
 
 updCartQuantity();

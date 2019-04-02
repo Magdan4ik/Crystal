@@ -16,7 +16,6 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/imask/4.1.5/imask.min.js" defer></script>
-        <script src="/js/onepagescroll.min.js" defer></script>
         <script src="/js/calendar.js" defer></script>
         <script src="/js/common.js" defer></script>
     </head>
@@ -88,16 +87,15 @@
 		</nav>
 	</div>
 </header>
-<body style="opacity: 0">
+<body>
   <main class="main">
     <div class="home">
-
-      <section class="h-section">
-        <div class="h-collection">
+      <section class="h-section h-section--collection">
+        <div class="h-collection" style="background-image:url('http://crystalsalon.com.ua/image/cache/catalog/Banners/b3-1919x1024.jpg')">
           <div class="h-collection__txt">
             <a href="#collection" class="h-section__link h-collection__link">
               <p class="h-section__title">
-                Нова колекцiя Весільних суконь
+                Crystal design
                 <span class="arrow--r"></span>
               </p>
             </a>
@@ -105,12 +103,12 @@
         </div>
       </section>
 
-      <section class="h-section">
-        <div class="h-second">
-          <div class="h-second__txt">
-            <a href="#second" class="h-section__link">
+      <section class="h-section h-section--collection">
+        <div class="h-collection" style="background-image:url('http://crystalsalon.com.ua/image/cache/catalog/Banners/b2-1919x1024.jpg')">
+          <div class="h-collection__txt">
+            <a href="#collection" class="h-section__link h-collection__link">
               <p class="h-section__title">
-                Весільні сукні EVA LENDEL
+                Весільні сукні Eva Lendel
                 <span class="arrow--r"></span>
               </p>
             </a>
@@ -118,7 +116,7 @@
         </div>
       </section>
 
-      <section class="h-section">
+      <section class="h-section h-section--sale">
         <div class="h-sale">
           <div class="h-sale__inner">
             <a class="h-sale__link">Sale</a>
@@ -129,56 +127,42 @@
       </section>
 
 
-      <section class="h-section">
+      <section class="h-section h-section--video">
         <div class="h-video">
-          <video width="100%" height="100%" loop id='h-video'>
+          <video width="100%" height="100%" loop muted controls id='h-video'>
             <source src="/video/Crystal.mp4" type="video/mp4">
           </video>
         </div>
       </section>
 
-      <section class="h-section">
-        <div class="h-more">
-          <div class="h-more__inner">
-            <div class="h-more__lside">
-              <img src="/img/h-more-1.png" alt="">
-              <div class="h-more__box">
-                <div class="h-more__txt">
-                  <h3 class="h-more__title">Crystal</h3>
-                  <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam odio ante, porta sed condimentum euismod, ullamcorper non lectus. 
-                      In posuere in nisi vel bibendum. Praesent et pharetra metus, non semper lectus. Cras nec lacinia nisi. 
-                      Proin sed arcu nec mi blandit congue. Donec semper leo id fermentum suscipit. Nam id libero gravida, aliquet turpis et, dapibus enim. 
-                      Quisque est ligula, tincidunt in maximus a, rutrum a nulla. In hac habitasse platea dictumst.
-                  </p>
+      <section class="h-section h-section--info">
+          <div class="h-info" style="background-image: url('/img/h-info-1.jpg')">
+            <div class="h-info__inner">
+              <div class="h-info__box">
+                <div class="h-info__txt">
+                  <h1 class="h-info__title">Весільний салон - Crystal</h1>
+                  <p>Салон CRYSTAL пропонує величезний вибір унікальних вечірніх та весільних суконь. У нас ви обов'язково знайдете відповідне вбрання для будь-якої урочистої події . Наші фахівці допоможуть вам визначитися зі стилем та фасоном сукні, а також підберуть для вас моделі найвищої якості. Найновіші колекції, найнижчі ціни, найдосвідченіші фахівці, які люблять свою справу – все це про салон весільних і вечірніх суконь CRYSTAL.</p>
                 </div>
-                <a href="#" class="h-more__link"><span class="arrow--r">Перейти</span></a>
+                <a href="whyus.html" class="h-info__link"><span class="arrow--r">Перейти</span></a>
               </div>
             </div>
-            <div class="h-more__rside">
-                <img src="/img/h-more-2.jpg" alt="">
-            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section class="h-section">
-          <div class="h-about">
-            <div class="h-about__inner">
-              <div class="h-about__box">
-                <div class="h-about__txt">
-                  <h3 class="h-about__title">Про нас</h3>
-                  <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam odio ante, porta sed condimentum euismod, ullamcorper non lectus. 
-                      In posuere in nisi vel bibendum. Praesent et pharetra metus, non semper lectus. Cras nec lacinia nisi. 
-                      Proin sed arcu nec mi blandit congue. Donec semper leo id fermentum suscipit. Nam id libero gravida, aliquet turpis et, dapibus enim. 
-                      Quisque est ligula, tincidunt in maximus a, rutrum a nulla. In hac habitasse platea dictumst.
-                  </p>
+        <section class="h-section h-section--info">
+          <div class="h-info" style="background-image: url('/img/h-info-2.jpg')">
+            <div class="h-info__inner">
+              <div class="h-info__box">
+                <div class="h-info__txt">
+                  <h3 class="h-info__title">Crystal Atelier</h3>
+                  <p>Ми шануємо Вашу індивідуальність і захоплюємося нею! Ми можемо зробити все, щоб її зберегти і підкреслити та знаємо, як здійснити Вашу мрію про Вашу весільну сукню! Саме тому ми розширили концепцію сервісу салону і доповнили новою ідеєю - ательє! Після вибору весільної сукні у салоні Крістал Ваше замовлення переходить до рук справжніх професіоналів. Далі за роботу беруться наші феї… і розпочинається це магічне дійство - пошиття або індивідуалізація Вашої весільної сукні!</p>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        <section class="h-section">
+        <section class="h-section h-section--insta">
           <div class="h-info">
             <div class="h-brands">
               <div class="h-brands__title">Бренди</div>
@@ -202,7 +186,9 @@
             </div>
           </div>
         </section>
-        <footer class="footer">
+    </div>
+  </main>
+  <footer class="footer">
 	<div class="container">
 		<div class="footer__inner">
 			<div class="footer__topside">
@@ -218,45 +204,68 @@
 							<li class="social__item"><a href="#"><img src="/img/icons/ico__youtube.svg" alt=""></a></li>
 						</ul>
 					</div>
+					<ul class="footer__addr">
+						<li>
+							<p>м. Львів, вул. І. Франка, 61</p>
+							<p>тел.: <a href="tel:+380676755178">+38(067) 675 51 78</a></p>
+						</li>
+						<li>
+							<p>	м. Київ, вул. Шота Руставеллі, 34</p>
+							<p>	тел.: <a href="tel:+380963303306">+38(096) 330 33 06</a></p>
+						</li>
+					</ul>
 				</div>
 				<nav class="footer__nav">
-					<ul class="footer__navlist">
-						<li class="footer__navtitle"><a href="#">Весільні сукні</a></li>
-						<li class="footer__navitem"><a href="#">The Icon 2019 by CD</a></li>
-						<li class="footer__navitem"><a href="#">Paris 2019 by CD</a></li>
-						<li class="footer__navitem"><a href="#">Timeless Beauty by CD</a></li>
-						<li class="footer__navitem"><a href="#">Less is more by Eva Landel</a></li>
-						<li class="footer__navitem"><a href="#">Sunrise by Eva Landel</a></li>
-					</ul>
-					<ul class="footer__navlist">
-						<li class="footer__navtitle"><a href="#">Вечірні сукні</a></li>
-						<li class="footer__navitem"><a href="#">Tarik Ediz</a></li>
-						<li class="footer__navitem"><a href="#">Бестселлери</a></li>
-						<li class="footer__navitem"><a href="#">Rebel collection</a></li>
-						<li class="footer__navitem"><a href="#">Sherri Hill</a></li>
-					</ul>
-					<ul class="footer__navlist">
-						<li class="footer__navtitle"><a href="#">Crystal Atelier</a></li>
-						<li class="footer__navitem"><a href="#">Весільні сукні на знижці</a></li>
-						<li class="footer__navitem"><a href="#">Вечірні сукні на знижці</a></li>
-						<li class="footer__navitem"><a href="#">Reble collection</a></li>
-					</ul>
-					<ul class="footer__navlist">
-						<li class="footer__navtitle"><a href="#">Аксесуари</a></li>
-						<li class="footer__navitem"><a href="#">Фати</a></li>
-						<li class="footer__navitem"><a href="#">Будуарна колекція</a></li>
-						<li class="footer__navitem"><a href="#">Взуття</a></li>
-					</ul>
-					<ul class="footer__navlist">
-						<li class="footer__navtitle">Інформація</li>
-						<li class="footer__navitem"><a href="contact.html">Контакти</a></li>
-						<li class="footer__navitem"><a href="whyus.html">Чому ми?</a></li>
-						<li class="footer__navitem"><a href="command.html">Наша команда</a></li>
-						<li class="footer__navitem"><a href="blog.html">Блог</a></li>
-					</ul>
+					<div class="footer__navblock">
+						<h5 class="footer__navtitle"><a href="#">Весільні сукні</a></h5>
+						<ul class="footer__navlist">
+							<li class="footer__navitem"><a href="#">The Icon 2019 by CD</a></li>
+							<li class="footer__navitem"><a href="#">Paris 2019 by CD</a></li>
+							<li class="footer__navitem"><a href="#">Timeless Beauty by CD</a></li>
+							<li class="footer__navitem"><a href="#">Less is more by Eva Landel</a></li>
+							<li class="footer__navitem"><a href="#">Sunrise by Eva Landel</a></li>
+						</ul>
+					</div>
+					<div class="footer__navblock">
+						<h5 class="footer__navtitle"><a href="#">Вечірні сукні</a></h5>
+						<ul class="footer__navlist">
+							<li class="footer__navitem"><a href="#">Tarik Ediz</a></li>
+							<li class="footer__navitem"><a href="#">Бестселлери</a></li>
+							<li class="footer__navitem"><a href="#">Rebel collection</a></li>
+							<li class="footer__navitem"><a href="#">Sherri Hill</a></li>
+						</ul>
+					</div>
+					<div class="footer__navblock">
+						<h5 class="footer__navtitle"><a href="#">Crystal Atelier</a></h5>
+						<ul class="footer__navlist">
+							<li class="footer__navitem"><a href="#">Весільні сукні на знижці</a></li>
+							<li class="footer__navitem"><a href="#">Вечірні сукні на знижці</a></li>
+							<li class="footer__navitem"><a href="#">Reble collection</a></li>
+						</ul>
+					</div>
+					<div class="footer__navblock">
+						<h5 class="footer__navtitle"><a href="#">Аксесуари</a></h5>
+						<ul class="footer__navlist">
+							<li class="footer__navitem"><a href="#">Фати</a></li>
+							<li class="footer__navitem"><a href="#">Будуарна колекція</a></li>
+							<li class="footer__navitem"><a href="#">Взуття</a></li>
+						</ul>
+					</div>
+					<div class="footer__navblock">
+						<h5 class="footer__navtitle"><a href="#">Інформація</a></h5>
+						<ul class="footer__navlist">
+							<li class="footer__navitem"><a href="contact.html">Контакти</a></li>
+							<li class="footer__navitem"><a href="whyus.html">Чому ми?</a></li>
+							<li class="footer__navitem"><a href="command.html">Наша команда</a></li>
+							<li class="footer__navitem"><a href="blog.html">Блог</a></li>
+						</ul>
+					</div>
 				</nav>
 			</div>
-			<div class="footer__copyright">&copy; Crystal Salon 2019</div>
+			<div class="footer__booking">
+				<a class="btn btn--trans header__booking-btn" href="cart-order.html">Записаться на примерку <i class="count_cart">0</i></a>
+			</div>
+			<div class="footer__copyright">&copy; Crystal Salon 2019. &nbsp<span class="oscorp">Сайт разработан в <a href="http://oscorp.pro/" target="_blank" title="Oscorp.pro">Oscorp.pro</a></span></div>
 		</div>
 	</div>
 </footer>
@@ -273,7 +282,7 @@
 	</div>
 </div>
 
-<div id="popCity" class="popup-box" data-visible="true">
+<div id="popCity" class="popup-box">
 	<div class="popup-box__content">
 		<div class="popup-box__close"></div>
 		<h2 class="popup-box__city-title">Оберіть місто</h2>
@@ -283,8 +292,5 @@
 		</div>
 	</div>
 </div>
-    </div>
-  </main>
-
 </body>
 </html>
