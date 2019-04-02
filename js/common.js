@@ -75,6 +75,7 @@ window.addEventListener('load', () => {
         centerMode: true,
         centerPadding: '0px',
         arrows: true,
+        autoplay: true,
         responsive: [
           {
             breakpoint: 993,
