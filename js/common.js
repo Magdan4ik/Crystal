@@ -130,6 +130,7 @@ window.addEventListener('load', () => {
         slidesToScroll: 1,
         centerMode: true,
         arrows: false,
+        dots: true,
         centerPadding: '0px',
         responsive: [
           {

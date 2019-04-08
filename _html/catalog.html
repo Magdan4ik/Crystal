@@ -4,20 +4,23 @@
   <main class="main">
     <section class="catalog">
         <div class="catalog__inner container">
-            <section class="catalog__filter">
+            <h1 class="page__title">Tarik Ediz</h1>
+            <div class="catalog__topside">
+                <section class="catalog__breadcrumbs">
+                    <div class="breadcrumbs">
+                        <ul class="breadcrumbs__list">
+                            <li><a href="/"><span>Головна</span></a></li>
+                            <li><a href="catalog.html"><span>Сукні</span></a></li>
+                            <li><a href="catalog.html"><span>Вечірні сукні</span></a></li>
+                            <li><span>Tarik Ediz</a></li>
+                        </ul>
+                    </div>
+                </section>
                 <button type="button" class="btn btn--trans filter__toggle" data-dot="false">Підбір сукні</button>
-                @@include('./chunks/filter.html')
-            </section>
-            <section class="catalog__breadcrumbs">
-                <div class="breadcrumbs">
-                    <ul class="breadcrumbs__list">
-                        <li><a href="/"><span>Головна</span></a></li>
-                        <li><a href="catalog.html"><span>Сукні</span></a></li>
-                        <li><a href="catalog.html"><span>Вечірні сукні</span></a></li>
-                        <li><span>Tarik Ediz</a></li>
-                    </ul>
-                </div>
-            </section>
+                <section class="catalog__filter">
+                    @@include('./chunks/filter.html')
+                </section>
+            </div>
             <section class="catalog__products">
                 @@loop("./chunks/loop/product.html", "./chunks/loop/product.json")
             </section>

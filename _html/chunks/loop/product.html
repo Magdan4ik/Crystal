@@ -10,26 +10,14 @@
                 @@if (context.oldprice) {<b class="product__oldprice">@@oldprice<i>грн</i></b>}
             </div>
         </div>
-        @@if (context.sale) {
-            <div class="product__label product__label--sale">
-                <b>%</b>
-                <p>Акція</p>
-            </div>
-        }
-        @@if (context.stock_out) {
-            <div class="product__label product__label--stock_out">
-                <p>Не в наявності</p>
+        @@if (context.unorder) {
+            <div class="product__label product__label--unorder">
+                <p>На замовлення</p>
             </div>
         }
     </a>
-    <div class="product__action">
-        <div class="product__color">
-            <p>Колір:</p>
-            <ul class="product__colorlist">
-                <li><i style="background-color: #171516"></i></li>
-                <li><i style="background-color: #AA2243"></i></li>
-            </ul>
-        </div>
-        <button class="btn btn--black product__btn" onclick="addToCart(@@id, this)">В примірку</button>
+    <div class="product__actions">
+        <a class="product__action product__action-view" href="product.html"><span>Переглянути</span></a>
+        <button class="product__action product__action-add" onclick="addToCart(@@id, this)"><span>В примірку</span></button>
     </div>
 </article>

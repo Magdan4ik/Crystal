@@ -20,14 +20,18 @@
             display: block
         &-title
             position: absolute
-            bottom: 0
-            background: #fff
-            width: 100%
+            top: 50%
+            background: rgba(255, 255, 255, 0.9)
+            max-width: 35%
+            min-width: 200px
             margin: 0
-            padding: 19px
+            display: flex
+            flex-direction: column
+            padding: 35px
             font-size: 48px
             font-weight: 100
             line-height: 1
+            transform: translateY(-50%)
             transition: 2s background
             +md-block()
                 font-size: 30px
@@ -35,8 +39,11 @@
                 padding: 10px 15px
                 margin: 0
                 font-size: 22px
-                .btn--right
-                    padding: 0 15px
+            .arrow--r
+                width: 100%
+                max-width: initial
+                margin: 15px 0 0
+                +sm(margin-top, 0)
     &__img
         width: 100%
         height: auto

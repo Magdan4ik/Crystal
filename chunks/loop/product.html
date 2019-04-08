@@ -11,16 +11,9 @@
             </div>
         </div>
         
-        
     </a>
-    <div class="product__action">
-        <div class="product__color">
-            <p>Колір:</p>
-            <ul class="product__colorlist">
-                <li><i style="background-color: #171516"></i></li>
-                <li><i style="background-color: #AA2243"></i></li>
-            </ul>
-        </div>
-        <button class="btn btn--black product__btn" onclick="addToCart(@@id, this)">В примірку</button>
+    <div class="product__actions">
+        <a class="product__action product__action-view" href="product.html"><span>Переглянути</span></a>
+        <button class="product__action product__action-add" onclick="addToCart(@@id, this)"><span>В примірку</span></button>
     </div>
 </article>

@@ -4,15 +4,27 @@
 /*============================================================= */
 .catalog
     &__inner
-        padding-top: 60px
-        +sm(padding-top, 40px)
+      padding-top: 60px
+      +sm(padding-top, 40px)
+      .page__title
+        font-weight: 100
+    &__topside
+      display: flex
+      justify-content: space-between
+      flex-wrap: wrap
+      align-items: center
+      margin-bottom: 25px
+      margin-top: 25px
+    &__breadcrumbs
+      margin: 10px 0
     &__products
-        display: grid
-        grid-template-columns: repeat(auto-fill, minmax(340px, 1fr))
-        grid-gap: 25px
-        justify-items: center
+      display: grid
+      grid-template-columns: repeat(auto-fill, 360px)
+      grid-gap: 25px
+      justify-items: center
+      justify-content: center
     &__filter
-        margin-bottom: 30px
+      flex-basis: 100%
     &__more
       text-align: center
       margin-top: 60px
@@ -51,6 +63,7 @@
       animation: fadeIn 0.3s both
   &__form
   &__toggle
+    min-width: 230px
     position: relative
     &[data-dot="true"]
       &::after
@@ -90,7 +103,7 @@
       +sm(flex-basis, 100%)
       +sm(margin-bottom, 20px)
     legend
-      font-size: 48px
+      font-size: 26px
       font-weight: 300
       color: #000
       +sm(font-size, 30px)
@@ -100,19 +113,22 @@
     flex-flow: row wrap
     margin: 0 -5px
     &--model
+      margin-top: -8px
       li
-        max-width: 85px
-        margin: 15px
+        max-width: 70px
+        margin: 15px 7px
         text-align: center
         font-weight: 300
+        font-size: 14px
         user-select: none
         +md(margin, 7px)
         input
           display: block
           background-repeat: no-repeat
           background-position: center
-          width: 85px
-          height: 85px
+          background-size: 90px
+          width: 70px
+          height: 70px
           padding: 0
           border: 1px solid #000
           &:checked
@@ -129,18 +145,19 @@
             background: var(--primary-color)
         label
           display: block
-          padding: 12px 33px
+          padding: 10px 20px
           text-transform: uppercase
           font-weight: 700
+          font-size: 14px
           border: 1px solid #000
           user-select: none
           cursor: pointer
           +sm(padding, 10px 15px)
     &--color
       max-width: 180px
+      +sm(max-width, 100%)
       li
-        margin: 10px
-        +md(margin, 7px)
+        margin: 7px
       input
         width: 25px
         height: 25px
@@ -200,13 +217,20 @@
 .product
     position: relative
     background: #fff
-    max-width: 490px
-    height: 650px
-    box-shadow: 0px 3px 17px rgba(0, 0, 0, 0.13)
+    max-width: 360px
+    width: 100%
+    height: 610px
+    box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.25)
+    overflow: hidden
     transition: 0.3s box-shadow
     +sm(height, 560px)
+    &:hover
+      box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.4)
+    &__link
+      display: block
+      height: 100%
     &__figure
-        height: 90%
+        height: calc(100% - 70px)
         img
             margin: 0 auto
             height: 100%
@@ -217,32 +241,31 @@
         bottom: 0
         right: 0
         left: 0
-        display: flex
-        justify-content: space-between
-        align-items: center
         padding: 10px
         color: #000
         +sm(padding, 15px)
     &__title
         font-size: 24px
-        font-weight: 300
-        line-height: 1
-        flex-basis: 65%
+        font-weight: 600
+        line-height: normal
         +sm(font-size, 20px)
     &__price
-        flex-shrink: 0
-        text-align: center
+      display: flex
+      align-items: baseline
+      line-height: 1.2
     &__curprice
-        font-size: 24px
-        font-weight: 300
+        font-size: 18px
+        font-weight: 500
         white-space: nowrap
         i
             font-size: 15px
             font-style: normal
     &__oldprice
         position: relative
-        font-size: 18px
+        font-size: 16px
+        font-weight: 300
         display: block
+        margin-left: 10px
         i
           font-size: 12px
           font-style: normal
@@ -254,70 +277,58 @@
             right: 0
             border-top: 1px solid #000
             transform: skewY(8deg)
-    &:hover
-        box-shadow: 0px 3px 27px rgba(0, 0, 0, 0.4)
-        .product__action
-            visibility: visible
-            opacity: 1
+    &__actions
+      position: absolute
+      display: flex
+      top: 8px
+      right: 8px
     &__action
-        visibility: hidden
-        opacity: 0
-        display: flex
-        justify-content: space-between
-        align-items: center
-        position: absolute
-        top: 100%
-        width: 100%
-        left: 0
-        right: 0
-        padding: 25px
+      background: rgba(255, 255, 255, 0.7)
+      display: flex
+      justify-content: flex-end
+      align-items: center
+      max-width: 43px
+      height: 43px
+      margin: 7px
+      padding-left: 20px
+      border-radius: 43px;
+      overflow: hidden;
+      transition: 0.3s max-width, 0.3s background
+      box-shadow: 0 0 4px 0px rgba(146, 146, 146, 0.88)
+      &:hover
         background: #fff
-        z-index: 2
-        box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.3)
-        transition: 0.3s opacity
-        +sm(padding, 15px)
-    &__color
-        flex-basis: 60%
-        > p
-            margin-bottom: 10px
-    &__colorlist
-        display: flex
-        flex-flow: row wrap
-        margin-left: -5px
-        li
-            margin: 5px
-            i
-                width: 30px
-                height: 30px
-                display: block
-    &__btn
+        max-width: 180px
+      span
+        font-size: 14px
+        text-transform: uppercase
+        font-weight: 700
         flex-shrink: 0
+      &::after
+        content: ""
+        background: no-repeat center
+        width: 43px
+        height: 43px
+        flex-shrink: 0
+      &-view
+        &::after
+          background-image: url('../img/icons/ico-visibility.svg')
+      &-add
+        &::after
+          background-image: url('../img/icons/ico-clothes.svg')
     &__label
         position: absolute
-        bottom: 20%
         background: #EAEAEA
         display: flex
         flex-direction: column
         align-items: center
         justify-content: center
-        color: #000
         z-index: 3
-        &--sale
-            width: 80px
-            height: 80px
-            right: 35px
-            border-radius: 50%
-            b
-                font-size: 36px
-                line-height: 0.8
-                font-weight: 900
-            p
-                font-size: 20px
-                line-height: 1
-                font-weight: 300
-        &--stock_out
-            right: 0
-            padding: 10px 35px
-            font-size: 18px
-            text-transform: uppercase
+        &--unorder
+            top: 0
+            left: 0
+            width: 200px
+            height: 25px
+            font-size: 16px
+            transform: translate(-25%, 150%) rotate(-45deg)
             color: #000
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)

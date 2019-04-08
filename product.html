@@ -105,20 +105,26 @@
             </section>
             <section class="prodcard__main">
                 <div class="prodcard__lside">
+                    <div class="prodcard__info-mobile">
+                        <h1 class="prodcard__name">Tarik Ediz 50294</h1>
+                        <div class="prodcard__price">
+                            <span class="prodcard__curprice">11 520 <i>грн</i></span>
+                            <span class="prodcard__oldprice">21 520 <i>грн</i></span>
+                        </div>
+                    </div>
                     <div class="prodslider">
                         <ul class="prodslider__nav">
-                            <li><img src="/img/catalog/product6.jpg"></li>
-                            <li><img src="/img/catalog/product5.jpg"></li>
+                            <li><img src="/img/catalog/product7.jpg"></li>
+                            <li><img src="/img/catalog/product8.jpg"></li>
                         </ul>
                         <ul class="prodslider__slider">
-                            <li class="prodslider__slide"><img src="/img/catalog/product6.jpg" data-popup="http://elit.oscorp.pro/image/catalog/5F721C8E-A0BC-49E8-8370-B0912B182D5F.jpeg" data-gallery='true'></li>
-                            <li class="prodslider__slide"><img src="/img/catalog/product5.jpg" data-popup="http://elit.oscorp.pro/image/catalog/64CACD9D-3847-46F8-939D-9470C5294015.jpeg" data-gallery='true'></li>
+                            <li class="prodslider__slide"><img src="/img/catalog/product7.jpg" data-popup="/img/catalog/product7.jpg" data-gallery='true'></li>
+                            <li class="prodslider__slide"><img src="/img/catalog/product8.jpg" data-popup="/img/catalog/product8.jpg" data-gallery='true'></li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="prodcard__rside">
-
                     <div class="prodcard___info">
                         <h1 class="prodcard__name">Tarik Ediz 50294</h1>
                         <div class="prodcard__price">
@@ -127,8 +133,11 @@
 						</div>
                         <p class="prodcard__desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae ex dignissim orci molestie porttitor. Donec et facilisis est. Duis ante erat, porta nec tristique lobortis, pharetra id magna. Donec a ultrices mauris. Proin eget lobortis augue</p>
                     </div>
-
                     <ul class="prodcard__properties">
+                        <li class="prodcard__propitem">
+                            <p>Бренд:</p>
+                            <div class="prodcard__brand"><a href="#">Crystal Design</a></div>
+                        </li>
                         <li class="prodcard__propitem">
                             <p>Колір:</p>
                             <ul class="prodcard__colors">
@@ -164,15 +173,16 @@
                         </li>
                     </ul>
                     <div class="prodcard__actions">
+                        <button type="button" class="btn btn--trans" onclick="consultForm(1, this)">Конcультація</button>
                         <button type="button" class="btn btn--drose" onclick="addToCart(1, this)">В примірку</button>
                     </div>
                     <div class="prodcard__social">
                         <p>Поділись:</p>
                         <ul class="social">
+                            <li class="social__item"><a href="#"><img src="/img/icons/ico__telegram.svg" alt=""></a></li>
                             <li class="social__item"><a href="#"><img src="/img/icons/ico__pinterest.svg" alt=""></a></li>
                             <li class="social__item"><a href="#"><img src="/img/icons/ico__instagram.svg" alt=""></a></li>
                             <li class="social__item"><a href="#"><img src="/img/icons/ico__facebook.svg" alt=""></a></li>
-                            <li class="social__item"><a href="#"><img src="/img/icons/ico__youtube.svg" alt=""></a></li>
                         </ul>
                     </div>
                 </div>
@@ -193,17 +203,10 @@
             </div>
         </div>
         
-        
     </a>
-    <div class="product__action">
-        <div class="product__color">
-            <p>Колір:</p>
-            <ul class="product__colorlist">
-                <li><i style="background-color: #171516"></i></li>
-                <li><i style="background-color: #AA2243"></i></li>
-            </ul>
-        </div>
-        <button class="btn btn--black product__btn" onclick="addToCart(@@id, this)">В примірку</button>
+    <div class="product__actions">
+        <a class="product__action product__action-view" href="product.html"><span>Переглянути</span></a>
+        <button class="product__action product__action-add" onclick="addToCart(@@id, this)"><span>В примірку</span></button>
     </div>
 </article><article class="product">
     <a href="product.html" class="product__link">
@@ -218,22 +221,10 @@
             </div>
         </div>
         
-            <div class="product__label product__label--sale">
-                <b>%</b>
-                <p>Акція</p>
-            </div>
-        
-        
     </a>
-    <div class="product__action">
-        <div class="product__color">
-            <p>Колір:</p>
-            <ul class="product__colorlist">
-                <li><i style="background-color: #171516"></i></li>
-                <li><i style="background-color: #AA2243"></i></li>
-            </ul>
-        </div>
-        <button class="btn btn--black product__btn" onclick="addToCart(@@id, this)">В примірку</button>
+    <div class="product__actions">
+        <a class="product__action product__action-view" href="product.html"><span>Переглянути</span></a>
+        <button class="product__action product__action-add" onclick="addToCart(@@id, this)"><span>В примірку</span></button>
     </div>
 </article><article class="product">
     <a href="product.html" class="product__link">
@@ -248,17 +239,10 @@
             </div>
         </div>
         
-        
     </a>
-    <div class="product__action">
-        <div class="product__color">
-            <p>Колір:</p>
-            <ul class="product__colorlist">
-                <li><i style="background-color: #171516"></i></li>
-                <li><i style="background-color: #AA2243"></i></li>
-            </ul>
-        </div>
-        <button class="btn btn--black product__btn" onclick="addToCart(@@id, this)">В примірку</button>
+    <div class="product__actions">
+        <a class="product__action product__action-view" href="product.html"><span>Переглянути</span></a>
+        <button class="product__action product__action-add" onclick="addToCart(@@id, this)"><span>В примірку</span></button>
     </div>
 </article><article class="product">
     <a href="product.html" class="product__link">
@@ -273,21 +257,10 @@
             </div>
         </div>
         
-        
-            <div class="product__label product__label--stock_out">
-                <p>Не в наявності</p>
-            </div>
-        
     </a>
-    <div class="product__action">
-        <div class="product__color">
-            <p>Колір:</p>
-            <ul class="product__colorlist">
-                <li><i style="background-color: #171516"></i></li>
-                <li><i style="background-color: #AA2243"></i></li>
-            </ul>
-        </div>
-        <button class="btn btn--black product__btn" onclick="addToCart(@@id, this)">В примірку</button>
+    <div class="product__actions">
+        <a class="product__action product__action-view" href="product.html"><span>Переглянути</span></a>
+        <button class="product__action product__action-add" onclick="addToCart(@@id, this)"><span>В примірку</span></button>
     </div>
 </article>
                 </div>
@@ -308,17 +281,10 @@
             </div>
         </div>
         
-        
     </a>
-    <div class="product__action">
-        <div class="product__color">
-            <p>Колір:</p>
-            <ul class="product__colorlist">
-                <li><i style="background-color: #171516"></i></li>
-                <li><i style="background-color: #AA2243"></i></li>
-            </ul>
-        </div>
-        <button class="btn btn--black product__btn" onclick="addToCart(@@id, this)">В примірку</button>
+    <div class="product__actions">
+        <a class="product__action product__action-view" href="product.html"><span>Переглянути</span></a>
+        <button class="product__action product__action-add" onclick="addToCart(@@id, this)"><span>В примірку</span></button>
     </div>
 </article><article class="product">
     <a href="product.html" class="product__link">
@@ -333,22 +299,10 @@
             </div>
         </div>
         
-            <div class="product__label product__label--sale">
-                <b>%</b>
-                <p>Акція</p>
-            </div>
-        
-        
     </a>
-    <div class="product__action">
-        <div class="product__color">
-            <p>Колір:</p>
-            <ul class="product__colorlist">
-                <li><i style="background-color: #171516"></i></li>
-                <li><i style="background-color: #AA2243"></i></li>
-            </ul>
-        </div>
-        <button class="btn btn--black product__btn" onclick="addToCart(@@id, this)">В примірку</button>
+    <div class="product__actions">
+        <a class="product__action product__action-view" href="product.html"><span>Переглянути</span></a>
+        <button class="product__action product__action-add" onclick="addToCart(@@id, this)"><span>В примірку</span></button>
     </div>
 </article><article class="product">
     <a href="product.html" class="product__link">
@@ -363,17 +317,10 @@
             </div>
         </div>
         
-        
     </a>
-    <div class="product__action">
-        <div class="product__color">
-            <p>Колір:</p>
-            <ul class="product__colorlist">
-                <li><i style="background-color: #171516"></i></li>
-                <li><i style="background-color: #AA2243"></i></li>
-            </ul>
-        </div>
-        <button class="btn btn--black product__btn" onclick="addToCart(@@id, this)">В примірку</button>
+    <div class="product__actions">
+        <a class="product__action product__action-view" href="product.html"><span>Переглянути</span></a>
+        <button class="product__action product__action-add" onclick="addToCart(@@id, this)"><span>В примірку</span></button>
     </div>
 </article><article class="product">
     <a href="product.html" class="product__link">
@@ -388,21 +335,10 @@
             </div>
         </div>
         
-        
-            <div class="product__label product__label--stock_out">
-                <p>Не в наявності</p>
-            </div>
-        
     </a>
-    <div class="product__action">
-        <div class="product__color">
-            <p>Колір:</p>
-            <ul class="product__colorlist">
-                <li><i style="background-color: #171516"></i></li>
-                <li><i style="background-color: #AA2243"></i></li>
-            </ul>
-        </div>
-        <button class="btn btn--black product__btn" onclick="addToCart(@@id, this)">В примірку</button>
+    <div class="product__actions">
+        <a class="product__action product__action-view" href="product.html"><span>Переглянути</span></a>
+        <button class="product__action product__action-add" onclick="addToCart(@@id, this)"><span>В примірку</span></button>
     </div>
 </article>
                 </div>
@@ -422,10 +358,10 @@
 					</a>
 					<div class="footer__social">
 						<ul class="social">
+							<li class="social__item"><a href="#"><img src="/img/icons/ico__telegram.svg" alt=""></a></li>
 							<li class="social__item"><a href="#"><img src="/img/icons/ico__pinterest.svg" alt=""></a></li>
 							<li class="social__item"><a href="#"><img src="/img/icons/ico__instagram.svg" alt=""></a></li>
 							<li class="social__item"><a href="#"><img src="/img/icons/ico__facebook.svg" alt=""></a></li>
-							<li class="social__item"><a href="#"><img src="/img/icons/ico__youtube.svg" alt=""></a></li>
 						</ul>
 					</div>
 					<ul class="footer__addr">
@@ -489,7 +425,7 @@
 			<div class="footer__booking">
 				<a class="btn btn--trans header__booking-btn" href="cart-order.html">Записаться на примерку <i class="count_cart">0</i></a>
 			</div>
-			<div class="footer__copyright">&copy; Crystal Salon 2019. &nbsp<span class="oscorp">Сайт разработан в <a href="http://oscorp.pro/" target="_blank" title="Oscorp.pro">Oscorp.pro</a></span></div>
+			<div class="footer__copyright">&copy; Crystal Salon 2019 &nbsp<span class="oscorp">Сайт разработан в <a href="http://oscorp.pro/" target="_blank" title="Oscorp.pro">Oscorp.pro</a></span></div>
 		</div>
 	</div>
 </footer>

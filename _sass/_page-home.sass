@@ -27,10 +27,10 @@
         height: auto
         max-height: initial !important
         background: url('/img/h-brands-bg.svg') no-repeat top left
-        background-position-y: -110px
+        background-position-y: -130px
         +sm-block()
             background-size: 350px
-            background-position-y: -50px
+            background-position-y: -60px
     &__title
         background: rgba(255, 255, 255, 0.9)
         padding: 5%
@@ -40,8 +40,8 @@
         text-transform: uppercase
         color: inherit
         font-weight: 100
-        +xl(font-size, 51px)
-        +md(font-size, 41px)
+        +xl(font-size, 60px)
+        +md(font-size, 50px)
         +sm-block()
             font-size: 27px
             padding: 15px
@@ -52,7 +52,7 @@
         &:hover
             color: #c56561
             .arrow--r
-                transform: translateX(15px)
+                transform: translateX(10px)
                 +sm(transform, translateX(8px))
 
 .h-collection
@@ -122,7 +122,7 @@
 
 .h-info
     height: 100%
-    background: no-repeat center top/cover
+    background: no-repeat 70% top/cover
     &__inner
         height: 100%
         display: flex
@@ -179,19 +179,16 @@
         padding-top: 20px
         margin-bottom: 20px
     &__title
-        margin-left: 6%
-        margin-bottom: 70px
-        font-size: 75px
+        text-align: center
+        font-size: 48px
         font-weight: 100
         line-height: 1
         text-transform: uppercase
         color: #D58481
         +md-block()
-            font-size: 50px
-            margin-bottom: 40px
+            font-size: 40px
         +sm-block()
             font-size: 30px
-            margin-bottom: 20px
     &__slider
         #brands-slider
             position: relative

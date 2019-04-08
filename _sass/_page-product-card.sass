@@ -1,28 +1,33 @@
 .prodcard
     &__inner
-        max-width: 1450px
-        padding-top: 80px
-        +sm(padding-top, 25px)
+        max-width: 1150px
     &__breadcrumbs
+        margin: 25px 0
     &__main
-        display: flex
-        justify-content: space-between
-        align-items: center
-        margin-bottom: 150px
-        +md(flex-direction, column)
-        +md(margin-bottom, 50px)
-        +sm(margin-bottom, 30px)
+        display: grid
+        grid-template-columns: 640px 1fr
+        grid-gap: 25px
+        margin-bottom: 45px
+        +md(display, block)
+        +sm(justify-items, center)
     &__lside
-        display: flex
-        width: 60%
-        +md(width, 100%)
-        +md(flex-basis, auto)
+        max-width: 670px
+        +md(margin-bottom, 20px)
+        +sm(margin, 0 auto 20px auto)
     &__rside
-        flex-basis: 30%
-        width: 100%
         color: #000
         font-weight: 300
+        .prodcard__name,
+        .prodcard__price
+            +md(display, none)
     &__info
+        &-mobile
+            display: none
+            text-align: center
+            +md(display, block)
+            .prodcard__price
+                justify-content: center
+
     &__price
         display: flex
         align-items: baseline
@@ -31,10 +36,11 @@
         color: #000
         text-transform: none
         font-size: 36px
-        margin-bottom: 15px
-        +md(font-size, 32px !important)
+        font-weight: 600
+        margin-bottom: 5px
+        +md(font-size, 36px !important)
     &__curprice
-        font-size: 36px
+        font-size: 24px
         font-weight: 300
         +sm(font-size, 24px)
         i
@@ -42,8 +48,7 @@
             font-style: normal
     &__oldprice
         position: relative
-        font-size: 18px
-        display:
+        font-size: 16px
         margin-left: 15px
         i
             font-size: 12px
@@ -59,8 +64,8 @@
     &__desc
         font-size: 16px
     &__properties
-        margin-bottom: 20px
-        margin-top: 50px
+        margin-bottom: 25px
+        margin-top: 40px
         +sm(margin, 20px 0)
     &__propitem
         display: flex
@@ -68,16 +73,24 @@
         flex-wrap: wrap
         margin: 10px 0
         p
-            font-size: 24px
+            font-size: 18px
             line-height: 1
             margin-right: 10px
             +sm(font-size, 16px)
+    &__brand
+        font-size: 18px
+        a
+            font-weight: 100
+            color: #D58481
+            text-decoration: underline
     &__colors
         display: flex
         flex-flow: row wrap
         margin-left: -5px
         li
             margin: 5px
+            label
+                display: block
             input
                 width: 25px
                 height: 25px
@@ -135,46 +148,60 @@
                 font-style: normal
                 border: 1px solid #000
     &__social
+        border-top: 1px solid #D58481
         display: flex
         align-items: center
-        margin-top: 50px
-        +sm(margin-top, 20px)
+        margin-top: 25px
         > p
-            font-size: 24px
-            +sm(font-size, 18px)
+            font-size: 18px
     &__actions
+        display: grid
+        grid-template-columns: max-content max-content
+        grid-gap: 25px
+        +sm(grid-template-columns, 1fr 1fr)
+        .btn
+            min-width: 165px
+        .btn--trans:hover
+            border-color: #000
+            background-color: #000
         +sm-block()
             .btn
                 display: block
                 width: 100%
                 max-width: 350px
+                min-width: auto
                 margin: 0 auto
 
 /* Product slider*/
 .prodslider
-    width: 100%
-    display: flex
-    justify-content: space-between
+    display: grid
+    grid-template-columns: 165px calc(100% - 165px - 25px) //100% - (vertical slider width) - (grid gap)
+    grid-gap: 25px
     overflow: hidden
-    max-height: 650px
-    +sm(flex-direction, column-reverse)
-    +sm(max-height, 100%)
+    max-height: 670px
+    +sm-block()
+        display: block
+        max-height: 100%
+        max-width: 500px
+        margin: 0 auto
     &__nav
-        width: 182px
         visibility: hidden
         opacity: 0
-        transition: 0.5s
+        transition: 0.5s opacity
         +sm(display, none !important)
         &.slick-initialized
             visibility: visible
             opacity: 1
+        .slick-slide
+            width: 100% !important
+            border: none !important
         .slick-current
             li
                 border-color: #d58481
         li
-            width: 180px !important
-            height: 180px !important
-            margin-bottom: 15px
+            width: 100% !important
+            height: 165px !important
+            margin-bottom: 25px
             overflow: hidden
             border: 1px solid #000
             transition: 0.3s border
@@ -185,64 +212,61 @@
                 object-fit: cover
                 object-position: top
     &__slider
-        width: 75%
         visibility: hidden
         opacity: 0
-        transition: 0.5s
+        transition: 0.5s opacity
         +sm(width, 100%)
         &.slick-initialized
             visibility: visible
             opacity: 1
         .slick-current
-            animation: fadeProduct 0.5s both
+            animation: animProduct 0.3s both
             +sm(animation, none)
     &__slide
         img
+            width: 100%
             margin: 0 auto
             &[data-gallery='true']
                 cursor: zoom-in
 
 /* Product additionally */
 .prodmore
-    max-width: 1000px
-    margin: 0 auto 45px auto
+    &:not(:last-of-type)
+        margin-bottom: 50px
     &__title
-        font-size: 32px
-        font-weight: 300
+        font-size: 36px
+        font-weight: 100
         line-height: 1
         color: #000
-        margin-bottom: 10px
-        margin-left: 10px
+        margin-bottom: 25px
         +md(font-size, 28px)
-        +sm(font-size, 24px)
+        +sm-block()
+            font-size: 24px
+            text-align: center
+            margin-bottom: 5px
     &__list
-        display: flex
-        +sm(flex-wrap, wrap)
-    .product
-        margin: 10px
-        height: 390px
-        +sm(margin, 0)
-        +sm(box-shadow, 0px 0 8px rgba(0, 0, 0, 0.13))
-        &__info
-            padding: 10px
-        &__title
-            flex-basis: 60%
-            font-size: 16px
-        &__price
-            font-size: 16px
-        &__action
-            display: none
-        &__label
-            &--sale
-                right: 15px
-                width: 50px
-                height: 50px
-                b
-                    font-size: 20px
-                p
-                    font-size: 15px
-            &--stock_out
-                font-size: 12px
-                padding: 10px 15px
-    .slick-slide
-        margin: 10px
+        display: grid
+        grid-template-columns: repeat(4, 1fr)
+        grid-gap: 25px
+        .product
+            // margin: 10px
+            height: 440px
+            +sm(margin, 0)
+            +sm(box-shadow, 0px 0 8px rgba(0, 0, 0, 0.13))
+            &__info
+                padding: 10px
+            &__title
+                flex-basis: 60%
+                font-size: 16px
+            &__price
+                font-size: 16px
+            &__curprice
+                font-weight: 100
+            &__label
+                &--unorder
+                    font-size: 14px
+                    padding: 10px 15px
+            &__actions
+                display: none
+        .slick-slide
+            margin: 10px

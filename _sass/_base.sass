@@ -48,7 +48,6 @@ html, body
   height: 100%
 
 body
-  opacity: 0
   min-width: 320px
   max-width: 1920px
   margin: 0 auto
@@ -60,12 +59,6 @@ body
   overflow-x: hidden
   line-height: normal
   transition: 1s opacity
-  &:not([class^="viewing-page"])
-    opacity: 1
-  &[class^="viewing-page"]
-    overflow: hidden
-    main
-      height: 100%
 h1
   font-size: 72px
   font-weight: 300
@@ -225,6 +218,7 @@ input
 
 .page__title
   text-align: center
+  color: #000
 
 /*==============================================================
             BUTTONS START
@@ -234,7 +228,7 @@ input
   justify-content: center
   align-items: center
   text-align: center
-  padding: 10px 20px
+  padding: 13px 20px
   color: #fff
   line-height: normal
   font-family: var(--primary-font)
@@ -242,6 +236,7 @@ input
   font-weight: 700
   text-transform: uppercase
   border: 2px solid transparent
+  border-radius: 5px
   transition: 0.3s border, 0.3s background, 0.3s color
   &--black
     background-color: #000
@@ -292,7 +287,8 @@ input
     &:hover
         color: #D58481
         .arrow--r
-            transform: translateX(10px)
+          transform: translateX(5px)
+
 
 .arrow--r
   display: flex
@@ -351,7 +347,7 @@ input
   display: flex
   flex-flow: row wrap
   justify-content: center
-  margin: 15px 0
+  margin-bottom: 15px
   li
     width: 10px
     height: 10px
@@ -369,7 +365,6 @@ input
             BREADCRUMBS START
 /*============================================================= */
 .breadcrumbs
-  margin: 15px 0
   &__list
     display: flex
     flex-flow: row wrap
@@ -381,9 +376,6 @@ input
         font-size: 16px
         color: #000
         display: inline-block
-        border-bottom: 1px solid #000
-      > span
-        border-bottom: none
 
 /*==============================================================
             PAGINATION START

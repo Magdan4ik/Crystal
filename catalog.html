@@ -91,23 +91,24 @@
   <main class="main">
     <section class="catalog">
         <div class="catalog__inner container">
-            <section class="catalog__filter">
+            <h1 class="page__title">Tarik Ediz</h1>
+            <div class="catalog__topside">
+                <section class="catalog__breadcrumbs">
+                    <div class="breadcrumbs">
+                        <ul class="breadcrumbs__list">
+                            <li><a href="/"><span>Головна</span></a></li>
+                            <li><a href="catalog.html"><span>Сукні</span></a></li>
+                            <li><a href="catalog.html"><span>Вечірні сукні</span></a></li>
+                            <li><span>Tarik Ediz</a></li>
+                        </ul>
+                    </div>
+                </section>
                 <button type="button" class="btn btn--trans filter__toggle" data-dot="false">Підбір сукні</button>
-                <div class="filter">
+                <section class="catalog__filter">
+                    <div class="filter">
     <button type="button" class="filter__close">X</button>
     <form action="#" class="filter__form" id="filterForm" onsubmit="applyCatalogFilter(this)">
         <div class="filter__filters">
-            <fieldset class="filter__model">
-                <legend>Фасон</legend>
-                <ul class="filter__list filter__list--model">
-                    <li><input type="checkbox" name="" value="Бальне" class="filter__model-ball"><span>Бальне</span></li>
-                    <li><input type="checkbox" name="" value="Грецьке" class="filter__model-grace"><span>Грецьке</span></li>
-                    <li><input type="checkbox" name="" value="Пряме" class="filter__model-straight"><span>Пряме</span></li>
-                    <li><input type="checkbox" name="" value="Русалка" class="filter__model-mermaid"><span>Русалка</span></li>
-                    <li><input type="checkbox" name="" value="А-силует" class="filter__model-asiluet"><span>А-силует</span></li>
-                </ul>
-            </fieldset>
-
             <fieldset class="filter__brand">
                 <legend>Бренд</legend>
                 <ul class="filter__list filter__list--brand">
@@ -127,6 +128,16 @@
                         <input type="checkbox" name="" value="Sherri Hill" class="filter__brand-input" id="brand4">
                         <label for="brand4">Sherri Hill</label>
                     </li>
+                </ul>
+            </fieldset>
+            <fieldset class="filter__model">
+                <legend>Фасон</legend>
+                <ul class="filter__list filter__list--model">
+                    <li><input type="checkbox" name="" value="Бальне" class="filter__model-ball"><span>Бальне</span></li>
+                    <li><input type="checkbox" name="" value="Грецьке" class="filter__model-grace"><span>Грецьке</span></li>
+                    <li><input type="checkbox" name="" value="Пряме" class="filter__model-straight"><span>Пряме</span></li>
+                    <li><input type="checkbox" name="" value="Русалка" class="filter__model-mermaid"><span>Русалка</span></li>
+                    <li><input type="checkbox" name="" value="А-силует" class="filter__model-asiluet"><span>А-силует</span></li>
                 </ul>
             </fieldset>
             <fieldset class="filter__color">
@@ -149,17 +160,8 @@
         </div>
     </form>
 </div>
-            </section>
-            <section class="catalog__breadcrumbs">
-                <div class="breadcrumbs">
-                    <ul class="breadcrumbs__list">
-                        <li><a href="/"><span>Головна</span></a></li>
-                        <li><a href="catalog.html"><span>Сукні</span></a></li>
-                        <li><a href="catalog.html"><span>Вечірні сукні</span></a></li>
-                        <li><span>Tarik Ediz</a></li>
-                    </ul>
-                </div>
-            </section>
+                </section>
+            </div>
             <section class="catalog__products">
                 <article class="product">
     <a href="product.html" class="product__link">
@@ -174,17 +176,10 @@
             </div>
         </div>
         
-        
     </a>
-    <div class="product__action">
-        <div class="product__color">
-            <p>Колір:</p>
-            <ul class="product__colorlist">
-                <li><i style="background-color: #171516"></i></li>
-                <li><i style="background-color: #AA2243"></i></li>
-            </ul>
-        </div>
-        <button class="btn btn--black product__btn" onclick="addToCart(1, this)">В примірку</button>
+    <div class="product__actions">
+        <a class="product__action product__action-view" href="product.html"><span>Переглянути</span></a>
+        <button class="product__action product__action-add" onclick="addToCart(1, this)"><span>В примірку</span></button>
     </div>
 </article><article class="product">
     <a href="product.html" class="product__link">
@@ -199,22 +194,10 @@
             </div>
         </div>
         
-            <div class="product__label product__label--sale">
-                <b>%</b>
-                <p>Акція</p>
-            </div>
-        
-        
     </a>
-    <div class="product__action">
-        <div class="product__color">
-            <p>Колір:</p>
-            <ul class="product__colorlist">
-                <li><i style="background-color: #171516"></i></li>
-                <li><i style="background-color: #AA2243"></i></li>
-            </ul>
-        </div>
-        <button class="btn btn--black product__btn" onclick="addToCart(2, this)">В примірку</button>
+    <div class="product__actions">
+        <a class="product__action product__action-view" href="product.html"><span>Переглянути</span></a>
+        <button class="product__action product__action-add" onclick="addToCart(2, this)"><span>В примірку</span></button>
     </div>
 </article><article class="product">
     <a href="product.html" class="product__link">
@@ -229,17 +212,14 @@
             </div>
         </div>
         
+            <div class="product__label product__label--unorder">
+                <p>На замовлення</p>
+            </div>
         
     </a>
-    <div class="product__action">
-        <div class="product__color">
-            <p>Колір:</p>
-            <ul class="product__colorlist">
-                <li><i style="background-color: #171516"></i></li>
-                <li><i style="background-color: #AA2243"></i></li>
-            </ul>
-        </div>
-        <button class="btn btn--black product__btn" onclick="addToCart(3, this)">В примірку</button>
+    <div class="product__actions">
+        <a class="product__action product__action-view" href="product.html"><span>Переглянути</span></a>
+        <button class="product__action product__action-add" onclick="addToCart(3, this)"><span>В примірку</span></button>
     </div>
 </article><article class="product">
     <a href="product.html" class="product__link">
@@ -254,17 +234,10 @@
             </div>
         </div>
         
-        
     </a>
-    <div class="product__action">
-        <div class="product__color">
-            <p>Колір:</p>
-            <ul class="product__colorlist">
-                <li><i style="background-color: #171516"></i></li>
-                <li><i style="background-color: #AA2243"></i></li>
-            </ul>
-        </div>
-        <button class="btn btn--black product__btn" onclick="addToCart(4, this)">В примірку</button>
+    <div class="product__actions">
+        <a class="product__action product__action-view" href="product.html"><span>Переглянути</span></a>
+        <button class="product__action product__action-add" onclick="addToCart(4, this)"><span>В примірку</span></button>
     </div>
 </article><article class="product">
     <a href="product.html" class="product__link">
@@ -279,21 +252,10 @@
             </div>
         </div>
         
-        
-            <div class="product__label product__label--stock_out">
-                <p>Не в наявності</p>
-            </div>
-        
     </a>
-    <div class="product__action">
-        <div class="product__color">
-            <p>Колір:</p>
-            <ul class="product__colorlist">
-                <li><i style="background-color: #171516"></i></li>
-                <li><i style="background-color: #AA2243"></i></li>
-            </ul>
-        </div>
-        <button class="btn btn--black product__btn" onclick="addToCart(5, this)">В примірку</button>
+    <div class="product__actions">
+        <a class="product__action product__action-view" href="product.html"><span>Переглянути</span></a>
+        <button class="product__action product__action-add" onclick="addToCart(5, this)"><span>В примірку</span></button>
     </div>
 </article><article class="product">
     <a href="product.html" class="product__link">
@@ -308,17 +270,10 @@
             </div>
         </div>
         
-        
     </a>
-    <div class="product__action">
-        <div class="product__color">
-            <p>Колір:</p>
-            <ul class="product__colorlist">
-                <li><i style="background-color: #171516"></i></li>
-                <li><i style="background-color: #AA2243"></i></li>
-            </ul>
-        </div>
-        <button class="btn btn--black product__btn" onclick="addToCart(6, this)">В примірку</button>
+    <div class="product__actions">
+        <a class="product__action product__action-view" href="product.html"><span>Переглянути</span></a>
+        <button class="product__action product__action-add" onclick="addToCart(6, this)"><span>В примірку</span></button>
     </div>
 </article>
             </section>
@@ -345,10 +300,10 @@
 					</a>
 					<div class="footer__social">
 						<ul class="social">
+							<li class="social__item"><a href="#"><img src="/img/icons/ico__telegram.svg" alt=""></a></li>
 							<li class="social__item"><a href="#"><img src="/img/icons/ico__pinterest.svg" alt=""></a></li>
 							<li class="social__item"><a href="#"><img src="/img/icons/ico__instagram.svg" alt=""></a></li>
 							<li class="social__item"><a href="#"><img src="/img/icons/ico__facebook.svg" alt=""></a></li>
-							<li class="social__item"><a href="#"><img src="/img/icons/ico__youtube.svg" alt=""></a></li>
 						</ul>
 					</div>
 					<ul class="footer__addr">
@@ -412,7 +367,7 @@
 			<div class="footer__booking">
 				<a class="btn btn--trans header__booking-btn" href="cart-order.html">Записаться на примерку <i class="count_cart">0</i></a>
 			</div>
-			<div class="footer__copyright">&copy; Crystal Salon 2019. &nbsp<span class="oscorp">Сайт разработан в <a href="http://oscorp.pro/" target="_blank" title="Oscorp.pro">Oscorp.pro</a></span></div>
+			<div class="footer__copyright">&copy; Crystal Salon 2019 &nbsp<span class="oscorp">Сайт разработан в <a href="http://oscorp.pro/" target="_blank" title="Oscorp.pro">Oscorp.pro</a></span></div>
 		</div>
 	</div>
 </footer>
